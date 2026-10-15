@@ -31,24 +31,19 @@ const BOUTEILLES = [
 	{src: 'rhum_la_favorite.png', ratio: 0.317, x: 1072, h: 418, base: 988, z: 1},
 ];
 
-// Premier plan (provisoire en attendant la composition ChatGPT).
-const PREMIER_PLAN = [
-	{src: 'jus_syrah_exea.png', ratio: 0.365, x: 337, h: 230},
-	{src: 'terrine_silure_gemini.png', ratio: 0.986, x: 493, h: 186},
-	{src: 'terrine_poissons_loire_gemini.png', ratio: 0.988, x: 698, h: 186},
-	{src: 'chocolat_boitasac.png', ratio: 0.553, x: 879, h: 240},
-];
+// Premier plan : composition jus de cépage + terrines + chocolats (détourée), centrée.
+const PREMIER_PLAN = [{src: 'premier_plan_groupe.png', ratio: 1.507, x: 620, h: 345}];
 
 const ETAGERE_Y = 1030;
-const PREMIER_PLAN_Y = 1240;
+const PREMIER_PLAN_Y = 1268;
 
 // Icônes des services, alignées sur les blocs service-1..5 de textes.json.
 const ICONES = [
-	{nom: 'cadeau', x: 90, y: 1328},
-	{nom: 'verres', x: 443, y: 1328},
-	{nom: 'bouteille', x: 796, y: 1328},
-	{nom: 'carte', x: 267, y: 1406},
-	{nom: 'alliances', x: 620, y: 1406},
+	{nom: 'cadeau', x: 90, y: 1340},
+	{nom: 'verres', x: 443, y: 1340},
+	{nom: 'bouteille', x: 796, y: 1340},
+	{nom: 'carte', x: 267, y: 1412},
+	{nom: 'alliances', x: 620, y: 1412},
 ];
 
 const Icone: React.FC<{nom: string}> = ({nom}) => {
@@ -281,12 +276,12 @@ export const Panneau: React.FC<{texte?: boolean}> = ({texte = true}) => {
 				<Produit key={b.src} {...b} reflet={0.2} />
 			))}
 			{PREMIER_PLAN.map((t) => (
-				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0.16} z={10} />
+				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0} z={10} />
 			))}
 
 			{/* Filets autour du titre des services */}
-			<div style={{position: 'absolute', top: 1291, left: 404, width: 120, height: 1, background: C.or, opacity: 0.6}} />
-			<div style={{position: 'absolute', top: 1291, left: 716, width: 120, height: 1, background: C.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1305, left: 404, width: 120, height: 1, background: C.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1305, left: 716, width: 120, height: 1, background: C.or, opacity: 0.6}} />
 
 			{ICONES.map((i) => (
 				<div
