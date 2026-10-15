@@ -18,23 +18,26 @@ const SANS = "'Montserrat', sans-serif";
 
 // Bouteilles posées sur l'étagère, de gauche à droite (x = centre, h = hauteur affichée).
 const BOUTEILLES = [
-	{src: 'whisky_toki.png', ratio: 0.384, x: 178, h: 392},
-	{src: 'blacailloux.png', ratio: 0.223, x: 322, h: 520},
-	{src: 'gragnos_lou_daro.png', ratio: 0.258, x: 470, h: 548},
-	{src: 'chateauneuf.png', ratio: 0.258, x: 620, h: 578},
-	{src: 'balac.png', ratio: 0.242, x: 770, h: 548},
-	{src: 'frezier.png', ratio: 0.266, x: 920, h: 534},
-	{src: 'rhum_la_favorite.png', ratio: 0.317, x: 1064, h: 446},
+	{src: 'whisky_toki.png', ratio: 0.384, x: 156, h: 342},
+	{src: 'blacailloux.png', ratio: 0.223, x: 283, h: 462},
+	{src: 'gragnos_lou_daro.png', ratio: 0.258, x: 408, h: 486},
+	{src: 'chateauneuf.png', ratio: 0.258, x: 547, h: 518},
+	{src: 'balac.png', ratio: 0.242, x: 683, h: 486},
+	{src: 'frezier.png', ratio: 0.266, x: 815, h: 475},
+	{src: 'divin_sauvignon_0-0.png', ratio: 0.275, x: 950, h: 454},
+	{src: 'rhum_la_favorite.png', ratio: 0.317, x: 1086, h: 399},
 ];
 
-// Terrines au premier plan.
-const TERRINES = [
-	{src: 'terrine_silure_gemini.png', ratio: 0.986, x: 516, h: 196},
-	{src: 'terrine_poissons_loire_gemini.png', ratio: 0.988, x: 724, h: 196},
+// Premier plan : jus de cépage, terrines, chocolats.
+const PREMIER_PLAN = [
+	{src: 'jus_syrah_exea.png', ratio: 0.365, x: 337, h: 230},
+	{src: 'terrine_silure_gemini.png', ratio: 0.986, x: 493, h: 186},
+	{src: 'terrine_poissons_loire_gemini.png', ratio: 0.988, x: 698, h: 186},
+	{src: 'chocolat_boitasac.png', ratio: 0.553, x: 879, h: 240},
 ];
 
-const ETAGERE_Y = 1040;
-const PREMIER_PLAN_Y = 1186;
+const ETAGERE_Y = 1000;
+const PREMIER_PLAN_Y = 1222;
 
 const SERVICES = [
 	{icone: 'cadeau', titre: 'Coffrets', suite: '& idées cadeaux'},
@@ -233,13 +236,13 @@ export const Panneau: React.FC = () => {
 					</linearGradient>
 				</defs>
 				<path
-					d={`M 90 ${ETAGERE_Y} L 90 760 A 530 330 0 0 1 1150 760 L 1150 ${ETAGERE_Y}`}
+					d={`M 66 ${ETAGERE_Y} L 66 760 A 554 330 0 0 1 1174 760 L 1174 ${ETAGERE_Y}`}
 					fill="none"
 					stroke="url(#voute)"
 					strokeWidth={1.6}
 				/>
 				<path
-					d={`M 104 ${ETAGERE_Y} L 104 762 A 516 318 0 0 1 1136 762 L 1136 ${ETAGERE_Y}`}
+					d={`M 80 ${ETAGERE_Y} L 80 762 A 540 318 0 0 1 1160 762 L 1160 ${ETAGERE_Y}`}
 					fill="none"
 					stroke="url(#voute)"
 					strokeWidth={0.7}
@@ -274,12 +277,12 @@ export const Panneau: React.FC = () => {
 			{BOUTEILLES.map((b) => (
 				<Produit key={b.src} {...b} base={ETAGERE_Y} reflet={0.22} />
 			))}
-			{TERRINES.map((t) => (
+			{PREMIER_PLAN.map((t) => (
 				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0.16} />
 			))}
 
 			{/* Services */}
-			<div style={{position: 'absolute', top: 1246, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22}}>
+			<div style={{position: 'absolute', top: 1272, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22}}>
 				<div style={{width: 120, height: 1, background: C.or, opacity: 0.6}} />
 				<Libelle>À la Cave 71</Libelle>
 				<div style={{width: 120, height: 1, background: C.or, opacity: 0.6}} />
@@ -287,13 +290,13 @@ export const Panneau: React.FC = () => {
 			<div
 				style={{
 					position: 'absolute',
-					top: 1292,
+					top: 1314,
 					left: 90,
 					right: 90,
 					display: 'flex',
 					flexWrap: 'wrap',
 					justifyContent: 'center',
-					rowGap: 26,
+					rowGap: 20,
 				}}
 			>
 				{SERVICES.map((s) => (
@@ -321,8 +324,8 @@ export const Panneau: React.FC = () => {
 			</div>
 
 			{/* Pied : infos pratiques */}
-			<div style={{position: 'absolute', top: 1490, left: 90, right: 90, height: 1, background: `linear-gradient(to right, rgba(207,165,72,0), ${C.or}, rgba(207,165,72,0))`}} />
-			<div style={{position: 'absolute', top: 1516, left: 90, right: 90, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+			<div style={{position: 'absolute', top: 1484, left: 90, right: 90, height: 1, background: `linear-gradient(to right, rgba(207,165,72,0), ${C.or}, rgba(207,165,72,0))`}} />
+			<div style={{position: 'absolute', top: 1508, left: 90, right: 90, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
 				<div style={{width: 330}}>
 					<Libelle>Nous trouver</Libelle>
 					<div style={{fontFamily: SERIF, fontSize: 30, fontWeight: 600, marginTop: 10, lineHeight: 1.1}}>

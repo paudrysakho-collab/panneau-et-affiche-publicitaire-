@@ -26,8 +26,9 @@ Les photos sont dans `public/produits/` (PNG détourés), le logo dans `public/`
 - Vins (photos du catalogue caviste 2026) : Bastide de Blacailloux rosé, Château de Gragnos
   Lou Daro, Châteauneuf-du-Pape Prieuré des Papes, Château Balac, Champagne Denis Frezier
 - Spiritueux : Suntory Toki, rhum La Favorite Cœur de Canne
-- Épicerie : terrines de faisan et de perdrix (Saveurs de Gallinacés), silure de Loire et
-  poissons de Loire (Goûts de Loire)
+- Sans alcool : Divin Sauvignon blanc 0,0 %, jus de cépage Syrah Famille d'Exea
+- Épicerie : terrines Goûts de Loire (silure à la tomate séchée, poissons de Loire au
+  Touraine Sauvignon), chocolats Maison Guinguet (Boitasac noir)
 
 ## Avant impression
 
