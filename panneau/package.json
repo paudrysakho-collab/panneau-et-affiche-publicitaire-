@@ -1,0 +1,20 @@
+{
+  "name": "panneau-cave71",
+  "private": true,
+  "description": "Panneau publicitaire chevalet Cave 71, rendu avec Remotion",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion still src/index.ts Panneau exports/panneau-cave71.png --scale=2.829",
+    "render:apercu": "remotion still src/index.ts Panneau exports/apercu.jpg --image-format=jpeg --scale=0.6"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.535",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}
