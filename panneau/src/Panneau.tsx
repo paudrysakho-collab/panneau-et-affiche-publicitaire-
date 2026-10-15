@@ -29,10 +29,8 @@ const BOUTEILLES = [
 
 // Terrines au premier plan.
 const TERRINES = [
-	{src: 'terrine_faisan.png', ratio: 0.911, x: 365, h: 172},
-	{src: 'terrine_perdrix.png', ratio: 0.887, x: 535, h: 172},
-	{src: 'terrine_silure.png', ratio: 1.009, x: 708, h: 168},
-	{src: 'terrine_poissons_loire.png', ratio: 0.995, x: 880, h: 168},
+	{src: 'terrine_silure_gemini.png', ratio: 0.986, x: 516, h: 196},
+	{src: 'terrine_poissons_loire_gemini.png', ratio: 0.988, x: 724, h: 196},
 ];
 
 const ETAGERE_Y = 1040;
