@@ -1,0 +1,13 @@
+Je t'envoie 4 photos de produits : une bouteille de jus de raisin Syrah 25 cl, deux pots de terrine Goûts de Loire (130 g) et un sachet de chocolats Maison Guinguet « Boitasac ».
+
+Crée UNE seule photo produit qui réunit ces 4 produits dans une composition naturelle, comme une mise en scène chez un caviste :
+
+- Composition en longueur (format paysage 16:9), basse et étalée, pas tout aligné en rang d'oignon.
+- La bouteille de jus Syrah debout, un peu en retrait sur la gauche.
+- Les deux pots de terrine au centre, l'un légèrement devant l'autre et décalé, légèrement tournés l'un vers l'autre.
+- Le sachet Boitasac couché / incliné sur la droite, avec deux ou trois éclats de chocolat posés devant.
+- Respecte les vraies proportions : bouteille 25 cl ≈ 18 cm de haut, pots ≈ 7 cm de haut et 8 cm de diamètre, sachet ≈ 22 cm.
+- Vue de face, très légèrement plongeante (environ 10°), comme si on regardait une étagère.
+- Fond blanc pur uni (ou fond transparent en PNG), sans décor ni accessoire en plus. Éclairage studio doux venant de la gauche, ombres douces au sol.
+- Ne modifie AUCUNE étiquette, logo ou texte des produits : reprends-les exactement comme sur les photos.
+- Haute définition (au moins 3000 px de large).

@@ -1,34 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Img, continueRender, delayRender, staticFile} from 'remotion';
+import textes from './textes.json';
 
 export const LARGEUR = 1240;
 export const HAUTEUR = 1754;
 
-const C = {
+export const C: Record<string, string> = {
 	encre: '#141012',
 	vin: '#4a0f1f',
 	bordeaux: '#7d1530',
 	or: '#cfa548',
 	orPale: '#e6cf98',
 	creme: '#f4ece0',
+	cremeDoux: 'rgba(244,236,224,0.72)',
 };
 
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
-// Bouteilles posées sur l'étagère, de gauche à droite (x = centre, h = hauteur affichée).
+// Bouteilles en arc : la plus grande au centre, les autres en retrait (base plus haute, plus petites, derrière).
+// x = centre, h = hauteur affichée, base = bas de la bouteille, z = ordre d'empilement.
 const BOUTEILLES = [
-	{src: 'whisky_toki.png', ratio: 0.384, x: 156, h: 342},
-	{src: 'blacailloux.png', ratio: 0.223, x: 283, h: 462},
-	{src: 'gragnos_lou_daro.png', ratio: 0.258, x: 408, h: 486},
-	{src: 'chateauneuf.png', ratio: 0.258, x: 547, h: 518},
-	{src: 'balac.png', ratio: 0.242, x: 683, h: 486},
-	{src: 'frezier.png', ratio: 0.266, x: 815, h: 475},
-	{src: 'divin_sauvignon_0-0.png', ratio: 0.275, x: 950, h: 454},
-	{src: 'rhum_la_favorite.png', ratio: 0.317, x: 1086, h: 399},
+	{src: 'whisky_toki.png', ratio: 0.384, x: 172, h: 380, base: 988, z: 1},
+	{src: 'blacailloux.png', ratio: 0.223, x: 293, h: 486, base: 1002, z: 2},
+	{src: 'gragnos_lou_daro.png', ratio: 0.258, x: 418, h: 530, base: 1016, z: 3},
+	{src: 'chateauneuf.png', ratio: 0.258, x: 552, h: 570, base: 1030, z: 5},
+	{src: 'balac.png', ratio: 0.242, x: 690, h: 556, base: 1030, z: 4},
+	{src: 'frezier.png', ratio: 0.266, x: 824, h: 522, base: 1016, z: 3},
+	{src: 'divin_sauvignon_0-0.png', ratio: 0.275, x: 952, h: 482, base: 1002, z: 2},
+	{src: 'rhum_la_favorite.png', ratio: 0.317, x: 1072, h: 418, base: 988, z: 1},
 ];
 
-// Premier plan : jus de cépage, terrines, chocolats.
+// Premier plan (provisoire en attendant la composition ChatGPT).
 const PREMIER_PLAN = [
 	{src: 'jus_syrah_exea.png', ratio: 0.365, x: 337, h: 230},
 	{src: 'terrine_silure_gemini.png', ratio: 0.986, x: 493, h: 186},
@@ -36,15 +39,16 @@ const PREMIER_PLAN = [
 	{src: 'chocolat_boitasac.png', ratio: 0.553, x: 879, h: 240},
 ];
 
-const ETAGERE_Y = 1000;
-const PREMIER_PLAN_Y = 1222;
+const ETAGERE_Y = 1030;
+const PREMIER_PLAN_Y = 1240;
 
-const SERVICES = [
-	{icone: 'cadeau', titre: 'Coffrets', suite: '& idées cadeaux'},
-	{icone: 'verres', titre: 'Soirées œnologiques', suite: '& découvertes'},
-	{icone: 'bouteille', titre: 'Achat & conseil', suite: 'en magasin'},
-	{icone: 'carte', titre: 'Conseil & élaboration', suite: 'de votre carte des vins'},
-	{icone: 'alliances', titre: 'Célébrations, mariages', suite: '& événementiel'},
+// Icônes des services, alignées sur les blocs service-1..5 de textes.json.
+const ICONES = [
+	{nom: 'cadeau', x: 90, y: 1328},
+	{nom: 'verres', x: 443, y: 1328},
+	{nom: 'bouteille', x: 796, y: 1328},
+	{nom: 'carte', x: 267, y: 1406},
+	{nom: 'alliances', x: 620, y: 1406},
 ];
 
 const Icone: React.FC<{nom: string}> = ({nom}) => {
@@ -97,7 +101,7 @@ const Polices: React.FC = () => {
 		];
 		Promise.all(polices.map((p) => p.load()))
 			.then((chargees) => {
-				chargees.forEach((p) => document.fonts.add(p));
+				chargees.forEach((p) => (document.fonts as unknown as {add: (f: FontFace) => void}).add(p));
 				continueRender(handle);
 			})
 			.catch((e) => {
@@ -108,11 +112,10 @@ const Polices: React.FC = () => {
 	return null;
 };
 
-const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base: number; reflet: number}> = ({src, ratio, x, h, base, reflet}) => {
+const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base: number; reflet: number; z?: number}> = ({src, ratio, x, h, base, reflet, z = 1}) => {
 	const l = h * ratio;
 	return (
 		<>
-			{/* ombre de contact */}
 			<div
 				style={{
 					position: 'absolute',
@@ -121,10 +124,10 @@ const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base:
 					width: l * 1.24,
 					height: 18,
 					borderRadius: '50%',
+					zIndex: z,
 					background: 'radial-gradient(closest-side, rgba(0,0,0,0.75), rgba(0,0,0,0))',
 				}}
 			/>
-			{/* reflet sur l'étagère */}
 			<Img
 				src={staticFile(`produits/${src}`)}
 				style={{
@@ -133,6 +136,7 @@ const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base:
 					top: base,
 					width: l,
 					height: h,
+					zIndex: 0,
 					transform: 'scaleY(-1)',
 					opacity: reflet,
 					WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 22%)',
@@ -147,30 +151,52 @@ const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base:
 					top: base - h,
 					width: l,
 					height: h,
-					filter: 'drop-shadow(0 10px 18px rgba(0,0,0,0.45))',
+					zIndex: z,
+					filter: 'drop-shadow(6px 10px 16px rgba(0,0,0,0.55))',
 				}}
 			/>
 		</>
 	);
 };
 
-const Libelle: React.FC<{children: React.ReactNode; style?: React.CSSProperties}> = ({children, style}) => (
+type Segment = {t: string; police: string; taille: number; graisse?: number; italique?: boolean; couleur: string; espacement?: number};
+type Bloc = {id: string; x: number; y: number; w: number; align: string; interligne?: number; lignes: Segment[][]};
+
+const BlocTexte: React.FC<{bloc: Bloc}> = ({bloc}) => (
 	<div
 		style={{
-			fontFamily: SANS,
-			fontWeight: 600,
-			fontSize: 13,
-			letterSpacing: 4.2,
-			textTransform: 'uppercase',
-			color: C.or,
-			...style,
+			position: 'absolute',
+			left: bloc.x,
+			top: bloc.y,
+			width: bloc.w,
+			textAlign: bloc.align as React.CSSProperties['textAlign'],
+			lineHeight: bloc.interligne ?? 1.2,
+			zIndex: 20,
 		}}
 	>
-		{children}
+		{bloc.lignes.map((ligne, i) => (
+			<div key={i} style={{whiteSpace: 'nowrap'}}>
+				{ligne.map((s, j) => (
+					<span
+						key={j}
+						style={{
+							fontFamily: s.police === 'serif' ? SERIF : SANS,
+							fontSize: s.taille,
+							fontWeight: s.graisse ?? 400,
+							fontStyle: s.italique ? 'italic' : 'normal',
+							color: C[s.couleur] ?? s.couleur,
+							letterSpacing: s.espacement ?? 0,
+						}}
+					>
+						{s.t}
+					</span>
+				))}
+			</div>
+		))}
 	</div>
 );
 
-export const Panneau: React.FC = () => {
+export const Panneau: React.FC<{texte?: boolean}> = ({texte = true}) => {
 	return (
 		<AbsoluteFill style={{background: C.encre, color: C.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
 			<Polices />
@@ -199,33 +225,9 @@ export const Panneau: React.FC = () => {
 			<div style={{position: 'absolute', inset: 26, border: `1.5px solid ${C.or}`, opacity: 0.85}} />
 			<div style={{position: 'absolute', inset: 34, border: `0.75px solid ${C.or}`, opacity: 0.45}} />
 
-			{/* En-tête */}
-			<Libelle style={{position: 'absolute', top: 78, width: '100%', textAlign: 'center'}}>Votre caviste à Rezé</Libelle>
-			<Img
-				src={staticFile('logo_cave71_transparent.png')}
-				style={{position: 'absolute', top: 112, left: (LARGEUR - 640) / 2, width: 640}}
-			/>
-
-			{/* Accroche */}
-			<div
-				style={{
-					position: 'absolute',
-					top: 318,
-					width: '100%',
-					textAlign: 'center',
-					fontFamily: SERIF,
-					fontStyle: 'italic',
-					fontWeight: 500,
-					fontSize: 60,
-					lineHeight: 1,
-					color: C.creme,
-				}}
-			>
-				Vins, spiritueux <span style={{color: C.or}}>&</span> épicerie fine
-			</div>
-			<Libelle style={{position: 'absolute', top: 392, width: '100%', textAlign: 'center', color: C.orPale, letterSpacing: 5, fontSize: 12.5}}>
-				Domaines · Distilleries · Artisans du terroir
-			</Libelle>
+			{texte && (
+				<Img src={staticFile('logo_cave71_transparent.png')} style={{position: 'absolute', top: 112, left: (LARGEUR - 640) / 2, width: 640}} />
+			)}
 
 			{/* Voûte de cave */}
 			<svg width={LARGEUR} height={HAUTEUR} style={{position: 'absolute', inset: 0}}>
@@ -235,22 +237,23 @@ export const Panneau: React.FC = () => {
 						<stop offset="1" stopColor={C.or} stopOpacity={0.15} />
 					</linearGradient>
 				</defs>
-				<path
-					d={`M 66 ${ETAGERE_Y} L 66 760 A 554 330 0 0 1 1174 760 L 1174 ${ETAGERE_Y}`}
-					fill="none"
-					stroke="url(#voute)"
-					strokeWidth={1.6}
-				/>
-				<path
-					d={`M 80 ${ETAGERE_Y} L 80 762 A 540 318 0 0 1 1160 762 L 1160 ${ETAGERE_Y}`}
-					fill="none"
-					stroke="url(#voute)"
-					strokeWidth={0.7}
-					opacity={0.6}
-				/>
+				<path d={`M 66 ${ETAGERE_Y} L 66 760 A 554 330 0 0 1 1174 760 L 1174 ${ETAGERE_Y}`} fill="none" stroke="url(#voute)" strokeWidth={1.6} />
+				<path d={`M 80 ${ETAGERE_Y} L 80 762 A 540 318 0 0 1 1160 762 L 1160 ${ETAGERE_Y}`} fill="none" stroke="url(#voute)" strokeWidth={0.7} opacity={0.6} />
 			</svg>
 
-			{/* Étagère */}
+			{/* Étagère : plateau en profondeur + chant avant */}
+			<div
+				style={{
+					position: 'absolute',
+					left: 60,
+					right: 60,
+					top: ETAGERE_Y - 62,
+					height: 62,
+					background: 'linear-gradient(to bottom, rgba(90,30,44,0), rgba(110,40,56,0.45))',
+					WebkitMaskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
+					maskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
+				}}
+			/>
 			<div
 				style={{
 					position: 'absolute',
@@ -275,102 +278,43 @@ export const Panneau: React.FC = () => {
 			/>
 
 			{BOUTEILLES.map((b) => (
-				<Produit key={b.src} {...b} base={ETAGERE_Y} reflet={0.22} />
+				<Produit key={b.src} {...b} reflet={0.2} />
 			))}
 			{PREMIER_PLAN.map((t) => (
-				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0.16} />
+				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0.16} z={10} />
 			))}
 
-			{/* Services */}
-			<div style={{position: 'absolute', top: 1272, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22}}>
-				<div style={{width: 120, height: 1, background: C.or, opacity: 0.6}} />
-				<Libelle>À la Cave 71</Libelle>
-				<div style={{width: 120, height: 1, background: C.or, opacity: 0.6}} />
-			</div>
-			<div
-				style={{
-					position: 'absolute',
-					top: 1314,
-					left: 90,
-					right: 90,
-					display: 'flex',
-					flexWrap: 'wrap',
-					justifyContent: 'center',
-					rowGap: 20,
-				}}
-			>
-				{SERVICES.map((s) => (
-					<div key={s.titre} style={{width: 353, display: 'flex', alignItems: 'center', gap: 16}}>
-						<div
-							style={{
-								width: 58,
-								height: 58,
-								flexShrink: 0,
-								borderRadius: '50%',
-								border: `1px solid rgba(207,165,72,0.6)`,
-								display: 'flex',
-								alignItems: 'center',
-								justifyContent: 'center',
-							}}
-						>
-							<Icone nom={s.icone} />
-						</div>
-						<div style={{lineHeight: 1.18}}>
-							<div style={{fontFamily: SERIF, fontWeight: 600, fontSize: 27, color: C.creme}}>{s.titre}</div>
-							<div style={{fontFamily: SERIF, fontStyle: 'italic', fontSize: 23, color: C.orPale}}>{s.suite}</div>
-						</div>
-					</div>
-				))}
-			</div>
+			{/* Filets autour du titre des services */}
+			<div style={{position: 'absolute', top: 1291, left: 404, width: 120, height: 1, background: C.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1291, left: 716, width: 120, height: 1, background: C.or, opacity: 0.6}} />
 
-			{/* Pied : infos pratiques */}
+			{ICONES.map((i) => (
+				<div
+					key={i.nom}
+					style={{
+						position: 'absolute',
+						left: i.x,
+						top: i.y,
+						width: 58,
+						height: 58,
+						borderRadius: '50%',
+						border: `1px solid rgba(207,165,72,0.6)`,
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Icone nom={i.nom} />
+				</div>
+			))}
+
+			{/* Pied */}
 			<div style={{position: 'absolute', top: 1484, left: 90, right: 90, height: 1, background: `linear-gradient(to right, rgba(207,165,72,0), ${C.or}, rgba(207,165,72,0))`}} />
-			<div style={{position: 'absolute', top: 1508, left: 90, right: 90, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-				<div style={{width: 330}}>
-					<Libelle>Nous trouver</Libelle>
-					<div style={{fontFamily: SERIF, fontSize: 30, fontWeight: 600, marginTop: 10, lineHeight: 1.1}}>
-						71 avenue de la Libération
-						<br />
-						44400 Rezé
-					</div>
-					<div style={{fontSize: 14, color: C.orPale, marginTop: 10, lineHeight: 1.4}}>
-						En face du parking et du tram du 8 Mai
-					</div>
-				</div>
-				<div style={{width: 360, textAlign: 'center'}}>
-					<Libelle>Du mardi au samedi</Libelle>
-					<div style={{fontFamily: SERIF, fontSize: 30, fontWeight: 600, marginTop: 10, lineHeight: 1.1}}>
-						10h – 13h <span style={{color: C.or}}>·</span> 15h30 – 19h30
-					</div>
-					<div style={{fontFamily: SANS, fontWeight: 600, fontSize: 30, letterSpacing: 2, color: C.creme, marginTop: 14}}>02 49 62 66 45</div>
-				</div>
-				<div style={{width: 300, display: 'flex', gap: 16, justifyContent: 'flex-end', alignItems: 'flex-start'}}>
-					<div style={{textAlign: 'right', fontSize: 14.5, lineHeight: 1.75}}>
-						<Libelle style={{marginBottom: 4}}>En ligne</Libelle>
-						<div style={{fontWeight: 600, fontSize: 17}}>cave71.com</div>
-						<div>contact.cave71@gmail.com</div>
-						<div>Facebook : Cave 71</div>
-					</div>
-					<div style={{background: C.creme, padding: 7, borderRadius: 4}}>
-						<Img src={staticFile('qr_cave71.svg')} style={{width: 92, height: 92, display: 'block'}} />
-					</div>
-				</div>
+			<div style={{position: 'absolute', top: 1508, left: 1044, background: C.creme, padding: 7, borderRadius: 4}}>
+				<Img src={staticFile('qr_cave71.svg')} style={{width: 92, height: 92, display: 'block'}} />
 			</div>
 
-			{/* Mention légale */}
-			<div
-				style={{
-					position: 'absolute',
-					bottom: 52,
-					width: '100%',
-					textAlign: 'center',
-					fontSize: 12.5,
-					letterSpacing: 0.4,
-					color: 'rgba(244,236,224,0.72)',
-				}}
-			>
-				L’abus d’alcool est dangereux pour la santé, à consommer avec modération.
-			</div>
+			{texte && (textes.blocs as Bloc[]).map((b) => <BlocTexte key={b.id} bloc={b} />)}
 		</AbsoluteFill>
 	);
 };
