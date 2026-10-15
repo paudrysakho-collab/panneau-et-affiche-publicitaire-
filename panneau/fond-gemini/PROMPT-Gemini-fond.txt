@@ -1,0 +1,17 @@
+Crée l'image de FOND d'une affiche verticale pour une cave à vin (Cave 71, caviste à Rezé). Je t'envoie un gabarit et l'affiche actuelle pour référence.
+
+Le gabarit sert uniquement à te montrer les zones : ne reproduis ni ses lignes de couleur ni ses mots.
+
+IMPORTANT : AUCUN texte, AUCUNE bouteille, AUCUN produit, AUCUN logo. Seulement le décor vide : j'ajouterai moi-même les bouteilles, les produits, le logo et les textes par-dessus.
+
+Format : portrait, proportions A1 (1 x 1,414), la plus haute définition possible.
+
+Ambiance : cave voûtée en vieille pierre, élégante et chaleureuse, lumière tamisée dorée. Couleurs de la marque : noir profond (#141012), bordeaux / lie-de-vin (#7d1530) et or (#cfa548). Rendu photo réaliste haut de gamme, avec un léger flou de profondeur sur le fond.
+
+Respecte exactement cette disposition (voir le gabarit) :
+- Haut (0 à 25 % de la hauteur) : zone sombre, calme, presque unie. Le logo et le titre seront posés dessus.
+- Centre (25 à 55 %) : une arche de voûte en pierre qui encadre la scène. Au fond, des barriques et des casiers à bouteilles très flous et sombres, à peine suggérés. Une lumière chaude dorée au centre, derrière l'endroit où seront les bouteilles.
+- Plateau (55 à 73 %) : un comptoir ou une étagère profonde en bois sombre ou en pierre, horizontal, sur toute la largeur, vu de face et légèrement de haut. La surface est VIDE, propre, avec un léger reflet. Les bouteilles seront posées au fond du plateau (vers 59 % de la hauteur), les petits produits devant ; le bord avant du plateau est vers 72-73 %.
+- Bas (73 à 100 %) : zone sombre et unie qui se fond dans le noir. Des textes clairs seront posés dessus.
+
+Garde le centre du plateau dégagé et bien éclairé. Pas d'objet, pas de verre, pas de bouteille, pas d'écriture.
