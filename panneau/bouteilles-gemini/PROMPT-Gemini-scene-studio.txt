@@ -1,0 +1,22 @@
+=== NOUVELLE CONVERSATION GEMINI ===
+Envoyer les 9 images : les 8 bouteilles une par une (1_whisky... à 8_rhum...) + style-reference-terrines-chocolat.jpg
+(surtout PAS la photo de la rangée alignée : elle pousse Gemini à refaire un alignement de détourages)
+
+Je t'envoie 8 photos de bouteilles vendues dans ma cave (Cave 71), chacune prise séparément, et une dernière photo que tu m'as faite avec un jus de raisin, deux terrines et du chocolat. Cette dernière, c'est exactement le rendu que je veux : on a l'impression que les produits ont été posés ensemble sur une table et photographiés en vrai, dans un studio, en une seule prise.
+
+Les 8 photos de bouteilles ne servent qu'à te montrer à quoi ressemble chaque bouteille. Ne fais surtout pas un montage de ces photos : ne garde ni leurs contours, ni leur éclairage, ni leur cadrage. Imagine que je pose ces 8 vraies bouteilles sur une table de studio et que tu prends LA photo.
+
+La scène :
+Les 8 bouteilles sont posées ensemble sur une surface blanche légèrement brillante, devant un fond blanc pur sans couture. Elles forment un groupe vivant et naturel, en profondeur, comme une belle sélection préparée par un caviste : pas en rang, mais sur deux ou trois plans. Au premier plan et au centre, le Châteauneuf-du-Pape (Domaine Le Prieuré des Papes) et le Château Balac, légèrement tournés l'un vers l'autre. Juste derrière, à moitié cachés par elles mais avec leur étiquette bien visible : le Château de Gragnos Lou Daro, le Champagne Denis Frézier, le rosé Bastide de Blacailloux et le Divin Sauvignon blanc 0,0. Sur les côtés, un peu en avant : le whisky Suntory Toki à gauche (bouteille plus basse et trapue, environ 24 cm) et le rhum La Favorite à droite (environ 27 cm). Les vins et le champagne font environ 30 cm, le Divin environ 32 cm. Certaines bouteilles sont légèrement tournées (10 à 15°), aucune n'est parfaitement de face comme sur un catalogue.
+
+La prise de vue :
+Appareil un peu au-dessus des bouteilles, vue très légèrement plongeante (environ 10°), comme si on regardait une étagère : on voit la surface de la table et le bas des bouteilles en légère perspective. Objectif 85 mm, tout le groupe net.
+
+La lumière (une seule et même lumière pour toute la scène) :
+Une grande lumière douce et neutre vient de la gauche. Elle crée sur toutes les bouteilles les mêmes reflets : un reflet vertical blanc sur le côté gauche du verre et un fin liseré lumineux sur les bords. La lumière traverse le verre : les vins rouges ont une lueur rubis sur les épaules, le rosé, le champagne, le Divin, le rhum et le whisky brillent de leur vraie couleur, et cette lumière colorée se projette légèrement sur la table blanche. Chaque bouteille projette une ombre douce vers la droite, sur la table et parfois sur la bouteille voisine. On devine le reflet des bouteilles voisines dans le verre. C'est ce qui doit faire sentir qu'elles ont été photographiées ensemble.
+
+Le cadre :
+Format paysage 16:9, très haute définition. Le groupe entier est visible avec de la marge blanche tout autour, rien n'est coupé. Aucun autre objet, aucun texte ajouté.
+
+Les étiquettes :
+Reprends les étiquettes, logos et couleurs de chaque bouteille le plus fidèlement possible, comme sur les photos que je t'ai envoyées.
