@@ -127,7 +127,8 @@ CORRECTIONS_V10 = [
     dict(zone=(1156, 966, 1214, 980), mode='sombre', texte="d'Émile", police='serif-it', poids='Bold', x=1185, y=973, cap=6.4, align='c', couleur=(60, 105, 72), gras=1.7),
     dict(zone=(1150, 980, 1228, 993), mode='sombre', texte='Tartinable de', police='serif', poids='SemiBold', x=1189, y=986.5, cap=4.8, align='c', couleur=(60, 60, 60), gras=1.4),
     # Sachet Maison Guinguet
-    dict(zone=(1752, 1010, 1860, 1027), mode='sombre', texte='CHOCOLAT NOIR', police='serif', poids='SemiBold', x=1805, y=1018.5, cap=7.4, align='c'),
+    # l'étiquette est inclinée (~4°) : on ne remplace que « HOUE » par « NOIR »
+    dict(zone=(1821, 1015, 1856, 1027), mode='sombre', cap=4, texte='NOIR', police='serif', poids='Medium', x=1823, y=1021.6, cap_texte=7.0, angle=4.0, align='g', couleur=(52, 36, 30)),
 ]
 TOMATE_V10 = dict(source=(645, 884, 950, 928), cible=(889, 1011, 1054, 1035), zone=(886, 1010, 1058, 1034))
 
@@ -180,7 +181,7 @@ def police(nom, poids, taille):
     return f
 
 
-def rendu(texte, nom, poids, cap, italique=False):
+def rendu(texte, nom, poids, cap, italique=False, angle=0.0):
     """Masque alpha du texte, à l'échelle 1, et position du haut des capitales dans ce masque."""
     taille = 200
     f = police(nom, poids, taille)
@@ -194,6 +195,8 @@ def rendu(texte, nom, poids, cap, italique=False):
     if italique:
         im = im.transform((w + h // 4, h), Image.AFFINE, (1, 0.22, -h * 0.22, 0, 1, 0), Image.BICUBIC)
     haut_cap = 4 * SUR - bb[1] + f.getbbox('H')[1]
+    if angle:  # texte incliné (descend vers la droite pour un angle positif), tourné autour de son centre
+        im = im.rotate(-angle, resample=Image.BICUBIC, expand=False)
     petit = im.resize((max(1, round(im.width / SUR)), max(1, round(im.height / SUR))), Image.LANCZOS)
     return np.array(petit).astype(float) / 255, haut_cap / SUR
 
@@ -291,10 +294,11 @@ def main():
         if 'arc' in c:
             texte_courbe(img, c)
             continue
-        alpha, haut_cap = rendu(c['texte'], c['police'], c['poids'], c['cap'], c.get('italique', False))
+        cap = c.get('cap_texte', c['cap'])
+        alpha, haut_cap = rendu(c['texte'], c['police'], c['poids'], cap, c.get('italique', False), c.get('angle', 0.0))
         w = alpha.shape[1]
         gauche = {'c': c['x'] - w / 2, 'g': c['x'], 'd': c['x'] - w}[c['align']]
-        haut = c['y'] - c['cap'] / 2 - haut_cap
+        haut = c['y'] - cap / 2 - haut_cap
         poser(img, (alpha * c.get('gras', 1)).clip(0, 1), gauche, haut, c.get('couleur', coul), c.get('visible'))
 
     # 3. « à la Tomate séchée » recopié de la référence
