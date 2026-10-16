@@ -16,5 +16,6 @@ OVALE=1 $R $T/3.jpg $T/4.jpg $N/biere_Lutgarde_Blonde_photo.jpg 43 256 243 509 1
 ETIRER=1 $R $T/4.jpg $T/5.jpg $N/biere_Trompe_Souris_Blonde_photo.jpg 25 1015 475 1678 1355 523 1469 706
 ETIRER=1 $R $T/5.jpg $T/6.jpg $N/tartinable_courgettes_officiel.jpg 280 475 825 870 866 643 1077 789
 $R $T/6.jpg $T/7.jpg $REF 597 690 995 935 738 657 913 765 864 630 920 800
-python3 tools/corrige_textes_photo.py $T/7.jpg $B/resultat_chatgpt_v15_corrige.jpg v15
+ETIRER=1 $R $T/7.jpg $T/8.jpg $REF 366 482 578 868 234 558 341 728
+python3 tools/corrige_textes_photo.py $T/8.jpg $B/resultat_chatgpt_v15_corrige.jpg v15
 rm -rf $T
