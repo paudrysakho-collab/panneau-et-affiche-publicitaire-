@@ -1,0 +1,39 @@
+=== PROMPT PRINCIPAL (à coller dans la MÊME discussion Gemini, juste après son image) ===
+
+C'est un bon début, mais on voit encore que chaque bouteille vient d'une photo différente : la lumière, les reflets et les couleurs ne sont pas les mêmes d'une bouteille à l'autre (le Toki et La Favorite sont plats et jaunes, le Divin est délavé, les rouges ont des reflets différents), il n'y a pas de sol ni d'ombres donc elles semblent flotter, et les bouteilles des bords sont coupées. Refais cette image comme si les 8 bouteilles avaient été photographiées ENSEMBLE, en une seule prise, dans un vrai studio photo professionnel, avec un seul et même éclairage.
+
+LE STUDIO (le même pour toutes les bouteilles) :
+- Fond blanc pur sans couture (blanc #FFFFFF), qui reste parfaitement blanc derrière les bouteilles.
+- Les bouteilles sont posées sur une surface blanche brillante (plexiglas blanc), avec un léger reflet de chaque bouteille au sol (reflet discret, environ 10 %), et une ombre de contact douce sous chaque bouteille qui part légèrement vers la droite.
+- Lumière principale : une grande boîte à lumière douce placée en avant à gauche, à 45°, lumière neutre (5500 K), qui éclaire les étiquettes de façon uniforme, sans reflet gênant ni zone brûlée sur les étiquettes.
+- Deux longues boîtes à lumière étroites (strip box) verticales, une de chaque côté, légèrement en arrière : elles dessinent sur CHAQUE bouteille un fin liseré lumineux blanc et net le long des deux bords du verre, de la même largeur et au même endroit sur toutes les bouteilles.
+- Un reflet vertical blanc, propre et doux, sur le côté gauche de chaque bouteille (épaule et corps), placé au même endroit sur toutes les bouteilles.
+- Un léger contre-jour à travers le verre : les vins rouges montrent une lueur rubis profonde sur les épaules et les bords ; le rosé, le champagne, le Divin, le rhum et le whisky sont lumineux et translucides, avec leur vraie couleur (rose pâle, doré, ambré), comme quand la lumière traverse le liquide.
+
+UNIFORMISATION (le plus important) :
+- Même balance des blancs, même contraste, même luminosité et même saturation pour les 8 bouteilles : aucune ne doit paraître plus terne, plus jaune, plus claire ou plus "collée" que les autres.
+- Le papier blanc des étiquettes a exactement le même blanc sur toutes les bouteilles.
+- Les capsules et bouchons (noir, rouge bordeaux, bleu, doré, bouchon en liège) sont nets, avec un petit reflet cohérent avec la même lumière.
+
+L'APPAREIL PHOTO :
+- Vue de face, objectif à hauteur des étiquettes, focale type 100 mm (aucune déformation de perspective), ouverture f/11 : tout est net, de la première à la dernière bouteille.
+- Toutes les bouteilles parfaitement droites et verticales.
+
+LA COMPOSITION :
+- Format paysage 16:9, très haute définition.
+- Les 8 bouteilles entièrement visibles, rien de coupé : une marge de blanc tout autour du groupe (environ 8 % de chaque côté, un peu plus en haut).
+- Groupe élégant en léger quinconce, sur deux plans : au premier plan et au centre le Châteauneuf-du-Pape et le Château Balac ; juste derrière, légèrement en retrait (un peu plus petites et un peu plus haut), le Château de Gragnos, la Bastide de Blacailloux, le Champagne Denis Frézier et le Divin ; aux extrémités, au premier plan, le whisky Suntory Toki à gauche et le rhum La Favorite à droite.
+- Les bouteilles peuvent se chevaucher très légèrement, mais chaque étiquette reste entièrement lisible.
+- Vraies proportions : vins et champagne environ 30 cm, Divin environ 32 cm, rhum La Favorite environ 27 cm, whisky Toki environ 24 cm et plus trapu.
+
+À NE PAS FAIRE :
+- Pas d'effet "collage" ni de détourage visible, pas de halo autour des bouteilles, pas de bouteilles qui flottent.
+- Aucun autre objet (pas de verre, pas de raisin, pas de décor), aucun texte ajouté.
+- NE MODIFIE AUCUNE ÉTIQUETTE : textes, logos, millésimes, dessins et couleurs exactement comme sur la photo d'origine, sans inventer ni déformer un seul mot.
+
+Ensuite, donne-moi en 3 ou 4 lignes tes conseils pour placer ce groupe sur une affiche de vitrine (fond bordeaux foncé, au-dessus d'une étagère, avec la photo terrines/chocolat posée devant) : taille, alignement, hauteur.
+
+
+=== RETOUCHE RAPIDE (si le résultat est presque bon mais qu'une bouteille détonne encore) ===
+
+Garde exactement la même image, la même composition et les mêmes étiquettes. Corrige seulement [nom de la bouteille] : qu'elle ait exactement le même éclairage, les mêmes reflets, le même blanc d'étiquette et la même ombre au sol que les autres bouteilles, comme si elle avait été photographiée en même temps.
