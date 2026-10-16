@@ -1,0 +1,49 @@
+=== NOUVELLE CONVERSATION GEMINI ===
+Joindre ces 10 images, dans cet ordre :
+ 1. 1_whisky_Suntory_Toki.jpg
+ 2. 2_rose_Bastide_de_Blacailloux.jpg
+ 3. 3_rouge_Chateau_de_Gragnos_Lou_Daro.jpg
+ 4. 4_rouge_Chateauneuf-du-Pape_Prieure_des_Papes.jpg
+ 5. 6_champagne_Denis_Frezier_Trois_Crus.jpg
+ 6. 8_rhum_La_Favorite_Coeur_de_Canne.jpg
+ 7. biere_Lutgarde_Blonde_photo.jpg
+ 8. style-reference-terrines-chocolat.jpg
+ 9. tartinable_courgettes_officiel.jpg
+10. resultat_gemini_v8_sombre_corrige.jpg
+
+--- PROMPT À COLLER ---
+
+Contexte : je tiens une cave à vin et épicerie fine, Cave 71, à Rezé. Je prépare l'affiche de mon panneau de trottoir, sur fond bordeaux très sombre. J'ai besoin d'UNE photo studio de mes produits, réaliste et haut de gamme, comme une vraie séance photo professionnelle.
+
+Je t'envoie 10 images :
+- images 1 à 6 : six bouteilles, chacune photographiée seule (whisky Suntory Toki, rosé Bastide de Blacailloux, Château de Gragnos Lou Daro, Châteauneuf-du-Pape Domaine Le Prieuré des Papes, Champagne Denis Frézier, rhum La Favorite) ;
+- image 7 : une bière Lutgarde Blonde, petite bouteille belge 33 cl en verre brun foncé, capsule rouge, étiquette ovale crème bordée de rouge avec une religieuse ;
+- image 8 : une photo avec un jus de raisin Syrah, deux pots de terrine et un sachet de chocolats. Dans cette image, je veux UNIQUEMENT le jus de raisin Syrah, le pot « Silure de Loire » (étiquette rouge) et le sachet de chocolats Maison Guinguet. Le pot « Poissons de Loire » (étiquette bleue) ne doit PAS apparaître ;
+- image 9 : un pot de tartinable L'Atelier d'Émile « Courgettes grillées » (couvercle noir, étiquette blanche, logo vert, liseré vert) ;
+- image 10 : une photo qui montre seulement l'AMBIANCE que je veux (fond, lumière, couleurs). Ne reprends PAS ses produits ni leur placement, seulement l'ambiance.
+
+Il y a exactement 11 produits sur la photo, chacun une seule fois, pas un de plus :
+7 bouteilles (Toki, Blacailloux, Gragnos, Châteauneuf-du-Pape, Champagne Denis Frézier, bière Lutgarde, rhum La Favorite) + le jus de raisin Syrah + le pot Silure de Loire + le pot de courgettes grillées + le sachet de chocolats.
+Il n'y a ni Château Balac, ni Divin, ni pot « Poissons de Loire », et une seule bouteille de champagne.
+
+Placement, tous les produits posés sur la même surface sombre, de gauche à droite :
+1. le jus de raisin Syrah (petite bouteille, au premier plan, tout à gauche) ;
+2. le whisky Suntory Toki ;
+3. le rosé Bastide de Blacailloux ;
+4. le Château de Gragnos ;
+5. le Châteauneuf-du-Pape ;
+6. le Champagne Denis Frézier ;
+7. la bière Lutgarde Blonde (plus petite que les vins, environ 21 cm) ;
+8. le rhum La Favorite ;
+9. le sachet de chocolats Maison Guinguet (au premier plan, tout à droite), avec deux ou trois éclats de chocolat devant.
+Les deux pots (Silure de Loire et courgettes grillées) sont posés côte à côte au premier plan, au centre, très en avant et bas dans l'image : ils ne couvrent que le pied des bouteilles, jamais une étiquette.
+
+Règle absolue : aucun produit n'est devant l'étiquette d'un autre. Les 7 bouteilles sont côte à côte sur une seule ligne qui forme un très léger arc, avec un petit espace entre chacune, et toutes leurs étiquettes sont entièrement visibles. S'il manque de place, rends les produits un peu plus petits dans l'image plutôt que de les cacher.
+
+Tailles réelles : vins et champagne environ 30 cm, La Favorite environ 27 cm, Toki environ 24 cm (trapu), Lutgarde environ 21 cm, jus Syrah environ 18 cm, sachet de chocolats environ 22 cm, pots environ 7 cm.
+
+Ambiance (comme l'image 10) : fond et surface lie-de-vin très sombre, presque noir, avec un léger halo chaud derrière le centre du groupe. Lumière douce venant de la gauche, reflets blancs nets sur le verre, contre-jour qui fait briller les liquides (rubis pour les rouges, rose pâle, doré, ambré), ombres douces et léger reflet des produits sur la surface. Élégant, comme une photo de grande maison de vin.
+
+Étiquettes : reprends chaque étiquette le plus fidèlement possible d'après sa photo, sans inventer de texte.
+
+Format paysage 16:9, la plus haute définition possible, tout le groupe visible avec de la marge autour, rien de coupé. Aucun autre objet, aucun texte ajouté.
