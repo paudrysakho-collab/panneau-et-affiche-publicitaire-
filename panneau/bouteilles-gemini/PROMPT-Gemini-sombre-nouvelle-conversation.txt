@@ -1,0 +1,31 @@
+=== NOUVELLE CONVERSATION GEMINI ===
+Joindre 10 images :
+- les 8 bouteilles une par une (1_whisky... à 8_rhum...)
+- style-reference-terrines-chocolat.jpg (pour le jus, les terrines et le chocolat)
+- resultat_gemini_v6_sombre.jpg (pour l'ambiance bordeaux à reproduire)
+
+Je t'envoie 10 images : 8 photos de bouteilles prises séparément, une photo avec un jus de raisin Syrah, deux pots de terrine et un sachet de chocolats, et une dernière photo sur fond bordeaux qui montre exactement l'ambiance que je veux (fond, lumière, reflets, couleurs).
+
+Crée UNE photo studio dans exactement la même ambiance que la photo sur fond bordeaux, mais avec un placement différent, car sur cette photo plusieurs bouteilles sont cachées.
+
+Il y a exactement 12 produits, chacun une seule fois, pas un de plus :
+8 bouteilles (whisky Suntory Toki, rosé Bastide de Blacailloux, Château de Gragnos Lou Daro, Châteauneuf-du-Pape Domaine Le Prieuré des Papes, Château Balac, Champagne Denis Frézier, Divin Sauvignon blanc 0,0 avec sa capsule bleue, rhum La Favorite) + 1 jus de raisin Syrah + 2 pots de terrine + 1 sachet de chocolats. Il n'y a qu'une seule bouteille de champagne.
+
+Placement, de gauche à droite, tous posés sur la même surface sombre :
+1. le jus de raisin Syrah (petite bouteille, au premier plan, tout à gauche) ;
+2. le whisky Suntory Toki ;
+3. le rosé Bastide de Blacailloux ;
+4. le Château de Gragnos ;
+5. le Châteauneuf-du-Pape ;
+6. le Château Balac ;
+7. le Champagne Denis Frézier ;
+8. le Divin Sauvignon blanc 0,0 ;
+9. le rhum La Favorite ;
+10. le sachet de chocolats Maison Guinguet (au premier plan, tout à droite), avec deux ou trois éclats de chocolat devant.
+Les deux pots de terrine sont posés devant, au centre, très en avant et bas dans l'image : ils ne couvrent que le pied des bouteilles du centre, jamais une étiquette.
+
+Règle absolue : aucun produit n'est devant l'étiquette d'un autre. Les 8 bouteilles sont côte à côte, sur une seule ligne qui forme un très léger arc, avec un petit espace entre chacune, et leurs 8 étiquettes sont entièrement visibles. S'il manque de place, rends les produits un peu plus petits dans l'image plutôt que de les cacher.
+
+Même ambiance que la photo bordeaux : fond et surface lie-de-vin très sombre, léger halo chaud derrière le centre, lumière douce venant de la gauche, reflets blancs nets sur le verre, contre-jour qui fait briller les liquides, ombres douces et léger reflet sur la surface.
+
+Format paysage 16:9, la plus haute définition possible, rien de coupé, de la marge tout autour. Aucun objet ni texte ajouté. Reprends chaque étiquette le plus fidèlement possible d'après sa photo.
