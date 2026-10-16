@@ -36,7 +36,7 @@ const SANS = "'Montserrat', sans-serif";
 const PHOTO = {x: 20, y: 408, w: 1200, ratio: 2000 / 1116};
 
 // Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
-const ICONES = ['cadeau', 'verres', 'bouteille', 'carte', 'alliances'].map((nom, i) => ({nom, x: 180 + 220 * i - 29, y: 1142}));
+const ICONES = ['cadeau', 'verres', 'bouteille', 'carte', 'alliances'].map((nom, i) => ({nom, x: 180 + 220 * i - 31, y: 1140}));
 
 const Icone: React.FC<{nom: string; couleur: string}> = ({nom, couleur}) => {
 	const trait = {fill: 'none', stroke: couleur, strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
@@ -192,8 +192,8 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 						position: 'absolute',
 						left: i.x,
 						top: i.y,
-						width: 58,
-						height: 58,
+						width: 62,
+						height: 62,
 						borderRadius: '50%',
 						border: `1px solid ${K.or}`,
 						display: 'flex',
@@ -209,7 +209,7 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 			<div style={{position: 'absolute', top: 1336, left: 60, right: 60, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
 			<div style={{position: 'absolute', top: 1508, left: 70, right: 70, height: 1, background: K.or, opacity: 0.35}} />
 			<div style={{position: 'absolute', top: 1356, bottom: 1754 - 1660, left: 635, width: 1, background: K.or, opacity: 0.35}} />
-			<div style={{position: 'absolute', top: 1524, left: 665, background: '#fff', padding: 8, borderRadius: 4}}>
+			<div style={{position: 'absolute', top: 1522, left: 698, background: '#fff', padding: 8, borderRadius: 4}}>
 				<Img src={staticFile('qr_cave71.svg')} style={{width: 120, height: 120, display: 'block'}} />
 			</div>
 
