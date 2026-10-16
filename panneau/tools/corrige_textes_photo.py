@@ -192,19 +192,21 @@ CORRECTIONS_V14 = [
     dict(zone=(1782, 828, 1858, 845), mode='clair', texte='GUINGUET', police='serif', poids='Medium', x=1820, y=836.7, cap=9.0, align='c', couleur=(226, 212, 196)),
 ]
 
-# Photo affinée par ChatGPT (resultat_chatgpt_v15.png, 1693 x 929) : Gragnos, Frézier, Blacailloux, Lutgarde,
-# Trompe Souris, courgettes et Silure sont recollés en entier (remplace_etiquette.py) ; restent ces textes.
+# Photo affinée par ChatGPT (resultat_chatgpt_v15.png, 1693 x 929) : La Favorite, Syrah, Toki, Blacailloux,
+# Châteauneuf, Gragnos, Frézier, Lutgarde, Trompe Souris, Silure et courgettes sont recollés en entier
+# (remplace_etiquette.py) ; restent les textes du Tomatin.
 CORRECTIONS_V15 = [
-    # Rhum La Favorite
-    dict(zone=(92, 627, 184, 642), mode='sombre', texte='Cœur de Canne', police='serif', poids='Bold', x=139, y=634.5, cap=7.4, align='c', gras=1.6),
-    dict(zone=(92, 642, 186, 650), mode='sombre', texte='RHUM AGRICOLE AMBRÉ', police='sans', poids='SemiBold', x=139, y=646, cap=3.4, align='c'),
-    dict(zone=(98, 698, 172, 710), mode='clair', texte="APPELLATION MARTINIQUE CONTRÔLÉE", police='sans', poids='Medium', x=134.5, y=703.5, cap=2.8, align='c', couleur=(226, 218, 204)),
     # Whisky Tomatin Legacy : bandeau bleu (texte clair) et bandeau doré
     dict(zone=(420, 593, 560, 612), mode='clair', texte=None, cap=3),
     dict(texte='TIME IN BOURBON BARRELS AND VIRGIN OAK CASKS BRINGS A LIGHT', police='sans', poids='Medium', x=491, y=597.5, cap=2.2, align='c', couleur=(220, 214, 200)),
     dict(texte='SWEETNESS TO THE TOMATIN LEGACY, WHICH BOASTS AROMAS OF', police='sans', poids='Medium', x=491, y=603, cap=2.2, align='c', couleur=(220, 214, 200)),
     dict(texte='VANILLA, WHITE CHOCOLATE AND FRESH FRUIT.', police='sans', poids='Medium', x=491, y=608.5, cap=2.2, align='c', couleur=(220, 214, 200)),
     dict(zone=(420, 620, 562, 634), mode='sombre', plein=True, texte='BOURBON & VIRGIN OAK CASKS', police='serif', poids='SemiBold', x=491, y=627, cap=5.4, align='c', couleur=(52, 40, 28)),
+    dict(zone=(417, 633, 566, 649), mode='sombre', plein=True, texte=None, cap=3),
+    dict(texte='DISTILLED AND BOTTLED IN SCOTLAND', police='sans', poids='Medium', x=491, y=637, cap=2.1, align='c', couleur=(70, 56, 40)),
+    dict(texte='THE TOMATIN DISTILLERY CO LTD IV13 7YT', police='sans', poids='Medium', x=491, y=643.5, cap=2.1, align='c', couleur=(70, 56, 40)),
+    dict(texte='70cl', police='sans', poids='Medium', x=421, y=640.5, cap=2.6, align='g', couleur=(70, 56, 40)),
+    dict(texte='43% alc./vol.', police='sans', poids='Medium', x=562, y=640.5, cap=2.4, align='d', couleur=(70, 56, 40)),
 ]
 
 PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10), 'v12': (CORRECTIONS_V12, None), 'v14': (CORRECTIONS_V14, None), 'v15': (CORRECTIONS_V15, None)}
