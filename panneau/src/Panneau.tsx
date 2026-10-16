@@ -2,12 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Img, continueRender, delayRender, staticFile} from 'remotion';
 import textes from './textes.json';
 
+// Stop-trottoir A1 portrait (594 x 841 mm). Toile 1240 x 1754 px, export x2.829 = 3508 x 4962 px (150 dpi).
+// Les textes (src/textes.json) sont volontairement grands : lisibles à quelques mètres sur le trottoir.
 export const LARGEUR = 1240;
 export const HAUTEUR = 1754;
 
+// Version sombre : le lie-de-vin de la photo studio, prolongé sur toute l'affiche.
 export const C: Record<string, string> = {
-	encre: '#141012',
-	vin: '#4a0f1f',
+	encre: '#0f0405',
+	vin: '#4a1a20',
 	bordeaux: '#7d1530',
 	or: '#cfa548',
 	orPale: '#e6cf98',
@@ -15,7 +18,7 @@ export const C: Record<string, string> = {
 	cremeDoux: 'rgba(244,236,224,0.72)',
 };
 
-// Palette de la version claire (fond blanc chaud de la photo studio) : mêmes noms, autres valeurs.
+// Version claire : le blanc chaud de la photo studio. Mêmes noms de couleurs, autres valeurs.
 export const CLAIR: Record<string, string> = {
 	encre: '#f3ebe1',
 	vin: '#fbf7f1',
@@ -29,29 +32,22 @@ export const CLAIR: Record<string, string> = {
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
-// Groupe des 8 bouteilles composé par script (tools/compo_bouteilles.py) : étiquettes d'origine, deux rangs en quinconce.
-// base = bas de l'image ; les bouteilles avant posent ~52 px plus haut (ombres portées dessous), soit sur l'étagère.
-const BOUTEILLES = [{src: 'bouteilles_groupe.png', ratio: 2.005, x: 620, h: 539, base: 1082, z: 2}];
+// Photo studio Gemini (bouteilles, jus, terrines, chocolat), fondue dans le fond par des bords en dégradé.
+const PHOTO = {x: 20, y: 398, w: 1200, ratio: 2000 / 1116};
 
-// Premier plan : composition jus de cépage + terrines + chocolats (détourée), centrée.
-const PREMIER_PLAN = [{src: 'premier_plan_groupe.png', ratio: 1.507, x: 620, h: 345}];
-
-const ETAGERE_Y = 1030;
-const PREMIER_PLAN_Y = 1268;
-
-// Icônes des services, alignées sur les blocs service-1..5 de textes.json.
+// Icônes des services, à gauche des blocs service-1..5 de textes.json.
 const ICONES = [
-	{nom: 'cadeau', x: 90, y: 1340},
-	{nom: 'verres', x: 443, y: 1340},
-	{nom: 'bouteille', x: 796, y: 1340},
-	{nom: 'carte', x: 267, y: 1412},
-	{nom: 'alliances', x: 620, y: 1412},
+	{nom: 'cadeau', x: 70, y: 1132},
+	{nom: 'verres', x: 455, y: 1132},
+	{nom: 'bouteille', x: 840, y: 1132},
+	{nom: 'carte', x: 263, y: 1224},
+	{nom: 'alliances', x: 648, y: 1224},
 ];
 
 const Icone: React.FC<{nom: string; couleur: string}> = ({nom, couleur}) => {
 	const trait = {fill: 'none', stroke: couleur, strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
 	return (
-		<svg width={34} height={34} viewBox="0 0 32 32">
+		<svg width={38} height={38} viewBox="0 0 32 32">
 			{nom === 'cadeau' && (
 				<g {...trait}>
 					<rect x={5} y={13} width={22} height={14} />
@@ -109,53 +105,6 @@ const Polices: React.FC = () => {
 	return null;
 };
 
-const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base: number; reflet: number; z?: number; ombre?: boolean}> = ({src, ratio, x, h, base, reflet, z = 1, ombre = true}) => {
-	const l = h * ratio;
-	return (
-		<>
-			{ombre && <div
-				style={{
-					position: 'absolute',
-					left: x - l * 0.62,
-					top: base - 9,
-					width: l * 1.24,
-					height: 18,
-					borderRadius: '50%',
-					zIndex: z,
-					background: 'radial-gradient(closest-side, rgba(0,0,0,0.75), rgba(0,0,0,0))',
-				}}
-			/>}
-			<Img
-				src={staticFile(`produits/${src}`)}
-				style={{
-					position: 'absolute',
-					left: x - l / 2,
-					top: base,
-					width: l,
-					height: h,
-					zIndex: 0,
-					transform: 'scaleY(-1)',
-					opacity: reflet,
-					WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 22%)',
-					maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 22%)',
-				}}
-			/>
-			<Img
-				src={staticFile(`produits/${src}`)}
-				style={{
-					position: 'absolute',
-					left: x - l / 2,
-					top: base - h,
-					width: l,
-					height: h,
-					zIndex: z,
-					filter: 'drop-shadow(6px 10px 16px rgba(0,0,0,0.55))',
-				}}
-			/>
-		</>
-	);
-};
-
 type Segment = {t: string; police: string; taille: number; graisse?: number; italique?: boolean; couleur: string; espacement?: number};
 type Bloc = {id: string; x: number; y: number; w: number; align: string; interligne?: number; lignes: Segment[][]};
 
@@ -193,59 +142,31 @@ const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K})
 	</div>
 );
 
-// Mode « vitrine » : la photo studio Gemini (bouteilles + terrines + chocolat) dans une fenêtre en arche,
-// à la place de l'étagère et des produits détourés.
-const VITRINE = {src: 'vitrine_gemini.jpg', ratio: 2000 / 1356, x: 92, y: 500, w: 1056, fleche: 200};
-
-const Vitrine: React.FC<{clair?: boolean}> = ({clair = false}) => {
-	const {src, ratio, x, y, w, fleche} = VITRINE;
-	const h = w / ratio;
-	if (clair) {
-		// Version claire : pas de cadre, la photo se fond dans le fond par des bords en dégradé.
-		const fondu = 'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 18%, black 94%, transparent)';
-		return (
-			<Img
-				src={staticFile(`produits/${src}`)}
-				style={{position: 'absolute', left: x - 20, top: y - 40, width: w + 40, height: (w + 40) / ratio, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
-			/>
-		);
-	}
-	const arche = (dx: number) =>
-		`M ${-dx} ${h + dx} L ${-dx} ${fleche} A ${w / 2 + dx} ${fleche + dx} 0 0 1 ${w + dx} ${fleche} L ${w + dx} ${h + dx} Z`;
+const Photo: React.FC<{clair: boolean}> = ({clair}) => {
+	const {x, y, w, ratio} = PHOTO;
+	const fondu =
+		'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 10%, black 92%, transparent)';
 	return (
-		<>
-			<div style={{position: 'absolute', left: x, top: y, width: w, height: h, clipPath: `path('${arche(0)}')`, boxShadow: '0 0 80px rgba(0,0,0,0.6)'}}>
-				<Img src={staticFile(`produits/${src}`)} style={{width: w, height: h, display: 'block'}} />
-				{/* fondu discret vers le bas pour lier la photo au fond sombre */}
-				<div style={{position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(20,16,18,0) 88%, rgba(20,16,18,0.35))'}} />
-			</div>
-			<svg width={w + 40} height={h + 40} style={{position: 'absolute', left: x - 20, top: y - 20, overflow: 'visible'}}>
-				<g transform="translate(20 20)">
-					<path d={arche(6)} fill="none" stroke={C.or} strokeWidth={1.6} opacity={0.9} />
-					<path d={arche(13)} fill="none" stroke={C.or} strokeWidth={0.7} opacity={0.5} />
-				</g>
-			</svg>
-		</>
+		<Img
+			src={staticFile(`produits/${clair ? 'vitrine_clair.jpg' : 'vitrine_sombre.jpg'}`)}
+			style={{position: 'absolute', left: x, top: y, width: w, height: w / ratio, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
+		/>
 	);
 };
 
-export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean; clair?: boolean}> = ({texte = true, vitrine = false, clair = false}) => {
+export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = true, clair = false}) => {
 	const K = clair ? CLAIR : C;
+	const centreY = ((PHOTO.y + PHOTO.w / PHOTO.ratio / 2) / HAUTEUR) * 100;
 	return (
 		<AbsoluteFill style={{background: K.encre, color: K.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
 			<Polices />
 
-			{/* Fond : halo lie-de-vin derrière les produits */}
+			{/* Fond : halo assorti à celui de la photo, centré sur les produits */}
 			<AbsoluteFill
 				style={{
 					background: clair
-						? 'radial-gradient(ellipse 900px 900px at 50% 45%, #fbf7f1 0%, #f5eee5 45%, rgba(234,221,204,0.9) 100%)'
-						: `radial-gradient(ellipse 760px 700px at 50% 47%, ${C.vin} 0%, rgba(74,15,31,0.55) 45%, rgba(20,16,18,0) 80%)`,
-				}}
-			/>
-			<AbsoluteFill
-				style={{
-					background: clair ? 'none' : 'radial-gradient(ellipse 420px 360px at 50% 52%, rgba(207,165,72,0.16), rgba(207,165,72,0) 75%)',
+						? `radial-gradient(ellipse 900px 900px at 50% ${centreY}%, #fbf7f1 0%, #f5eee5 45%, rgba(234,221,204,0.9) 100%)`
+						: `radial-gradient(ellipse 820px 760px at 50% ${centreY}%, ${C.vin} 0%, #2a0c10 40%, rgba(15,4,5,0) 85%)`,
 				}}
 			/>
 
@@ -257,80 +178,18 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean; clair?: bool
 				<rect width="100%" height="100%" filter="url(#grain)" />
 			</svg>
 
+			<Photo clair={clair} />
+
 			{/* Double filet doré */}
 			<div style={{position: 'absolute', inset: 26, border: `1.5px solid ${K.or}`, opacity: 0.85}} />
 			<div style={{position: 'absolute', inset: 34, border: `0.75px solid ${K.or}`, opacity: 0.45}} />
 
-			{texte && (
-				// Logo officiel, couleurs jamais modifiées : CAVE blanc, 71 bordeaux, sur son bloc noir.
-				<Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 120, left: (LARGEUR - 640) / 2, width: 640}} />
-			)}
-
-			{vitrine ? (
-				<Vitrine clair={clair} />
-			) : (
-				<>
-			{/* Voûte de cave */}
-			<svg width={LARGEUR} height={HAUTEUR} style={{position: 'absolute', inset: 0}}>
-				<defs>
-					<linearGradient id="voute" x1="0" y1="0" x2="0" y2="1">
-						<stop offset="0" stopColor={C.or} stopOpacity={0.9} />
-						<stop offset="1" stopColor={C.or} stopOpacity={0.15} />
-					</linearGradient>
-				</defs>
-				<path d={`M 66 ${ETAGERE_Y} L 66 760 A 554 330 0 0 1 1174 760 L 1174 ${ETAGERE_Y}`} fill="none" stroke="url(#voute)" strokeWidth={1.6} />
-				<path d={`M 80 ${ETAGERE_Y} L 80 762 A 540 318 0 0 1 1160 762 L 1160 ${ETAGERE_Y}`} fill="none" stroke="url(#voute)" strokeWidth={0.7} opacity={0.6} />
-			</svg>
-
-			{/* Étagère : plateau en profondeur + chant avant */}
-			<div
-				style={{
-					position: 'absolute',
-					left: 60,
-					right: 60,
-					top: ETAGERE_Y - 62,
-					height: 62,
-					background: 'linear-gradient(to bottom, rgba(90,30,44,0), rgba(110,40,56,0.45))',
-					WebkitMaskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
-					maskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
-				}}
-			/>
-			<div
-				style={{
-					position: 'absolute',
-					left: 60,
-					right: 60,
-					top: ETAGERE_Y,
-					height: 150,
-					background: 'linear-gradient(to bottom, rgba(90,30,44,0.6), rgba(20,16,18,0) 90%)',
-					WebkitMaskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
-					maskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
-				}}
-			/>
-			<div
-				style={{
-					position: 'absolute',
-					left: 60,
-					right: 60,
-					top: ETAGERE_Y,
-					height: 1,
-					background: 'linear-gradient(to right, rgba(230,207,152,0), rgba(230,207,152,0.7) 25%, rgba(230,207,152,0.7) 75%, rgba(230,207,152,0))',
-				}}
-			/>
-
-			{BOUTEILLES.map((b) => (
-				<Produit key={b.src} {...b} reflet={0} ombre={false} />
-			))}
-			{PREMIER_PLAN.map((t) => (
-				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0} z={10} />
-			))}
-
-				</>
-			)}
+			{/* Logo officiel, couleurs jamais modifiées : CAVE blanc, 71 bordeaux, sur son bloc noir. */}
+			{texte && <Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 98, left: (LARGEUR - 760) / 2, width: 760}} />}
 
 			{/* Filets autour du titre des services */}
-			<div style={{position: 'absolute', top: 1305, left: 404, width: 120, height: 1, background: K.or, opacity: 0.6}} />
-			<div style={{position: 'absolute', top: 1305, left: 716, width: 120, height: 1, background: K.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1099, left: 300, width: 190, height: 1, background: K.or, opacity: 0.7}} />
+			<div style={{position: 'absolute', top: 1099, left: 750, width: 190, height: 1, background: K.or, opacity: 0.7}} />
 
 			{ICONES.map((i) => (
 				<div
@@ -339,11 +198,10 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean; clair?: bool
 						position: 'absolute',
 						left: i.x,
 						top: i.y,
-						width: 58,
-						height: 58,
+						width: 64,
+						height: 64,
 						borderRadius: '50%',
-						border: `1px solid ${K.or}`,
-						opacity: 0.95,
+						border: `1.2px solid ${K.or}`,
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
@@ -354,9 +212,9 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean; clair?: bool
 			))}
 
 			{/* Pied */}
-			<div style={{position: 'absolute', top: 1484, left: 90, right: 90, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
-			<div style={{position: 'absolute', top: 1508, left: 1044, background: clair ? '#fff' : C.creme, padding: 7, borderRadius: 4}}>
-				<Img src={staticFile('qr_cave71.svg')} style={{width: 92, height: 92, display: 'block'}} />
+			<div style={{position: 'absolute', top: 1326, left: 70, right: 70, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
+			<div style={{position: 'absolute', top: 1528, left: 1036, background: '#fff', padding: 8, borderRadius: 4}}>
+				<Img src={staticFile('qr_cave71.svg')} style={{width: 118, height: 118, display: 'block'}} />
 			</div>
 
 			{texte && (textes.blocs as Bloc[]).map((b) => <BlocTexte key={b.id} bloc={b} K={K} />)}

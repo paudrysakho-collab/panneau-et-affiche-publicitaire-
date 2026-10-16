@@ -5,12 +5,12 @@ import {Panneau, LARGEUR, HAUTEUR} from './Panneau';
 // A1 portrait (594 x 841 mm). Export x2.829 = 3508 x 4962 px, 150 dpi.
 export const RemotionRoot: React.FC = () => (
 	<>
-		<Still id="Panneau" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true}} />
-		{/* Variante : photo studio Gemini dans une fenêtre en arche */}
-		<Still id="PanneauVitrine" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, vitrine: true}} />
-		{/* Variante claire : fond blanc chaud de la photo, sans cadre */}
-		<Still id="PanneauClair" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, vitrine: true, clair: true}} />
-		{/* Fond sans texte ni logo, pour le PPTX modifiable */}
-		<Still id="PanneauFond" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: false}} />
+		{/* Version sombre (lie-de-vin) */}
+		<Still id="Panneau" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, clair: false}} />
+		{/* Version claire (blanc chaud) */}
+		<Still id="PanneauClair" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, clair: true}} />
+		{/* Fonds sans texte ni logo, pour les PPTX modifiables */}
+		<Still id="PanneauFond" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: false, clair: false}} />
+		<Still id="PanneauClairFond" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: false, clair: true}} />
 	</>
 );

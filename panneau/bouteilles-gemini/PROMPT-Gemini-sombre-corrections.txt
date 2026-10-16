@@ -1,0 +1,16 @@
+=== À COLLER DANS LA MÊME CONVERSATION GEMINI, juste après la photo sur fond bordeaux ===
+
+C'est presque parfait, j'adore : garde exactement ce fond bordeaux, cette lumière, ces reflets, ces couleurs et la même qualité. Il reste un seul problème : certaines bouteilles sont trop cachées.
+
+- La Bastide de Blacailloux (rosé) et le Château de Gragnos sont presque invisibles derrière le jus de raisin Syrah et le Châteauneuf-du-Pape.
+- Le Divin est à moitié caché par le sachet de chocolats.
+- L'étiquette du Châteauneuf-du-Pape est cachée par les pots de terrine.
+
+Corrige le placement pour que les 8 étiquettes de bouteilles soient entièrement visibles :
+- espace un peu plus les bouteilles entre elles, toutes sur la même ligne au fond, aucune derrière une autre, dans cet ordre de gauche à droite : Toki, Blacailloux, Gragnos, Châteauneuf-du-Pape, Balac, Champagne Denis Frézier, Divin, La Favorite ;
+- le jus de raisin Syrah tout à gauche, à côté du Toki (pas devant le rosé) ;
+- les deux pots de terrine au premier plan, plus en avant et plus bas dans l'image, pour qu'ils ne cachent que le bas des bouteilles, jamais une étiquette ;
+- le sachet de chocolats tout à droite, à côté de La Favorite (pas devant le Divin), avec ses éclats de chocolat devant ;
+- si besoin, recule légèrement le cadrage pour que tout tienne avec de la marge.
+
+Ne change rien d'autre : pas d'objet ni de texte ajouté, format paysage 16:9, la plus haute définition possible.
