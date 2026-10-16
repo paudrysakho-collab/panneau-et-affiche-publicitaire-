@@ -33,15 +33,15 @@ const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
 // Photo studio Gemini (bouteilles, jus, terrines, chocolat), fondue dans le fond par des bords en dégradé.
-const PHOTO = {x: 20, y: 398, w: 1200, ratio: 2000 / 1116};
+const PHOTO = {x: 20, y: 408, w: 1200, ratio: 2000 / 1116};
 
 // Icônes des services, à gauche des blocs service-1..5 de textes.json.
 const ICONES = [
-	{nom: 'cadeau', x: 70, y: 1132},
-	{nom: 'verres', x: 455, y: 1132},
-	{nom: 'bouteille', x: 840, y: 1132},
-	{nom: 'carte', x: 263, y: 1224},
-	{nom: 'alliances', x: 648, y: 1224},
+	{nom: 'cadeau', x: 58, y: 1140},
+	{nom: 'verres', x: 448, y: 1140},
+	{nom: 'bouteille', x: 848, y: 1140},
+	{nom: 'carte', x: 183, y: 1234},
+	{nom: 'alliances', x: 648, y: 1234},
 ];
 
 const Icone: React.FC<{nom: string; couleur: string}> = ({nom, couleur}) => {
@@ -188,8 +188,8 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 			{texte && <Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 98, left: (LARGEUR - 760) / 2, width: 760}} />}
 
 			{/* Filets autour du titre des services */}
-			<div style={{position: 'absolute', top: 1099, left: 300, width: 190, height: 1, background: K.or, opacity: 0.7}} />
-			<div style={{position: 'absolute', top: 1099, left: 750, width: 190, height: 1, background: K.or, opacity: 0.7}} />
+			<div style={{position: 'absolute', top: 1109, left: 220, width: 220, height: 1, background: K.or, opacity: 0.7}} />
+			<div style={{position: 'absolute', top: 1109, left: 800, width: 220, height: 1, background: K.or, opacity: 0.7}} />
 
 			{ICONES.map((i) => (
 				<div
@@ -211,10 +211,12 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 				</div>
 			))}
 
-			{/* Pied */}
-			<div style={{position: 'absolute', top: 1326, left: 70, right: 70, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
-			<div style={{position: 'absolute', top: 1528, left: 1036, background: '#fff', padding: 8, borderRadius: 4}}>
-				<Img src={staticFile('qr_cave71.svg')} style={{width: 118, height: 118, display: 'block'}} />
+			{/* Pied : grille 2 x 2 (adresse | horaires / en ligne | QR code) séparée par des filets dorés */}
+			<div style={{position: 'absolute', top: 1336, left: 60, right: 60, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
+			<div style={{position: 'absolute', top: 1508, left: 70, right: 70, height: 1, background: K.or, opacity: 0.35}} />
+			<div style={{position: 'absolute', top: 1356, bottom: 1754 - 1660, left: 635, width: 1, background: K.or, opacity: 0.35}} />
+			<div style={{position: 'absolute', top: 1524, left: 665, background: '#fff', padding: 8, borderRadius: 4}}>
+				<Img src={staticFile('qr_cave71.svg')} style={{width: 120, height: 120, display: 'block'}} />
 			</div>
 
 			{texte && (textes.blocs as Bloc[]).map((b) => <BlocTexte key={b.id} bloc={b} K={K} />)}
