@@ -192,21 +192,30 @@ CORRECTIONS_V14 = [
     dict(zone=(1782, 828, 1858, 845), mode='clair', texte='GUINGUET', police='serif', poids='Medium', x=1820, y=836.7, cap=9.0, align='c', couleur=(226, 212, 196)),
 ]
 
-# Photo affinée par ChatGPT (resultat_chatgpt_v15.png, 1693 x 929) : La Favorite, Syrah, Toki, Blacailloux,
-# Châteauneuf, Gragnos, Frézier, Lutgarde, Trompe Souris, Silure et courgettes sont recollés en entier
-# (remplace_etiquette.py) ; restent les textes du Tomatin.
+# Photo affinée par ChatGPT (resultat_chatgpt_v15.png, 1693 x 929) : toutes les étiquettes sont recollées en
+# entier depuis les photos des vrais produits (remplace_etiquette.py) ; restent ces textes.
 CORRECTIONS_V15 = [
-    # Whisky Tomatin Legacy : bandeau bleu (texte clair) et bandeau doré
-    dict(zone=(420, 593, 560, 612), mode='clair', texte=None, cap=3),
+    # Whisky Tomatin Legacy : « ESTD » et « 1897 » de part et d'autre du blason
+    dict(zone=(435, 464, 462, 477), mode='clair', texte='ESTD', police='serif', poids='SemiBold', x=448.5, y=470.5, cap=5.4, align='c', couleur=CREME_TOM),
+    dict(zone=(524, 464, 548, 477), mode='clair', texte='1897', police='serif', poids='SemiBold', x=535.5, y=470.5, cap=5.4, align='c', couleur=CREME_TOM),
+    # point parasite avant « LEGACY », texte du bandeau bleu (et cadre inventé)
+    dict(zone=(453, 580, 460, 588), mode='clair', plein=True, texte=None, cap=3),
+    dict(zone=(418, 592, 562, 611), mode='clair', plein=True, texte=None, cap=3),
+    dict(zone=(418, 611, 562, 616), mode='clair', plein=True, texte=None, cap=2),
     dict(texte='TIME IN BOURBON BARRELS AND VIRGIN OAK CASKS BRINGS A LIGHT', police='sans', poids='Medium', x=491, y=597.5, cap=2.2, align='c', couleur=(220, 214, 200)),
     dict(texte='SWEETNESS TO THE TOMATIN LEGACY, WHICH BOASTS AROMAS OF', police='sans', poids='Medium', x=491, y=603, cap=2.2, align='c', couleur=(220, 214, 200)),
-    dict(texte='VANILLA, WHITE CHOCOLATE AND FRESH FRUIT.', police='sans', poids='Medium', x=491, y=608.5, cap=2.2, align='c', couleur=(220, 214, 200)),
-    dict(zone=(420, 620, 562, 634), mode='sombre', plein=True, texte='BOURBON & VIRGIN OAK CASKS', police='serif', poids='SemiBold', x=491, y=627, cap=5.4, align='c', couleur=(52, 40, 28)),
+    dict(texte='VANILLA, WHITE CHOCOLATE AND FRESH FRUIT.', police='sans', poids='Medium', x=491, y=608, cap=2.1, align='c', couleur=(220, 214, 200)),
+    # bande crème : « BOURBON & VIRGIN OAK CASKS » en capitales romaines fines et espacées, bleu nuit
+    dict(zone=(420, 615, 562, 634), mode='sombre', plein=True, texte='B\u200aO\u200aU\u200aR\u200aB\u200aO\u200aN\u200a \u200a&\u200a \u200aV\u200aI\u200aR\u200aG\u200aI\u200aN\u200a \u200aO\u200aA\u200aK\u200a \u200aC\u200aA\u200aS\u200aK\u200aS', police='serif', poids='Medium', x=491, y=627, cap=4.6, align='c', couleur=(48, 52, 82)),
     dict(zone=(417, 633, 566, 649), mode='sombre', plein=True, texte=None, cap=3),
-    dict(texte='DISTILLED AND BOTTLED IN SCOTLAND', police='sans', poids='Medium', x=491, y=637, cap=2.1, align='c', couleur=(70, 56, 40)),
-    dict(texte='THE TOMATIN DISTILLERY CO LTD IV13 7YT', police='sans', poids='Medium', x=491, y=643.5, cap=2.1, align='c', couleur=(70, 56, 40)),
-    dict(texte='70cl', police='sans', poids='Medium', x=421, y=640.5, cap=2.6, align='g', couleur=(70, 56, 40)),
-    dict(texte='43% alc./vol.', police='sans', poids='Medium', x=562, y=640.5, cap=2.4, align='d', couleur=(70, 56, 40)),
+    dict(texte='DISTILLED AND BOTTLED IN SCOTLAND BY', police='sans', poids='Medium', x=491, y=637, cap=2.0, align='c', couleur=(60, 58, 70)),
+    dict(texte='THE TOMATIN DISTILLERY CO LTD IV13 7YT', police='sans', poids='Medium', x=491, y=643.5, cap=2.0, align='c', couleur=(60, 58, 70)),
+    # contenance et degré écrits à la verticale aux deux bouts de la bande crème, comme sur la vraie étiquette
+    dict(texte='700ml ℮', police='sans', poids='Medium', vertical=True, x=421.5, y=634, cap=2.4, align='c', couleur=(60, 58, 70)),
+    dict(texte='43% alc./vol.', police='sans', poids='Medium', vertical=True, x=561.5, y=634, cap=2.4, align='c', couleur=(60, 58, 70)),
+    # Champagne Denis Frézier : « CHAMPAGNE » sur la capsule, en capitales romaines argentées (pas en bâton doré)
+    dict(zone=(1116, 174, 1144, 270), mode='clair', texte='CHAMPAGNE', police='serif', poids='Medium', vertical=True,
+         x=1130, y=222, cap=9.0, align='c', couleur=(186, 184, 178)),
 ]
 
 PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10), 'v12': (CORRECTIONS_V12, None), 'v14': (CORRECTIONS_V14, None), 'v15': (CORRECTIONS_V15, None)}
@@ -373,6 +382,11 @@ def main():
             continue
         cap = c.get('cap_texte', c['cap'])
         alpha, haut_cap = rendu(c['texte'], c['police'], c['poids'], cap, c.get('italique', False), c.get('angle', 0.0))
+        if c.get('vertical'):  # texte qui se lit de bas en haut (col de bouteille), centré sur (x, y)
+            alpha = np.rot90(alpha)
+            poser(img, (alpha * c.get('gras', 1)).clip(0, 1), c['x'] - alpha.shape[1] / 2, c['y'] - alpha.shape[0] / 2,
+                  c.get('couleur', coul), c.get('visible'))
+            continue
         w = alpha.shape[1]
         gauche = {'c': c['x'] - w / 2, 'g': c['x'], 'd': c['x'] - w}[c['align']]
         haut = c['y'] - cap / 2 - haut_cap

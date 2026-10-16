@@ -9,6 +9,7 @@ Usage (depuis panneau/) :
     Les rectangles C… (facultatifs, coordonnées de la photo) sont les parties de l'étiquette cachées par un
     autre produit placé devant : on n'y touche pas.
     Variable OVALE=1 : étiquette ovale (masque elliptique inscrit dans la boîte, source étirée à la boîte).
+    Variable FONDU=n : bords fondus sur n px (3 par défaut).
     Variable ETIRER=1 : source étirée à la boîte (proportions proches), sans prolongement du papier.
 """
 import os
@@ -62,13 +63,14 @@ def main():
     lf_e = basse_frequence(etiq, 18)
     etiq = etiq * (lf_c / np.maximum(lf_e, 1))
 
-    # bords fondus sur 3 px
+    # bords fondus sur 3 px (FONDU=n pour plus, ex. étiquette imprimée sur le verre)
+    f = int(os.environ.get('FONDU', '3'))
     a = np.ones((h, w), np.float32)
-    r = np.linspace(0, 1, 4, dtype=np.float32)[1:]
-    a[:, :3] *= r
-    a[:, -3:] *= r[::-1]
-    a[:3, :] *= r[:, None]
-    a[-3:, :] *= r[::-1][:, None]
+    r = np.linspace(0, 1, f + 1, dtype=np.float32)[1:]
+    a[:, :f] *= r
+    a[:, -f:] *= r[::-1]
+    a[:f, :] *= r[:, None]
+    a[-f:, :] *= r[::-1][:, None]
     if ovale:
         a = np.zeros((h, w), np.float32)
         cv2.ellipse(a, (w // 2, h // 2), (w // 2 - 1, h // 2 - 1), 0, 0, 360, 1.0, -1)
