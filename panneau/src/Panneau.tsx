@@ -33,7 +33,12 @@ const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
 // Photo studio Gemini (bouteilles, jus, terrines, chocolat), fondue dans le fond par des bords en dégradé.
-const PHOTO = {x: 20, y: 408, w: 1200, ratio: 2000 / 1116};
+const PHOTO = {x: 20, y: 408, w: 1200};
+// proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
+const PHOTOS = {
+	sombre: {src: 'vitrine_sombre.jpg', ratio: 2000 / 1053, dy: 14},
+	clair: {src: 'vitrine_clair.jpg', ratio: 2000 / 1116, dy: 0},
+};
 
 // Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
 const ICONES = ['cadeau', 'verres', 'bouteille', 'carte', 'alliances'].map((nom, i) => ({nom, x: 180 + 220 * i - 31, y: 1140}));
@@ -137,20 +142,21 @@ const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K})
 );
 
 const Photo: React.FC<{clair: boolean}> = ({clair}) => {
-	const {x, y, w, ratio} = PHOTO;
+	const {x, y, w} = PHOTO;
+	const {src, ratio, dy} = PHOTOS[clair ? 'clair' : 'sombre'];
 	const fondu =
 		'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 10%, black 92%, transparent)';
 	return (
 		<Img
-			src={staticFile(`produits/${clair ? 'vitrine_clair.jpg' : 'vitrine_sombre.jpg'}`)}
-			style={{position: 'absolute', left: x, top: y, width: w, height: w / ratio, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
+			src={staticFile(`produits/${src}`)}
+			style={{position: 'absolute', left: x, top: y + dy, width: w, height: w / ratio, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
 		/>
 	);
 };
 
 export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = true, clair = false}) => {
 	const K = clair ? CLAIR : C;
-	const centreY = ((PHOTO.y + PHOTO.w / PHOTO.ratio / 2) / HAUTEUR) * 100;
+	const centreY = ((PHOTO.y + PHOTO.w / PHOTOS[clair ? 'clair' : 'sombre'].ratio / 2) / HAUTEUR) * 100;
 	return (
 		<AbsoluteFill style={{background: K.encre, color: K.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
 			<Polices />

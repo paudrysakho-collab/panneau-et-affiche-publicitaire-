@@ -132,7 +132,33 @@ CORRECTIONS_V10 = [
 ]
 TOMATE_V10 = dict(source=(645, 884, 950, 928), cible=(889, 1011, 1054, 1035), zone=(886, 1010, 1058, 1034))
 
-PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10)}
+# Photo panoramique à 13 produits (resultat_gemini_v12_13produits.jpg)
+CREME_TOM = (226, 214, 190)
+CORRECTIONS_V12 = [
+    # Rhum La Favorite
+    dict(zone=(126, 694, 192, 704), mode='sombre', texte='FONDÉE EN 1842', police='sans', poids='SemiBold', x=160, y=699, cap=3.4, align='c'),
+    dict(zone=(102, 768, 244, 782), mode='sombre', texte='RHUM AGRICOLE AMBRÉ', police='sans', poids='SemiBold', x=173, y=775, cap=5.6, align='c'),
+    dict(zone=(108, 836, 246, 868), mode='clair', texte=None),
+    dict(texte="APPELLATION D'ORIGINE CONTRÔLÉE", police='sans', poids='Medium', x=177, y=842, cap=3.3, align='c', couleur=(214, 200, 175), visible=(108, 834, 246, 870)),
+    dict(texte='RÉCOLTÉ, DISTILLÉ ET MIS EN BOUTEILLE', police='sans', poids='Medium', x=177, y=852, cap=3.0, align='c', couleur=(214, 200, 175), visible=(108, 834, 246, 870)),
+    dict(texte='À LA DISTILLERIE LA FAVORITE PAR LA FAMILLE DORMOY', police='sans', poids='Medium', x=177, y=861.5, cap=3.0, align='c', couleur=(214, 200, 175), visible=(108, 834, 246, 870)),
+    # Jus de raisin Syrah
+    dict(zone=(336, 701, 382, 712), mode='sombre', texte='CÉPAGE', police='sans', poids='SemiBold', x=358, y=706.5, cap=5.0, align='c'),
+    dict(zone=(308, 745, 402, 760), mode='sombre', texte='PUR JUS DE RAISINS', police='sans', poids='SemiBold', x=355, y=753, cap=6.0, align='c'),
+    dict(zone=(316, 758, 396, 768), mode='sombre', texte='SANS SUCRE AJOUTÉ*', police='sans', poids='Medium', x=355, y=763, cap=3.6, align='c'),
+    # Whisky Tomatin Legacy
+    dict(zone=(533, 540, 569, 554), mode='clair', texte='ESTD', police='serif', poids='SemiBold', x=551, y=547, cap=7.6, align='c', couleur=CREME_TOM),
+    dict(zone=(661, 540, 702, 554), mode='clair', texte='1897', police='serif', poids='SemiBold', x=681, y=547, cap=7.6, align='c', couleur=CREME_TOM),
+    dict(zone=(522, 696, 708, 722), mode='clair', texte=None, cap=3),
+    dict(texte='TIME IN BOURBON BARRELS AND VIRGIN OAK CASKS BRINGS A LIGHT', police='sans', poids='Medium', x=615, y=701.7, cap=2.9, align='c', couleur=CREME_TOM),
+    dict(texte='SWEETNESS TO THE TOMATIN LEGACY, WHICH BOASTS AROMAS OF', police='sans', poids='Medium', x=615, y=709.4, cap=2.9, align='c', couleur=CREME_TOM),
+    dict(texte='VANILLA, WHITE CHOCOLATE AND FRESH FRUIT.', police='sans', poids='Medium', x=615, y=717.2, cap=2.9, align='c', couleur=CREME_TOM),
+    # Blacailloux, Châteauneuf-du-Pape, Gragnos et Frézier : vraies étiquettes recollées (remplace_etiquette.py)
+    # Sachet Maison Guinguet
+    dict(zone=(1846, 894, 1882, 909), mode='sombre', cap=4, texte='NOIR', police='serif', poids='Medium', x=1848, y=901.7, cap_texte=6.4, align='g', couleur=(52, 36, 30)),
+]
+
+PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10), 'v12': (CORRECTIONS_V12, None)}
 
 
 def lum(a):
@@ -284,8 +310,8 @@ def main():
             couleurs.append(tuple(sel.mean(axis=0)))
         else:
             couleurs.append((40, 30, 30))
-    pix_t = effacer(img, TOMATE['zone'], 'sombre', 6, ecart=18)
-    coul_tomate = tuple(pix_t[lum(pix_t) <= np.percentile(lum(pix_t), 30)].mean(axis=0))
+    if TOMATE:
+        effacer(img, TOMATE['zone'], 'sombre', 6, ecart=18)
 
     # 2. réécriture du vrai texte
     for c, coul in zip(CORRECTIONS, couleurs):
@@ -302,6 +328,10 @@ def main():
         poser(img, (alpha * c.get('gras', 1)).clip(0, 1), gauche, haut, c.get('couleur', coul), c.get('visible'))
 
     # 3. « à la Tomate séchée » recopié de la référence
+    if not TOMATE:
+        Image.fromarray(img).save(dst, quality=95)
+        print(dst)
+        return
     sx0, sy0, sx1, sy1 = TOMATE['source']
     rouge = ref[sy0:sy1, sx0:sx1, 0].astype(float)
     # sur la bande rouge, l'écriture se lit dans le canal rouge (bande ~200, encre ~40)
