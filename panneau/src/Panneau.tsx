@@ -36,8 +36,8 @@ const SANS = "'Montserrat', sans-serif";
 const PHOTO = {x: 20, y: 408, w: 1200};
 // proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
 const PHOTOS = {
-	sombre: {src: 'vitrine_sombre.jpg', ratio: 2000 / 989, dy: 33},
-	clair: {src: 'vitrine_clair.jpg', ratio: 2000 / 1116, dy: 0},
+	sombre: {src: 'vitrine_sombre.jpg', ratio: 1693 / 929, dy: 8, haut: 6},
+	clair: {src: 'vitrine_clair.jpg', ratio: 2000 / 1116, dy: 0, haut: 10},
 };
 
 // Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
@@ -143,9 +143,8 @@ const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K})
 
 const Photo: React.FC<{clair: boolean}> = ({clair}) => {
 	const {x, y, w} = PHOTO;
-	const {src, ratio, dy} = PHOTOS[clair ? 'clair' : 'sombre'];
-	const fondu =
-		'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 10%, black 92%, transparent)';
+	const {src, ratio, dy, haut} = PHOTOS[clair ? 'clair' : 'sombre'];
+	const fondu = `linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black ${haut}%, black 92%, transparent)`;
 	return (
 		<Img
 			src={staticFile(`produits/${src}`)}
