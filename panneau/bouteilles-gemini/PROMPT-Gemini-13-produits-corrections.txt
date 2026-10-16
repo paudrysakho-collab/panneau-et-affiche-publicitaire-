@@ -1,0 +1,23 @@
+=== À COLLER DANS LA MÊME CONVERSATION GEMINI, juste après la photo à 13 produits ===
+
+C'est la bonne sélection et la bonne ambiance, mais il y a trop de produits cachés et plusieurs étiquettes fausses. Refais la photo avec le même fond, la même lumière, les mêmes 13 produits, en corrigeant ceci :
+
+PRODUITS CACHÉS
+- Le whisky Suntory Toki est presque invisible derrière le jus de raisin et le Tomatin.
+- Le rosé Bastide de Blacailloux est caché derrière le Tomatin et le Châteauneuf-du-Pape.
+- L'étiquette du Château de Gragnos est cachée par le pot de courgettes.
+
+ÉTIQUETTE FAUSSE
+- Le Châteauneuf-du-Pape doit porter son étiquette d'origine : « DOMAINE LE PRIEURÉ DES PAPES – Châteauneuf-du-Pape – Vieilles Vignes » (pas « Le Puy de l'Ours »).
+
+NOUVELLE MISE EN PLACE, SUR DEUX NIVEAUX, pour que tout soit visible :
+1. Au fond, posées sur une marche basse (environ 10 cm) de la même couleur lie-de-vin sombre que la surface, presque invisible : les 9 bouteilles côte à côte sur une seule ligne, avec un petit espace entre chacune, aucune devant une autre. De gauche à droite : rhum La Favorite, whisky Suntory Toki, whisky Tomatin Legacy, rosé Bastide de Blacailloux, Châteauneuf-du-Pape, Château de Gragnos, Champagne Denis Frézier, bière Lutgarde Blonde, bière Trompe Souris Blonde.
+2. Devant, sur la surface, plus bas que la marche :
+   - le jus de raisin Syrah tout à gauche, à côté de La Favorite (pas devant une bouteille) ;
+   - les deux pots, Silure de Loire et Courgettes grillées, au centre, bien en avant vers l'objectif : comme ils sont petits (7 cm), ils ne couvrent que la marche, jamais une étiquette ;
+   - le sachet de chocolats Maison Guinguet tout à droite, à côté de la Trompe Souris (pas devant une bouteille), avec quelques éclats de chocolat devant.
+3. Toutes les étiquettes des 13 produits doivent être entièrement visibles. S'il manque de la place, rends les produits plus petits dans l'image plutôt que d'en cacher un.
+
+ÉTIQUETTES : recopie exactement les textes, sans en inventer. Les textes justes sont par exemple : « DISTILLERIE La Favorite », « Cœur de Canne », « RHUM AGRICOLE AMBRÉ », « CÉPAGE SYRAH », « PUR JUS DE RAISINS », « TOMATIN », « HIGHLAND SINGLE MALT SCOTCH WHISKY », « LEGACY », « BOURBON & VIRGIN OAK CASKS », « CHÂTEAU DE GRAGNOS », « LOU DARO », « Cuvée des Trois Crus », « PREMIER BRUT », « BELGIAN ABBEY BEER », « LUTGARDE », « BLONDE », « TROMPE SOURIS », « BIÈRE ARTISANALE », « Goûts de Loire », « à la Tomate séchée », « BIO », « L'ATELIER d'Émile », « Tartinable de COURGETTES GRILLÉES », « MAISON GUINGUET », « CHOCOLAT NOIR ».
+
+Format paysage panoramique 2:1 (plus large que 16:9, pour que les 13 produits tiennent), la plus haute définition possible, rien de coupé, de la marge autour. Aucun autre objet, aucun texte ajouté.
