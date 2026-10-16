@@ -5,8 +5,9 @@ que le papier, ligne par ligne), on les efface par inpainting, puis on réécrit
 (même hauteur de capitales, couleur reprise du texte d'origine), éventuellement limité à une zone
 visible quand une autre bouteille passe devant.
 
-Usage (depuis panneau/) :
-    python3 tools/corrige_textes_photo.py bouteilles-gemini/resultat_gemini_v8_sombre.jpg public/produits/vitrine_sombre.jpg
+Usage (depuis panneau/), le dernier argument choisit la liste de corrections (v8 par défaut) :
+    python3 tools/corrige_textes_photo.py bouteilles-gemini/resultat_gemini_v8_sombre.jpg public/produits/vitrine_sombre.jpg v8
+    python3 tools/corrige_textes_photo.py bouteilles-gemini/resultat_gemini_v10_11produits.jpg public/produits/vitrine_sombre.jpg v10
 """
 import sys
 from pathlib import Path
@@ -26,7 +27,7 @@ SUR = 8  # suréchantillonnage du rendu du texte
 # zone = (x0, y0, x1, y1) contenant l'ancien texte ; mode = 'sombre' (texte plus foncé que le fond) ou 'clair'
 # x, y = point d'ancrage (centre des capitales) ; align = 'c' (centré sur x) ou 'g' (commence à x) ou 'd' (finit à x)
 # cap = hauteur des capitales en px ; visible = zone où l'on a le droit de dessiner (bouteille devant)
-CORRECTIONS = [
+CORRECTIONS_V8 = [
     # Jus de raisin Syrah
     dict(zone=(116, 870, 224, 886), mode='sombre', texte='PUR JUS DE RAISINS', police='sans', poids='SemiBold', x=169, y=878, cap=8.0, align='c'),
     dict(zone=(130, 888, 208, 899), mode='sombre', texte='SANS SUCRE AJOUTÉ*', police='sans', poids='Medium', x=169, y=893.5, cap=4.6, align='c'),
@@ -70,14 +71,74 @@ CORRECTIONS = [
 ]
 
 # « à la Tomate séchée » : écriture manuscrite reprise de la photo de référence (où elle est juste).
-TOMATE = dict(source=(645, 884, 950, 928), cible=(868, 1005, 1034, 1038), zone=(866, 1006, 1036, 1038))
+TOMATE_V8 = dict(source=(645, 884, 950, 928), cible=(868, 1005, 1034, 1038), zone=(866, 1006, 1036, 1038))
+
+# Photo à 11 produits (resultat_gemini_v10_11produits.jpg)
+CREME_LUT = (238, 224, 196)
+CORRECTIONS_V10 = [
+    # Rhum La Favorite
+    dict(zone=(134, 801, 192, 811), mode='sombre', texte='FONDÉE EN 1842', police='sans', poids='SemiBold', x=163, y=806, cap=3.4, align='c'),
+    dict(zone=(120, 862, 242, 880), mode='sombre', plein=True, texte='Cœur de Canne', police='serif', poids='Bold', x=181, y=871.5, cap=8.6, align='c', couleur=(150, 100, 30), gras=2.2),
+    dict(zone=(120, 880, 242, 893), mode='sombre', texte='RHUM AGRICOLE AMBRÉ', police='sans', poids='SemiBold', x=181, y=886.5, cap=5.8, align='c'),
+    dict(zone=(172, 919, 194, 932), mode='clair', plein=True, texte='ans', police='serif', poids='Bold', x=183, y=922, cap=4.2, align='c', couleur=(250, 240, 230)),
+    dict(zone=(112, 952, 272, 984), mode='clair', texte=None),
+    dict(texte="APPELLATION D'ORIGINE CONTRÔLÉE", police='sans', poids='Medium', x=190, y=957.5, cap=3.4, align='c', couleur=(214, 200, 175), visible=(122, 950, 262, 984)),
+    dict(texte='RÉCOLTÉ, DISTILLÉ ET MIS EN BOUTEILLE', police='sans', poids='Medium', x=192, y=967, cap=3.0, align='c', couleur=(214, 200, 175), visible=(122, 950, 262, 984)),
+    dict(texte='À LA DISTILLERIE LA FAVORITE PAR LA FAMILLE DORMOY', police='sans', poids='Medium', x=192, y=975.5, cap=3.0, align='c', couleur=(214, 200, 175), visible=(122, 950, 262, 984)),
+    # Jus de raisin Syrah
+    dict(zone=(352, 805, 396, 817), mode='sombre', texte='CÉPAGE', police='sans', poids='SemiBold', x=374, y=811, cap=5.6, align='c'),
+    dict(zone=(326, 869, 422, 881), mode='sombre', texte='SANS SUCRE AJOUTÉ*', police='sans', poids='Medium', x=374, y=875, cap=3.8, align='c'),
+    # Whisky Toki (le jus passe devant à gauche)
+    dict(zone=(440, 690, 540, 745), mode='sombre', texte=None, cap=5),
+    dict(texte='FROM THE HOUSE OF', police='sans', poids='SemiBold', x=436, y=696, cap=4.4, align='g', couleur=(45, 38, 36), visible=(440, 686, 560, 748)),
+    dict(texte='SUNTORY WHISKY', police='sans', poids='SemiBold', x=436, y=706, cap=4.4, align='g', couleur=(45, 38, 36), visible=(440, 686, 560, 748)),
+    dict(texte='ESTABLISHED 1923', police='sans', poids='SemiBold', x=436, y=716, cap=4.4, align='g', couleur=(45, 38, 36), visible=(440, 686, 560, 748)),
+    dict(texte='JAPANESE WHISKY', police='serif', poids='Medium', x=436, y=729, cap=4.4, align='g', couleur=(88, 78, 72), visible=(440, 686, 560, 748)),
+    dict(texte='43% ALC./VOL. · 70 cl', police='serif', poids='Medium', x=436, y=739, cap=4.2, align='g', couleur=(88, 78, 72), visible=(440, 686, 560, 748)),
+    # Bastide de Blacailloux (le Toki passe devant à gauche, le Gragnos à droite)
+    dict(zone=(640, 754, 696, 766), mode='sombre', plein=True, texte='ROSÉ', police='sans', poids='Medium', x=660, y=760, cap=4.4, align='c'),
+    dict(zone=(634, 765, 716, 779), mode='sombre', texte='VIN DE PROVENCE', police='sans', poids='SemiBold', x=674, y=771.7, cap=5.2, align='c', visible=(622, 760, 724, 782)),
+    dict(zone=(622, 787, 724, 816), mode='sombre', texte=None, cap=4),
+    dict(texte='COTEAUX VAROIS EN PROVENCE', police='sans', poids='Medium', x=674, y=793, cap=3.6, align='c', couleur=(70, 50, 48), visible=(622, 784, 724, 818)),
+    dict(texte="APPELLATION D'ORIGINE PROTÉGÉE", police='sans', poids='Regular', x=674, y=802, cap=3.0, align='c', couleur=(90, 70, 66), visible=(622, 784, 724, 818)),
+    # Château de Gragnos
+    dict(zone=(804, 781, 884, 793), mode='sombre', texte='DEPUIS 1710', police='sans', poids='Medium', x=844, y=787, cap=4.4, align='c'),
+    # Châteauneuf-du-Pape : « LE PRIEURÉ » (le pot de courgettes passe devant en bas)
+    dict(zone=(1088, 811, 1186, 827), mode='sombre', texte='LE PRIEURÉ', police='serif', poids='SemiBold', x=1136, y=821, cap=9.4, align='c', visible=(1080, 806, 1200, 827)),
+    # Champagne Denis Frézier (le pot de courgettes passe devant à gauche)
+    dict(zone=(1244, 813, 1414, 825), mode='sombre', texte='PRODUCED IN THE HEART OF CHAMPAGNE', police='sans', poids='Medium', x=1330, y=819, cap=4.2, align='c'),
+    dict(zone=(1288, 853, 1420, 882), mode='sombre', texte='Cuvée des Trois Crus', police='serif-it', poids='Medium', x=1416, y=867, cap=10.0, align='d', visible=(1290, 848, 1424, 884)),
+    dict(zone=(1280, 887, 1382, 901), mode='sombre', texte='PREMIER BRUT', police='sans', poids='Medium', x=1332, y=894, cap=6.6, align='c', visible=(1288, 884, 1400, 904)),
+    dict(zone=(1280, 914, 1376, 926), mode='sombre', texte='ESTATE BOTTLED', police='sans', poids='Medium', x=1330, y=920, cap=4.8, align='c', visible=(1288, 910, 1400, 928)),
+    # Bière Lutgarde : textes courbes sur la bande rouge + « 33 cl / Alc vol 6% »
+    dict(anneau=(1502, 859.5, 75, 91.5, 83.5, 111.5, 740, 840), mode='clair', texte=None, cap=6),
+    dict(anneau=(1502, 859.5, 75, 91.5, 83.5, 111.5, 890, 975), mode='clair', texte=None, cap=6),
+    dict(texte='BELGIAN ABBEY BEER', police='sans', poids='Bold', arc=(1502, 859.5, 79, 101, -157, -23), cap=5.6, couleur=CREME_LUT),
+    dict(texte="Abbaye d'Aywiers", police='serif', poids='Bold', arc=(1502, 859.5, 79, 101, 142, 38), cap=6.4, couleur=CREME_LUT),
+    dict(zone=(1474, 912, 1530, 938), mode='sombre', texte=None, cap=5),
+    dict(texte='33 cl', police='serif', poids='Bold', x=1502, y=919.5, cap=5.4, align='c', couleur=(70, 30, 30)),
+    dict(texte='Alc vol 6%', police='serif', poids='Bold', x=1502, y=930, cap=4.4, align='c', couleur=(70, 30, 30)),
+    # Terrine Silure de Loire : « BIO »
+    dict(zone=(954, 1035, 994, 1050), mode='sombre', texte='BIO', police='sans', poids='Bold', x=973, y=1042.5, cap=7.0, align='c', couleur=(40, 12, 16)),
+    # Tartinable L'Atelier d'Émile
+    dict(zone=(1104, 962, 1148, 985), mode='sombre', plein=True, texte=None, cap=3),
+    dict(texte='Fabriqué', police='serif-it', poids='Bold', x=1125, y=969, cap=4.2, align='c', couleur=(30, 30, 30), gras=2.0),
+    dict(texte='à la ferme', police='serif-it', poids='Bold', x=1125, y=978, cap=4.2, align='c', couleur=(30, 30, 30), gras=2.0),
+    dict(zone=(1156, 966, 1214, 980), mode='sombre', texte="d'Émile", police='serif-it', poids='Bold', x=1185, y=973, cap=6.4, align='c', couleur=(60, 105, 72), gras=1.7),
+    dict(zone=(1150, 980, 1228, 993), mode='sombre', texte='Tartinable de', police='serif', poids='SemiBold', x=1189, y=986.5, cap=4.8, align='c', couleur=(60, 60, 60), gras=1.4),
+    # Sachet Maison Guinguet
+    dict(zone=(1752, 1010, 1860, 1027), mode='sombre', texte='CHOCOLAT NOIR', police='serif', poids='SemiBold', x=1805, y=1018.5, cap=7.4, align='c'),
+]
+TOMATE_V10 = dict(source=(645, 884, 950, 928), cible=(889, 1011, 1054, 1035), zone=(886, 1010, 1058, 1034))
+
+PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10)}
 
 
 def lum(a):
     return a[..., 0] * 0.299 + a[..., 1] * 0.587 + a[..., 2] * 0.114
 
 
-def effacer(img, zone, mode, cap=8, ecart=None):
+def effacer(img, zone, mode, cap=8, ecart=None, garde=None, plein=False):
     """Efface le texte d'une zone : les pixels de texte sont repérés par rapport au fond estimé par
     fermeture (texte sombre) ou ouverture (texte clair) morphologique, puis remplis par inpainting.
     Renvoie les pixels du texte effacé."""
@@ -95,8 +156,14 @@ def effacer(img, zone, mode, cap=8, ecart=None):
     txt = (L < Lf - ecart) if mode == 'sombre' else (L > Lf + ecart)
     dedans = np.zeros_like(txt)
     dedans[y0 - Y0:y1 - Y0, x0 - X0:x1 - X0] = True
+    if garde is not None:
+        dedans &= garde[Y0:Y1, X0:X1]
     txt &= dedans
     pix = reg[txt].astype(float)
+    if plein:  # zone entière (texte peu contrasté) : remplacée par le fond estimé, fondu sur les bords
+        a = cv2.GaussianBlur(dedans.astype(float), (0, 0), 1.2)[..., None]
+        img[Y0:Y1, X0:X1] = (reg * (1 - a) + fond * a).clip(0, 255).astype(np.uint8)
+        return pix
     # remplissage par inpainting (voisins réels) : pas de halo plus clair autour des lettres
     masque = cv2.dilate(txt.astype(np.uint8) * 255, np.ones((3, 3), np.uint8), iterations=2)
     masque[~dedans] = 0
@@ -149,18 +216,65 @@ def poser(img, alpha, gauche, haut, couleur, visible=None):
     img[ya:yb, xa:xb] = (zone * (1 - a) + np.array(couleur, float) * a).clip(0, 255).astype(np.uint8)
 
 
+def anneau(forme, H, W):
+    """Masque de la bande entre deux ellipses (même centre), limitée verticalement : renvoie (zone, masque)."""
+    cx, cy, rxi, ryi, rxo, ryo, ymin, ymax = forme
+    yy, xx = np.mgrid[0:H, 0:W]
+    d_in = ((xx - cx) / rxi) ** 2 + ((yy - cy) / ryi) ** 2
+    d_out = ((xx - cx) / rxo) ** 2 + ((yy - cy) / ryo) ** 2
+    m = (d_in > 1) & (d_out < 1) & (yy >= ymin) & (yy <= ymax)
+    zone = (int(cx - rxo), int(ymin), int(cx + rxo) + 1, int(ymax) + 1)
+    return zone, m
+
+
+def texte_courbe(img, c):
+    """Écrit un texte le long d'une ellipse, lettre par lettre (angles en degrés, y vers le bas).
+    t0 -> t1 croissant : texte en haut de l'ellipse ; décroissant : texte en bas, lisible à l'endroit."""
+    cx, cy, rx, ry, t0, t1 = c['arc']
+    f = police(c['police'], c['poids'], 200)
+    h_cap = f.getbbox('H')[3] - f.getbbox('H')[1]
+    f = police(c['police'], c['poids'], max(4, round(200 * c['cap'] * SUR / h_cap)))
+    avances = [f.getlength(ch) for ch in c['texte']]
+    total = sum(avances)
+    cumul = np.cumsum([0] + avances[:-1]) + np.array(avances) / 2
+    haut = t1 > t0
+    for ch, u in zip(c['texte'], cumul / total):
+        if ch == ' ':
+            continue
+        t = np.radians(t0 + (t1 - t0) * u)
+        x, y = cx + rx * np.cos(t), cy + ry * np.sin(t)
+        # tangente à l'ellipse -> orientation de la lettre
+        ang = np.degrees(np.arctan2(ry * np.cos(t), -rx * np.sin(t)))
+        if not haut:
+            ang += 180
+        bb = f.getbbox(ch)
+        w, h = bb[2] - bb[0] + 4 * SUR, int(h_cap * c['cap'] * SUR / h_cap * 1.6) + 4 * SUR
+        im = Image.new('L', (w, h), 0)
+        top_cap = f.getbbox('H')[1]
+        ImageDraw.Draw(im).text((2 * SUR - bb[0], h / 2 - c['cap'] * SUR / 2 - top_cap), ch, font=f, fill=255)
+        im = im.rotate(-ang, resample=Image.BICUBIC, expand=True)
+        a = np.array(im.resize((max(1, round(im.width / SUR)), max(1, round(im.height / SUR))), Image.LANCZOS)).astype(float) / 255
+        poser(img, a, x - a.shape[1] / 2, y - a.shape[0] / 2, c['couleur'])
+
+
 def main():
     src, dst = sys.argv[1], sys.argv[2]
+    CORRECTIONS, TOMATE = PHOTOS[sys.argv[3] if len(sys.argv) > 3 else 'v8']
     img = np.array(Image.open(src).convert('RGB'))
     ref = np.array(Image.open(RACINE / 'bouteilles-gemini/style-reference-terrines-chocolat.jpg').convert('RGB'))
 
     # 1. effacement des anciens textes (couleur du texte relevée au passage)
     couleurs = []
     for c in CORRECTIONS:
+        if 'anneau' in c:
+            zone, garde = anneau(c['anneau'], *img.shape[:2])
+            effacer(img, zone, c['mode'], c.get('cap', 6), c.get('ecart'), garde)
+            couleurs.append(None)
+            continue
         if 'zone' not in c:
             couleurs.append(None)
             continue
-        pix = effacer(img, c['zone'], c['mode'], c.get('cap', 6), c.get('ecart'))
+        pix = effacer(img, c['zone'], c['mode'], c.get('cap', 6), c.get('ecart'), plein=c.get('plein', False))
         if len(pix):
             L = lum(pix)
             sel = pix[L <= np.percentile(L, 30)] if c['mode'] == 'sombre' else pix[L >= np.percentile(L, 70)]
@@ -173,6 +287,9 @@ def main():
     # 2. réécriture du vrai texte
     for c, coul in zip(CORRECTIONS, couleurs):
         if not c.get('texte'):
+            continue
+        if 'arc' in c:
+            texte_courbe(img, c)
             continue
         alpha, haut_cap = rendu(c['texte'], c['police'], c['poids'], c['cap'], c.get('italique', False))
         w = alpha.shape[1]
