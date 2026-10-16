@@ -50,7 +50,7 @@ def main():
     slide = prs.slides.add_slide(prs.slide_layouts[6])
 
     slide.shapes.add_picture(str(fond_jpg), 0, 0, prs.slide_width, prs.slide_height)
-    slide.shapes.add_picture(str(RACINE / 'public/logo_cave71_transparent.png'), px(300), px(112), width=px(640))
+    slide.shapes.add_picture(str(RACINE / 'public/logo_cave71_bloc.png'), px(300), px(120), width=px(640))
 
     for bloc in textes['blocs']:
         interligne = bloc.get('interligne', 1.2)

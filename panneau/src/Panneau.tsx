@@ -262,7 +262,8 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean; clair?: bool
 			<div style={{position: 'absolute', inset: 34, border: `0.75px solid ${K.or}`, opacity: 0.45}} />
 
 			{texte && (
-				<Img src={staticFile(clair ? 'logo_cave71_sombre.png' : 'logo_cave71_transparent.png')} style={{position: 'absolute', top: 112, left: (LARGEUR - 640) / 2, width: 640}} />
+				// Logo officiel, couleurs jamais modifiées : CAVE blanc, 71 bordeaux, sur son bloc noir.
+				<Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 120, left: (LARGEUR - 640) / 2, width: 640}} />
 			)}
 
 			{vitrine ? (
