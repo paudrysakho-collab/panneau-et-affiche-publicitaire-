@@ -303,7 +303,7 @@
 		{
 			"id": "horaires-titre",
 			"x": 660,
-			"y": 1370,
+			"y": 1392,
 			"w": 500,
 			"align": "center",
 			"interligne": 1.2,
@@ -321,42 +321,9 @@
 			]
 		},
 		{
-			"id": "horaires",
-			"x": 660,
-			"y": 1400,
-			"w": 500,
-			"align": "center",
-			"interligne": 1.2,
-			"lignes": [
-				[
-					{
-						"t": "10h – 13h  ",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "creme"
-					},
-					{
-						"t": "·",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "or"
-					},
-					{
-						"t": "  15h30 – 19h30",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "creme"
-					}
-				]
-			]
-		},
-		{
 			"id": "telephone",
 			"x": 660,
-			"y": 1440,
+			"y": 1420,
 			"w": 500,
 			"align": "center",
 			"interligne": 1.2,
@@ -431,7 +398,7 @@
 		{
 			"id": "qr-texte",
 			"x": 852,
-			"y": 1546,
+			"y": 1560,
 			"w": 320,
 			"align": "left",
 			"interligne": 1.45,
@@ -453,14 +420,6 @@
 						"taille": 27,
 						"graisse": 500,
 						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "& commandez en ligne",
-						"police": "sans",
-						"taille": 19,
-						"couleur": "orPale"
 					}
 				]
 			]
