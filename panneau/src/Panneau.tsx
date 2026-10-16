@@ -18,18 +18,9 @@ export const C: Record<string, string> = {
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
-// Bouteilles en arc : la plus grande au centre, les autres en retrait (base plus haute, plus petites, derrière).
-// x = centre, h = hauteur affichée, base = bas de la bouteille, z = ordre d'empilement.
-const BOUTEILLES = [
-	{src: 'whisky_toki.png', ratio: 0.384, x: 172, h: 380, base: 988, z: 1},
-	{src: 'blacailloux.png', ratio: 0.223, x: 293, h: 486, base: 1002, z: 2},
-	{src: 'gragnos_lou_daro.png', ratio: 0.258, x: 418, h: 530, base: 1016, z: 3},
-	{src: 'chateauneuf.png', ratio: 0.258, x: 552, h: 570, base: 1030, z: 5},
-	{src: 'balac.png', ratio: 0.242, x: 690, h: 556, base: 1030, z: 4},
-	{src: 'frezier.png', ratio: 0.266, x: 824, h: 522, base: 1016, z: 3},
-	{src: 'divin_sauvignon_0-0.png', ratio: 0.275, x: 952, h: 482, base: 1002, z: 2},
-	{src: 'rhum_la_favorite.png', ratio: 0.317, x: 1072, h: 418, base: 988, z: 1},
-];
+// Groupe des 8 bouteilles composé par script (tools/compo_bouteilles.py) : étiquettes d'origine, deux rangs en quinconce.
+// base = bas de l'image ; les bouteilles avant posent ~52 px plus haut (ombres portées dessous), soit sur l'étagère.
+const BOUTEILLES = [{src: 'bouteilles_groupe.png', ratio: 2.005, x: 620, h: 539, base: 1082, z: 2}];
 
 // Premier plan : composition jus de cépage + terrines + chocolats (détourée), centrée.
 const PREMIER_PLAN = [{src: 'premier_plan_groupe.png', ratio: 1.507, x: 620, h: 345}];
@@ -107,11 +98,11 @@ const Polices: React.FC = () => {
 	return null;
 };
 
-const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base: number; reflet: number; z?: number}> = ({src, ratio, x, h, base, reflet, z = 1}) => {
+const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base: number; reflet: number; z?: number; ombre?: boolean}> = ({src, ratio, x, h, base, reflet, z = 1, ombre = true}) => {
 	const l = h * ratio;
 	return (
 		<>
-			<div
+			{ombre && <div
 				style={{
 					position: 'absolute',
 					left: x - l * 0.62,
@@ -122,7 +113,7 @@ const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base:
 					zIndex: z,
 					background: 'radial-gradient(closest-side, rgba(0,0,0,0.75), rgba(0,0,0,0))',
 				}}
-			/>
+			/>}
 			<Img
 				src={staticFile(`produits/${src}`)}
 				style={{
@@ -273,7 +264,7 @@ export const Panneau: React.FC<{texte?: boolean}> = ({texte = true}) => {
 			/>
 
 			{BOUTEILLES.map((b) => (
-				<Produit key={b.src} {...b} reflet={0.2} />
+				<Produit key={b.src} {...b} reflet={0} ombre={false} />
 			))}
 			{PREMIER_PLAN.map((t) => (
 				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0} z={10} />
