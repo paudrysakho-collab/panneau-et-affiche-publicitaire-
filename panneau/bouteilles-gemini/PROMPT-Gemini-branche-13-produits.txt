@@ -1,0 +1,32 @@
+=== DANS LA BRANCHE GEMINI (à la suite de la photo à 11 produits) ===
+Joindre ces 7 images, dans cet ordre :
+ 1. nouveaux-produits/whisky_Tomatin_Legacy_officiel.jpg
+ 2. nouveaux-produits/whisky_Tomatin_Legacy_photo.jpg
+ 3. nouveaux-produits/biere_Trompe_Souris_Blonde_photo.jpg
+ 4. 4_rouge_Chateauneuf-du-Pape_Prieure_des_Papes.jpg
+ 5. 3_rouge_Chateau_de_Gragnos_Lou_Daro.jpg
+ 6. 6_champagne_Denis_Frezier_Trois_Crus.jpg
+ 7. nouveaux-produits/tartinable_courgettes_officiel.jpg
+
+--- PROMPT À COLLER ---
+
+Repars de la dernière photo que tu viens de générer (celle avec 11 produits). Garde exactement son ambiance : fond lie-de-vin très sombre, halo chaud au centre, lumière douce venant de la gauche, reflets sur le verre, ombres et reflets sur la surface sombre, même qualité photo studio. Les images jointes servent UNIQUEMENT de modèles pour les produits et leurs étiquettes, pas pour le décor.
+
+Modifications à faire :
+
+1. AJOUTE le whisky Tomatin Legacy (images 1 et 2) : bouteille ronde et large en verre transparent, whisky doré, capsule bleue, grande inscription « TOMATIN », étiquette bleue « LEGACY ». Environ 28 cm de haut. Place-le juste à droite du whisky Suntory Toki.
+
+2. AJOUTE la bière Trompe Souris Blonde (image 3) : petite bouteille de bière brune de 33 cl, capsule jaune, étiquette illustrée colorée avec deux souris sur une mobylette bleue et le mot « BLONDE ». Même hauteur que la bière Lutgarde, placée juste à sa droite.
+
+3. ÉCHANGE la place du Château de Gragnos et du Châteauneuf-du-Pape : le Châteauneuf-du-Pape (image 4) passe à GAUCHE, le Château de Gragnos (image 5) passe à DROITE. Recopie leurs étiquettes exactement d'après les images 4 et 5, sans les redessiner ni inventer de texte.
+
+4. Le Champagne Denis Frézier (image 6) doit être ENTIÈREMENT visible : rien devant lui, son étiquette complète et nette, fidèle à l'image 6.
+
+5. Le pot « L'Atelier d'Émile – Tartinable de Courgettes grillées » (image 7) passe au TOUT PREMIER PLAN : nettement plus près de l'objectif, en bas au centre de l'image, posé sur la surface devant toutes les bouteilles, et 1,5 fois plus grand qu'aujourd'hui. Son étiquette (logo E vert, « L'ATELIER d'Émile », « Tartinable de COURGETTES GRILLÉES », bande verte, petit drapeau français) doit être bien lisible, face à l'objectif, fidèle à l'image 7. Le pot « Silure de Loire » reste à côté de lui, un peu en retrait.
+   Pour faire la place : recule un peu la caméra et montre plus de surface sombre au premier plan, de sorte que les deux pots soient posés PLUS BAS que les étiquettes des bouteilles et ne cachent AUCUNE étiquette.
+
+Ordre final des bouteilles, de gauche à droite : rhum La Favorite, jus de raisin Syrah (petite bouteille devant), whisky Suntory Toki, whisky Tomatin Legacy, rosé Bastide de Blacailloux, Châteauneuf-du-Pape, Château de Gragnos, Champagne Denis Frézier, bière Lutgarde Blonde, bière Trompe Souris Blonde, sachet de chocolats Maison Guinguet (rapproché des bières). Au premier plan, en bas au centre : le pot de courgettes (le plus grand et le plus en avant) et le pot Silure de Loire.
+
+Il y a exactement 13 produits, chacun une seule fois. Rapproche un peu les bouteilles si besoin pour que tout tienne. Toutes les étiquettes doivent rester entièrement visibles, aucune ne doit être cachée par un autre produit. Ne modifie pas les étiquettes des produits que tu ne déplaces pas, et n'invente aucun texte.
+
+Format paysage 16:9, la plus haute définition possible (4K), rien de coupé, de la marge autour. Aucun autre objet, aucun texte ajouté.
