@@ -15,6 +15,17 @@ export const C: Record<string, string> = {
 	cremeDoux: 'rgba(244,236,224,0.72)',
 };
 
+// Palette de la version claire (fond blanc chaud de la photo studio) : mêmes noms, autres valeurs.
+export const CLAIR: Record<string, string> = {
+	encre: '#f3ebe1',
+	vin: '#fbf7f1',
+	bordeaux: '#7d1530',
+	or: '#a77a26',
+	orPale: '#7d1530',
+	creme: '#2a1619',
+	cremeDoux: 'rgba(42,22,25,0.68)',
+};
+
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
@@ -37,8 +48,8 @@ const ICONES = [
 	{nom: 'alliances', x: 620, y: 1412},
 ];
 
-const Icone: React.FC<{nom: string}> = ({nom}) => {
-	const trait = {fill: 'none', stroke: C.or, strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
+const Icone: React.FC<{nom: string; couleur: string}> = ({nom, couleur}) => {
+	const trait = {fill: 'none', stroke: couleur, strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
 	return (
 		<svg width={34} height={34} viewBox="0 0 32 32">
 			{nom === 'cadeau' && (
@@ -148,7 +159,7 @@ const Produit: React.FC<{src: string; ratio: number; x: number; h: number; base:
 type Segment = {t: string; police: string; taille: number; graisse?: number; italique?: boolean; couleur: string; espacement?: number};
 type Bloc = {id: string; x: number; y: number; w: number; align: string; interligne?: number; lignes: Segment[][]};
 
-const BlocTexte: React.FC<{bloc: Bloc}> = ({bloc}) => (
+const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K}) => (
 	<div
 		style={{
 			position: 'absolute',
@@ -170,7 +181,7 @@ const BlocTexte: React.FC<{bloc: Bloc}> = ({bloc}) => (
 							fontSize: s.taille,
 							fontWeight: s.graisse ?? 400,
 							fontStyle: s.italique ? 'italic' : 'normal',
-							color: C[s.couleur] ?? s.couleur,
+							color: K[s.couleur] ?? s.couleur,
 							letterSpacing: s.espacement ?? 0,
 						}}
 					>
@@ -186,9 +197,19 @@ const BlocTexte: React.FC<{bloc: Bloc}> = ({bloc}) => (
 // à la place de l'étagère et des produits détourés.
 const VITRINE = {src: 'vitrine_gemini.jpg', ratio: 2000 / 1356, x: 92, y: 500, w: 1056, fleche: 200};
 
-const Vitrine: React.FC = () => {
+const Vitrine: React.FC<{clair?: boolean}> = ({clair = false}) => {
 	const {src, ratio, x, y, w, fleche} = VITRINE;
 	const h = w / ratio;
+	if (clair) {
+		// Version claire : pas de cadre, la photo se fond dans le fond par des bords en dégradé.
+		const fondu = 'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 18%, black 94%, transparent)';
+		return (
+			<Img
+				src={staticFile(`produits/${src}`)}
+				style={{position: 'absolute', left: x - 20, top: y - 40, width: w + 40, height: (w + 40) / ratio, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
+			/>
+		);
+	}
 	const arche = (dx: number) =>
 		`M ${-dx} ${h + dx} L ${-dx} ${fleche} A ${w / 2 + dx} ${fleche + dx} 0 0 1 ${w + dx} ${fleche} L ${w + dx} ${h + dx} Z`;
 	return (
@@ -208,20 +229,23 @@ const Vitrine: React.FC = () => {
 	);
 };
 
-export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean}> = ({texte = true, vitrine = false}) => {
+export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean; clair?: boolean}> = ({texte = true, vitrine = false, clair = false}) => {
+	const K = clair ? CLAIR : C;
 	return (
-		<AbsoluteFill style={{background: C.encre, color: C.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
+		<AbsoluteFill style={{background: K.encre, color: K.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
 			<Polices />
 
 			{/* Fond : halo lie-de-vin derrière les produits */}
 			<AbsoluteFill
 				style={{
-					background: `radial-gradient(ellipse 760px 700px at 50% 47%, ${C.vin} 0%, rgba(74,15,31,0.55) 45%, rgba(20,16,18,0) 80%)`,
+					background: clair
+						? 'radial-gradient(ellipse 900px 900px at 50% 45%, #fbf7f1 0%, #f5eee5 45%, rgba(234,221,204,0.9) 100%)'
+						: `radial-gradient(ellipse 760px 700px at 50% 47%, ${C.vin} 0%, rgba(74,15,31,0.55) 45%, rgba(20,16,18,0) 80%)`,
 				}}
 			/>
 			<AbsoluteFill
 				style={{
-					background: 'radial-gradient(ellipse 420px 360px at 50% 52%, rgba(207,165,72,0.16), rgba(207,165,72,0) 75%)',
+					background: clair ? 'none' : 'radial-gradient(ellipse 420px 360px at 50% 52%, rgba(207,165,72,0.16), rgba(207,165,72,0) 75%)',
 				}}
 			/>
 
@@ -234,15 +258,15 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean}> = ({texte =
 			</svg>
 
 			{/* Double filet doré */}
-			<div style={{position: 'absolute', inset: 26, border: `1.5px solid ${C.or}`, opacity: 0.85}} />
-			<div style={{position: 'absolute', inset: 34, border: `0.75px solid ${C.or}`, opacity: 0.45}} />
+			<div style={{position: 'absolute', inset: 26, border: `1.5px solid ${K.or}`, opacity: 0.85}} />
+			<div style={{position: 'absolute', inset: 34, border: `0.75px solid ${K.or}`, opacity: 0.45}} />
 
 			{texte && (
-				<Img src={staticFile('logo_cave71_transparent.png')} style={{position: 'absolute', top: 112, left: (LARGEUR - 640) / 2, width: 640}} />
+				<Img src={staticFile(clair ? 'logo_cave71_sombre.png' : 'logo_cave71_transparent.png')} style={{position: 'absolute', top: 112, left: (LARGEUR - 640) / 2, width: 640}} />
 			)}
 
 			{vitrine ? (
-				<Vitrine />
+				<Vitrine clair={clair} />
 			) : (
 				<>
 			{/* Voûte de cave */}
@@ -304,8 +328,8 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean}> = ({texte =
 			)}
 
 			{/* Filets autour du titre des services */}
-			<div style={{position: 'absolute', top: 1305, left: 404, width: 120, height: 1, background: C.or, opacity: 0.6}} />
-			<div style={{position: 'absolute', top: 1305, left: 716, width: 120, height: 1, background: C.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1305, left: 404, width: 120, height: 1, background: K.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1305, left: 716, width: 120, height: 1, background: K.or, opacity: 0.6}} />
 
 			{ICONES.map((i) => (
 				<div
@@ -317,23 +341,24 @@ export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean}> = ({texte =
 						width: 58,
 						height: 58,
 						borderRadius: '50%',
-						border: `1px solid rgba(207,165,72,0.6)`,
+						border: `1px solid ${K.or}`,
+						opacity: 0.95,
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
 					}}
 				>
-					<Icone nom={i.nom} />
+					<Icone nom={i.nom} couleur={K.or} />
 				</div>
 			))}
 
 			{/* Pied */}
-			<div style={{position: 'absolute', top: 1484, left: 90, right: 90, height: 1, background: `linear-gradient(to right, rgba(207,165,72,0), ${C.or}, rgba(207,165,72,0))`}} />
-			<div style={{position: 'absolute', top: 1508, left: 1044, background: C.creme, padding: 7, borderRadius: 4}}>
+			<div style={{position: 'absolute', top: 1484, left: 90, right: 90, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
+			<div style={{position: 'absolute', top: 1508, left: 1044, background: clair ? '#fff' : C.creme, padding: 7, borderRadius: 4}}>
 				<Img src={staticFile('qr_cave71.svg')} style={{width: 92, height: 92, display: 'block'}} />
 			</div>
 
-			{texte && (textes.blocs as Bloc[]).map((b) => <BlocTexte key={b.id} bloc={b} />)}
+			{texte && (textes.blocs as Bloc[]).map((b) => <BlocTexte key={b.id} bloc={b} K={K} />)}
 		</AbsoluteFill>
 	);
 };
