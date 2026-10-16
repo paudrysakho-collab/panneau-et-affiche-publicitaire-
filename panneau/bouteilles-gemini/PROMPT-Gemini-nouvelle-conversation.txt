@@ -1,0 +1,26 @@
+=== À COLLER DANS UNE NOUVELLE CONVERSATION GEMINI (avec les 2 images JPG, pas de PDF) ===
+Image 1 : rangee-actuelle-8-bouteilles.jpg
+Image 2 : style-reference-terrines-chocolat.jpg
+
+Ceci est une RETOUCHE PHOTO de l'image 1, pas une nouvelle création.
+
+L'image 1 contient 8 vraies bouteilles vendues dans ma cave. Leurs étiquettes doivent rester STRICTEMENT IDENTIQUES à l'image 1, au pixel près : considère chaque étiquette comme un calque verrouillé que tu n'as pas le droit de redessiner. Ne réécris aucune lettre, même les petites mentions (appellations, adresses, degrés, contenances, millésimes). Si tu ne peux pas garder un petit texte parfaitement net, laisse-le exactement tel qu'il est sur l'image 1 plutôt que de le réécrire.
+
+Ce que tu dois changer, et seulement ça :
+
+1. LA LUMIÈRE, pour que les 8 bouteilles aient l'air photographiées ensemble, en une seule prise, dans le même studio, comme sur l'image 2 :
+- une grande lumière douce et neutre venant de l'avant gauche ;
+- sur le verre de chaque bouteille, un fin liseré lumineux blanc le long des deux bords et un reflet vertical doux sur le côté gauche, au même endroit sur toutes les bouteilles ;
+- un léger contre-jour à travers le verre : lueur rubis sur les épaules des vins rouges ; rosé, champagne, Divin, rhum et whisky lumineux et translucides, dans leur vraie couleur ;
+- même balance des blancs, même luminosité, même contraste et même saturation pour toutes les bouteilles : le Toki, La Favorite et le Divin ne doivent plus paraître plus ternes, plus jaunes ou plus délavés que les autres.
+
+2. LE SOL ET LES OMBRES : les bouteilles posées sur une surface blanche légèrement brillante, avec une ombre de contact douce sous chacune (partant un peu vers la droite) et un reflet très discret au sol. Elles ne doivent plus avoir l'air de flotter.
+
+3. L'ESPACE : fond blanc pur uni. Garde le même ordre et le même placement que l'image 1, mais ajoute une marge de blanc tout autour pour qu'aucune bouteille ne soit coupée (environ 8 % de chaque côté). Format paysage 16:9, la plus haute définition possible.
+
+Interdits : aucun objet ajouté, aucun texte ajouté, aucun halo ni effet de détourage, aucune bouteille déformée, penchée ou redimensionnée, aucune modification des étiquettes, des capsules ou des bouchons.
+
+
+=== SI UNE ÉTIQUETTE A QUAND MÊME ÉTÉ MODIFIÉE (à coller ensuite dans la même conversation) ===
+
+Les petits textes de certaines étiquettes ont été réécrits et sont faux. Reprends ton image et remets les étiquettes exactement comme sur l'image 1, sans rien réécrire. Garde la lumière, le sol et les ombres que tu viens de faire.
