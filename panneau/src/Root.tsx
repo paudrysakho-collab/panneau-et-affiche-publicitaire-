@@ -6,6 +6,8 @@ import {Panneau, LARGEUR, HAUTEUR} from './Panneau';
 export const RemotionRoot: React.FC = () => (
 	<>
 		<Still id="Panneau" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true}} />
+		{/* Variante : photo studio Gemini dans une fenêtre en arche */}
+		<Still id="PanneauVitrine" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, vitrine: true}} />
 		{/* Fond sans texte ni logo, pour le PPTX modifiable */}
 		<Still id="PanneauFond" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: false}} />
 	</>

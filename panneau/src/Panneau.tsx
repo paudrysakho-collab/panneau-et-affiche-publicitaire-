@@ -182,7 +182,33 @@ const BlocTexte: React.FC<{bloc: Bloc}> = ({bloc}) => (
 	</div>
 );
 
-export const Panneau: React.FC<{texte?: boolean}> = ({texte = true}) => {
+// Mode « vitrine » : la photo studio Gemini (bouteilles + terrines + chocolat) dans une fenêtre en arche,
+// à la place de l'étagère et des produits détourés.
+const VITRINE = {src: 'vitrine_gemini.jpg', ratio: 2000 / 1356, x: 92, y: 500, w: 1056, fleche: 200};
+
+const Vitrine: React.FC = () => {
+	const {src, ratio, x, y, w, fleche} = VITRINE;
+	const h = w / ratio;
+	const arche = (dx: number) =>
+		`M ${-dx} ${h + dx} L ${-dx} ${fleche} A ${w / 2 + dx} ${fleche + dx} 0 0 1 ${w + dx} ${fleche} L ${w + dx} ${h + dx} Z`;
+	return (
+		<>
+			<div style={{position: 'absolute', left: x, top: y, width: w, height: h, clipPath: `path('${arche(0)}')`, boxShadow: '0 0 80px rgba(0,0,0,0.6)'}}>
+				<Img src={staticFile(`produits/${src}`)} style={{width: w, height: h, display: 'block'}} />
+				{/* fondu discret vers le bas pour lier la photo au fond sombre */}
+				<div style={{position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(20,16,18,0) 88%, rgba(20,16,18,0.35))'}} />
+			</div>
+			<svg width={w + 40} height={h + 40} style={{position: 'absolute', left: x - 20, top: y - 20, overflow: 'visible'}}>
+				<g transform="translate(20 20)">
+					<path d={arche(6)} fill="none" stroke={C.or} strokeWidth={1.6} opacity={0.9} />
+					<path d={arche(13)} fill="none" stroke={C.or} strokeWidth={0.7} opacity={0.5} />
+				</g>
+			</svg>
+		</>
+	);
+};
+
+export const Panneau: React.FC<{texte?: boolean; vitrine?: boolean}> = ({texte = true, vitrine = false}) => {
 	return (
 		<AbsoluteFill style={{background: C.encre, color: C.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
 			<Polices />
@@ -215,6 +241,10 @@ export const Panneau: React.FC<{texte?: boolean}> = ({texte = true}) => {
 				<Img src={staticFile('logo_cave71_transparent.png')} style={{position: 'absolute', top: 112, left: (LARGEUR - 640) / 2, width: 640}} />
 			)}
 
+			{vitrine ? (
+				<Vitrine />
+			) : (
+				<>
 			{/* Voûte de cave */}
 			<svg width={LARGEUR} height={HAUTEUR} style={{position: 'absolute', inset: 0}}>
 				<defs>
@@ -269,6 +299,9 @@ export const Panneau: React.FC<{texte?: boolean}> = ({texte = true}) => {
 			{PREMIER_PLAN.map((t) => (
 				<Produit key={t.src} {...t} base={PREMIER_PLAN_Y} reflet={0} z={10} />
 			))}
+
+				</>
+			)}
 
 			{/* Filets autour du titre des services */}
 			<div style={{position: 'absolute', top: 1305, left: 404, width: 120, height: 1, background: C.or, opacity: 0.6}} />
