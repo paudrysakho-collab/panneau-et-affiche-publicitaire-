@@ -12,8 +12,8 @@
 					{
 						"t": "VOTRE CAVISTE À REZÉ",
 						"police": "sans",
-						"taille": 19,
-						"graisse": 600,
+						"taille": 17,
+						"graisse": 500,
 						"couleur": "or",
 						"espacement": 5
 					}
@@ -68,7 +68,7 @@
 						"t": "DOMAINES · DISTILLERIES · ARTISANS DU TERROIR",
 						"police": "sans",
 						"taille": 23,
-						"graisse": 600,
+						"graisse": 500,
 						"couleur": "orPale",
 						"espacement": 6
 					}
@@ -78,7 +78,7 @@
 		{
 			"id": "services-titre",
 			"x": 370,
-			"y": 1092,
+			"y": 1094,
 			"w": 500,
 			"align": "center",
 			"lignes": [
@@ -86,8 +86,8 @@
 					{
 						"t": "À LA CAVE 71",
 						"police": "sans",
-						"taille": 28,
-						"graisse": 700,
+						"taille": 22,
+						"graisse": 600,
 						"couleur": "or",
 						"espacement": 6
 					}
@@ -96,18 +96,18 @@
 		},
 		{
 			"id": "service-1",
-			"x": 135,
-			"y": 1136,
-			"w": 360,
-			"align": "left",
-			"interligne": 1.12,
+			"x": 70,
+			"y": 1214,
+			"w": 220,
+			"align": "center",
+			"interligne": 1.15,
 			"lignes": [
 				[
 					{
 						"t": "Coffrets",
 						"police": "serif",
-						"taille": 38,
-						"graisse": 700,
+						"taille": 30,
+						"graisse": 600,
 						"couleur": "creme"
 					}
 				],
@@ -115,7 +115,7 @@
 					{
 						"t": "& idées cadeaux",
 						"police": "serif",
-						"taille": 31,
+						"taille": 25,
 						"italique": true,
 						"couleur": "orPale"
 					}
@@ -124,26 +124,26 @@
 		},
 		{
 			"id": "service-2",
-			"x": 525,
-			"y": 1136,
-			"w": 360,
-			"align": "left",
-			"interligne": 1.12,
+			"x": 290,
+			"y": 1214,
+			"w": 220,
+			"align": "center",
+			"interligne": 1.15,
 			"lignes": [
 				[
 					{
-						"t": "Soirées œnologiques",
+						"t": "Soirées",
 						"police": "serif",
-						"taille": 38,
-						"graisse": 700,
+						"taille": 30,
+						"graisse": 600,
 						"couleur": "creme"
 					}
 				],
 				[
 					{
-						"t": "& découvertes",
+						"t": "œnologiques",
 						"police": "serif",
-						"taille": 31,
+						"taille": 25,
 						"italique": true,
 						"couleur": "orPale"
 					}
@@ -152,18 +152,18 @@
 		},
 		{
 			"id": "service-3",
-			"x": 925,
-			"y": 1136,
-			"w": 360,
-			"align": "left",
-			"interligne": 1.12,
+			"x": 510,
+			"y": 1214,
+			"w": 220,
+			"align": "center",
+			"interligne": 1.15,
 			"lignes": [
 				[
 					{
 						"t": "Achat & conseil",
 						"police": "serif",
-						"taille": 38,
-						"graisse": 700,
+						"taille": 30,
+						"graisse": 600,
 						"couleur": "creme"
 					}
 				],
@@ -171,7 +171,7 @@
 					{
 						"t": "en magasin",
 						"police": "serif",
-						"taille": 31,
+						"taille": 25,
 						"italique": true,
 						"couleur": "orPale"
 					}
@@ -180,26 +180,26 @@
 		},
 		{
 			"id": "service-4",
-			"x": 260,
-			"y": 1230,
-			"w": 360,
-			"align": "left",
-			"interligne": 1.12,
+			"x": 730,
+			"y": 1214,
+			"w": 220,
+			"align": "center",
+			"interligne": 1.15,
 			"lignes": [
 				[
 					{
-						"t": "Conseil & élaboration",
+						"t": "Carte des vins",
 						"police": "serif",
-						"taille": 38,
-						"graisse": 700,
+						"taille": 30,
+						"graisse": 600,
 						"couleur": "creme"
 					}
 				],
 				[
 					{
-						"t": "de votre carte des vins",
+						"t": "pour les pros",
 						"police": "serif",
-						"taille": 31,
+						"taille": 25,
 						"italique": true,
 						"couleur": "orPale"
 					}
@@ -208,26 +208,26 @@
 		},
 		{
 			"id": "service-5",
-			"x": 725,
-			"y": 1230,
-			"w": 360,
-			"align": "left",
-			"interligne": 1.12,
+			"x": 950,
+			"y": 1214,
+			"w": 220,
+			"align": "center",
+			"interligne": 1.15,
 			"lignes": [
 				[
 					{
-						"t": "Célébrations, mariages",
+						"t": "Célébrations",
 						"police": "serif",
-						"taille": 38,
-						"graisse": 700,
+						"taille": 30,
+						"graisse": 600,
 						"couleur": "creme"
 					}
 				],
 				[
 					{
-						"t": "& événementiel",
+						"t": "& mariages",
 						"police": "serif",
-						"taille": 31,
+						"taille": 25,
 						"italique": true,
 						"couleur": "orPale"
 					}
@@ -245,10 +245,10 @@
 					{
 						"t": "NOUS TROUVER",
 						"police": "sans",
-						"taille": 19,
-						"graisse": 700,
+						"taille": 16,
+						"graisse": 600,
 						"couleur": "or",
-						"espacement": 5
+						"espacement": 4
 					}
 				]
 			]
@@ -256,7 +256,7 @@
 		{
 			"id": "adresse",
 			"x": 70,
-			"y": 1386,
+			"y": 1384,
 			"w": 540,
 			"align": "left",
 			"interligne": 1.25,
@@ -265,8 +265,8 @@
 					{
 						"t": "71 avenue de la Libération",
 						"police": "sans",
-						"taille": 31,
-						"graisse": 600,
+						"taille": 27,
+						"graisse": 500,
 						"couleur": "creme"
 					}
 				],
@@ -274,8 +274,8 @@
 					{
 						"t": "44400 Rezé",
 						"police": "sans",
-						"taille": 31,
-						"graisse": 600,
+						"taille": 27,
+						"graisse": 500,
 						"couleur": "creme"
 					}
 				]
@@ -284,7 +284,7 @@
 		{
 			"id": "adresse-precision",
 			"x": 70,
-			"y": 1468,
+			"y": 1462,
 			"w": 540,
 			"align": "left",
 			"lignes": [
@@ -292,7 +292,7 @@
 					{
 						"t": "En face du parking et du tram du 8 Mai",
 						"police": "sans",
-						"taille": 20,
+						"taille": 17,
 						"couleur": "orPale"
 					}
 				]
@@ -309,10 +309,10 @@
 					{
 						"t": "DU MARDI AU SAMEDI",
 						"police": "sans",
-						"taille": 19,
-						"graisse": 700,
+						"taille": 16,
+						"graisse": 600,
 						"couleur": "or",
-						"espacement": 5
+						"espacement": 4
 					}
 				]
 			]
@@ -320,7 +320,7 @@
 		{
 			"id": "horaires",
 			"x": 665,
-			"y": 1386,
+			"y": 1384,
 			"w": 510,
 			"align": "left",
 			"interligne": 1.2,
@@ -329,22 +329,22 @@
 					{
 						"t": "10h – 13h ",
 						"police": "sans",
-						"taille": 31,
-						"graisse": 600,
+						"taille": 27,
+						"graisse": 500,
 						"couleur": "creme"
 					},
 					{
 						"t": "·",
 						"police": "sans",
-						"taille": 31,
-						"graisse": 600,
+						"taille": 27,
+						"graisse": 500,
 						"couleur": "or"
 					},
 					{
 						"t": " 15h30 – 19h30",
 						"police": "sans",
-						"taille": 31,
-						"graisse": 600,
+						"taille": 27,
+						"graisse": 500,
 						"couleur": "creme"
 					}
 				]
@@ -353,7 +353,7 @@
 		{
 			"id": "telephone",
 			"x": 665,
-			"y": 1428,
+			"y": 1424,
 			"w": 510,
 			"align": "left",
 			"lignes": [
@@ -361,10 +361,10 @@
 					{
 						"t": "02 49 62 66 45",
 						"police": "sans",
-						"taille": 48,
-						"graisse": 700,
+						"taille": 44,
+						"graisse": 600,
 						"couleur": "creme",
-						"espacement": 2
+						"espacement": 1.5
 					}
 				]
 			]
@@ -380,10 +380,10 @@
 					{
 						"t": "EN LIGNE",
 						"police": "sans",
-						"taille": 19,
-						"graisse": 700,
+						"taille": 16,
+						"graisse": 600,
 						"couleur": "or",
-						"espacement": 5
+						"espacement": 4
 					}
 				]
 			]
@@ -391,17 +391,17 @@
 		{
 			"id": "en-ligne",
 			"x": 70,
-			"y": 1556,
+			"y": 1554,
 			"w": 540,
 			"align": "left",
-			"interligne": 1.35,
+			"interligne": 1.4,
 			"lignes": [
 				[
 					{
 						"t": "cave71.com",
 						"police": "sans",
-						"taille": 30,
-						"graisse": 600,
+						"taille": 26,
+						"graisse": 500,
 						"couleur": "creme"
 					}
 				],
@@ -409,16 +409,16 @@
 					{
 						"t": "contact.cave71@gmail.com",
 						"police": "sans",
-						"taille": 21,
-						"couleur": "creme"
+						"taille": 18,
+						"couleur": "cremeDoux"
 					}
 				],
 				[
 					{
 						"t": "Facebook : Cave 71",
 						"police": "sans",
-						"taille": 21,
-						"couleur": "creme"
+						"taille": 18,
+						"couleur": "cremeDoux"
 					}
 				]
 			]
@@ -435,17 +435,17 @@
 					{
 						"t": "SCANNEZ-MOI",
 						"police": "sans",
-						"taille": 19,
-						"graisse": 700,
+						"taille": 16,
+						"graisse": 600,
 						"couleur": "or",
-						"espacement": 5
+						"espacement": 4
 					}
 				],
 				[
 					{
 						"t": "Découvrez nos vins",
 						"police": "serif",
-						"taille": 31,
+						"taille": 28,
 						"italique": true,
 						"couleur": "creme"
 					}
@@ -454,7 +454,7 @@
 					{
 						"t": "& commandez en ligne",
 						"police": "serif",
-						"taille": 31,
+						"taille": 28,
 						"italique": true,
 						"couleur": "orPale"
 					}

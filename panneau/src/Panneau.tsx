@@ -35,14 +35,8 @@ const SANS = "'Montserrat', sans-serif";
 // Photo studio Gemini (bouteilles, jus, terrines, chocolat), fondue dans le fond par des bords en dégradé.
 const PHOTO = {x: 20, y: 408, w: 1200, ratio: 2000 / 1116};
 
-// Icônes des services, à gauche des blocs service-1..5 de textes.json.
-const ICONES = [
-	{nom: 'cadeau', x: 58, y: 1140},
-	{nom: 'verres', x: 448, y: 1140},
-	{nom: 'bouteille', x: 848, y: 1140},
-	{nom: 'carte', x: 183, y: 1234},
-	{nom: 'alliances', x: 648, y: 1234},
-];
+// Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
+const ICONES = ['cadeau', 'verres', 'bouteille', 'carte', 'alliances'].map((nom, i) => ({nom, x: 180 + 220 * i - 29, y: 1142}));
 
 const Icone: React.FC<{nom: string; couleur: string}> = ({nom, couleur}) => {
 	const trait = {fill: 'none', stroke: couleur, strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
@@ -188,8 +182,8 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 			{texte && <Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 98, left: (LARGEUR - 760) / 2, width: 760}} />}
 
 			{/* Filets autour du titre des services */}
-			<div style={{position: 'absolute', top: 1109, left: 220, width: 220, height: 1, background: K.or, opacity: 0.7}} />
-			<div style={{position: 'absolute', top: 1109, left: 800, width: 220, height: 1, background: K.or, opacity: 0.7}} />
+			<div style={{position: 'absolute', top: 1106, left: 250, width: 230, height: 1, background: K.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1106, left: 760, width: 230, height: 1, background: K.or, opacity: 0.6}} />
 
 			{ICONES.map((i) => (
 				<div
@@ -198,10 +192,10 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 						position: 'absolute',
 						left: i.x,
 						top: i.y,
-						width: 64,
-						height: 64,
+						width: 58,
+						height: 58,
 						borderRadius: '50%',
-						border: `1.2px solid ${K.or}`,
+						border: `1px solid ${K.or}`,
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
