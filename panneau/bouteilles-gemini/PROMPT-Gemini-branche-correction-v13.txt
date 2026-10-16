@@ -1,0 +1,22 @@
+=== MÊME CONVERSATION GEMINI, à la suite de la photo v13 (13 produits) ===
+Joindre ces 2 images, dans cet ordre :
+ 1. 1_whisky_Suntory_Toki.jpg
+ 2. 2_rose_Bastide_de_Blacailloux.jpg
+
+--- PROMPT À COLLER ---
+
+Très bien, on y est presque. Garde cette photo telle quelle : même ambiance, même lumière, même fond, même qualité, mêmes étiquettes. Le Tomatin, le Châteauneuf-du-Pape à gauche du Château de Gragnos, les deux bières, le sachet de chocolats et le grand pot de courgettes au premier plan sont parfaits.
+
+Il reste 4 problèmes de placement à corriger, rien d'autre :
+
+1. Le whisky Suntory Toki (image 1) est presque entièrement caché derrière le Tomatin. Mets-les CÔTE À CÔTE sur la même ligne, le Toki à gauche du Tomatin, avec l'étiquette du Toki entièrement visible.
+
+2. Le rosé Bastide de Blacailloux (image 2) est caché derrière le Tomatin et le Châteauneuf-du-Pape. Place-le sur la même ligne, entre le Tomatin et le Châteauneuf-du-Pape, avec son étiquette entièrement visible.
+
+3. Le pot de courgettes cache le bas de l'étiquette du Champagne Denis Frézier, et le pot Silure de Loire cache le bas de l'étiquette du Châteauneuf-du-Pape. Pour corriger : pose toutes les bouteilles sur une marche sombre légèrement surélevée à l'arrière, et les deux pots sur le niveau bas, devant, de sorte que le haut des pots arrive SOUS les étiquettes des bouteilles. Garde le pot de courgettes aussi grand et aussi en avant qu'aujourd'hui.
+
+4. L'étiquette du pot Silure de Loire est coupée par le pot de courgettes. Écarte un peu les deux pots pour que l'étiquette du Silure soit entière (« Goûts de Loire », « Silure de Loire »).
+
+Ordre final, de gauche à droite, toutes les bouteilles bien alignées et visibles : rhum La Favorite, jus de raisin Syrah, whisky Suntory Toki, whisky Tomatin Legacy, rosé Bastide de Blacailloux, Châteauneuf-du-Pape, Château de Gragnos, Champagne Denis Frézier, bière Lutgarde, bière Trompe Souris, sachet de chocolats. Les deux pots devant, au centre, sur le niveau bas.
+
+Pour que tout tienne, élargis l'image : format panoramique 2:1, plus large que l'actuel, la plus haute définition possible (4K). Exactement 13 produits, aucune étiquette cachée, aucun texte inventé, aucun autre objet.
