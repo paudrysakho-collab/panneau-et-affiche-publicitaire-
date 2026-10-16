@@ -1,0 +1,26 @@
+=== NOUVELLE CONVERSATION GEMINI ===
+Joindre ces 4 images, dans cet ordre :
+ 1. resultat_gemini_v10_11produits_final.jpg   (la photo actuelle, à modifier)
+ 2. whisky_Tomatin_Legacy_officiel.jpg
+ 3. whisky_Tomatin_Legacy_photo.jpg
+ 4. biere_Trompe_Souris_Blonde_photo.jpg
+
+--- PROMPT À COLLER ---
+
+Contexte : je tiens une cave à vin et épicerie fine, Cave 71, à Rezé. L'image 1 est la photo studio de mes produits pour l'affiche de mon panneau de trottoir. Elle est presque parfaite : garde exactement son ambiance (fond lie-de-vin très sombre, halo chaud au centre, lumière douce venant de la gauche, reflets sur le verre, ombres et reflets sur la surface sombre), sa qualité et ses étiquettes. Fais seulement ces modifications :
+
+1. AJOUTE le whisky Tomatin Legacy (images 2 et 3) : bouteille ronde et large en verre transparent, whisky doré, capsule bleue, grande inscription « TOMATIN », « HIGHLAND SINGLE MALT SCOTCH WHISKY », étiquette bleue « LEGACY ». Environ 28 cm de haut. Place-le juste à droite du whisky Suntory Toki.
+
+2. AJOUTE la bière Trompe Souris Blonde (image 4) : petite bouteille de bière brune de 33 cl (environ 23 cm), capsule jaune, étiquette illustrée colorée avec deux souris sur une mobylette bleue, le mot « BLONDE » et « TROMPE SOURIS – BIÈRE ARTISANALE ». Place-la juste à droite de la bière Lutgarde.
+
+3. ÉCHANGE la place du Château de Gragnos et du Châteauneuf-du-Pape : le Châteauneuf-du-Pape passe à gauche, le Château de Gragnos à droite.
+
+4. Le Champagne Denis Frézier doit être entièrement visible : aucun produit devant son étiquette.
+
+5. Avance nettement le pot de tartinable L'Atelier d'Émile « Courgettes grillées » vers l'objectif, plus bas dans l'image, à côté du pot « Silure de Loire », pour qu'il ne cache plus aucune étiquette de bouteille.
+
+Ordre final, de gauche à droite : rhum La Favorite, jus de raisin Syrah (petite bouteille devant), whisky Suntory Toki, whisky Tomatin Legacy, rosé Bastide de Blacailloux, Châteauneuf-du-Pape, Château de Gragnos, Champagne Denis Frézier, bière Lutgarde Blonde, bière Trompe Souris Blonde, sachet de chocolats Maison Guinguet. Les deux pots (Silure de Loire et Courgettes grillées) au premier plan, au centre, posés bas et en avant.
+
+Il y a donc exactement 13 produits, chacun une seule fois. Rapproche un peu les produits si besoin pour que tout tienne, sans en cacher aucun : toutes les étiquettes doivent rester entièrement visibles. Ne change pas les étiquettes des produits déjà présents, et reprends celles des nouveaux produits fidèlement d'après leurs photos, sans inventer de texte.
+
+Format paysage 16:9, la plus haute définition possible (4K si tu peux), rien de coupé, de la marge autour. Aucun autre objet, aucun texte ajouté.
