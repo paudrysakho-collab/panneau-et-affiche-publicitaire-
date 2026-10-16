@@ -1,0 +1,37 @@
+=== NOUVELLE CONVERSATION CHATGPT (génération d'images) ===
+Joindre UNE seule image : a_envoyer_chatgpt_v14.png
+
+--- PROMPT À COLLER ---
+
+Tu es retoucheur photo spécialisé en packshot de vins et spiritueux pour la publicité haut de gamme. Voici la photo finale de mes produits pour l'affiche de ma cave (impression grand format A1). La composition, les produits et les étiquettes sont VALIDÉS et doivent rester strictement identiques.
+
+TA SEULE MISSION : une passe de retouche finale « qualité impression », comme un export d'appareil moyen format après post-production. Pas une nouvelle image : la même photo, en mieux.
+
+CE QUE TU DOIS AMÉLIORER
+1. Netteté : contours des bouteilles, bouchons, capsules, couvercles et pots parfaitement nets, sans halo ni effet « surdécoupé ».
+2. Étiquettes : papier, gravures, dessins et lettres imprimés nets et propres, comme une vraie étiquette photographiée de près. Texture du papier fine et réaliste.
+3. Verre : reflets blancs francs et propres sur le verre, transparence du rhum, du whisky et du rosé lumineuse, profondeur du vin rouge dans les bouteilles sombres.
+4. Matières : grain du verre gravé du Châteauneuf-du-Pape, aluminium des capsules, sachet transparent et rose en papier du chocolat, morceaux de chocolat, couvercles noirs brillants des pots.
+5. Bruit : supprime le bruit numérique, les artefacts de compression et le flou, sans effet plastique ni lissage « IA ».
+6. Lumière : garde la même lumière douce venant de la gauche, juste un peu plus de micro-contraste et de relief. Noirs profonds mais pas bouchés.
+
+CE QUI NE DOIT PAS CHANGER (TRÈS IMPORTANT)
+- Même cadrage, même format panoramique, rien de recadré, rien de coupé, la surface brillante en bas avec les reflets des pots conservée.
+- Mêmes 13 produits, à la même place, à la même taille, dans le même ordre, de gauche à droite : rhum La Favorite, jus de raisin Syrah, whisky Suntory Toki, whisky Tomatin Legacy, rosé Bastide de Blacailloux, Châteauneuf-du-Pape Domaine Le Prieuré des Papes, Château de Gragnos Lou Daro, Champagne Denis Frézier, bière Lutgarde Blonde, bière Trompe Souris Blonde, sachet de chocolats Maison Guinguet ; devant : pot Goûts de Loire « Silure de Loire » et pot L'Atelier d'Émile « Tartinable de Courgettes grillées ».
+- Même fond lie-de-vin très sombre avec son halo chaud au centre, mêmes couleurs, même ambiance. Aucun objet ajouté ou retiré.
+- Les étiquettes ne doivent PAS être redessinées. Ne change aucun mot, aucune lettre, aucun logo, aucune illustration. Si tu dois rendre un texte plus net, recopie-le exactement :
+  • La Favorite : « DISTILLERIE », « La Favorite », « Cœur de Canne », « RHUM AGRICOLE AMBRÉ », « 2 ANS », « MARTINIQUE »
+  • Syrah : « 04 », « CÉPAGE », « SYRAH », « PUR JUS DE RAISINS », « SANS SUCRE AJOUTÉ* »
+  • Tomatin : « TOMATIN », « HIGHLAND SINGLE MALT », « SCOTCH WHISKY », « LEGACY », « BOURBON & VIRGIN OAK CASKS »
+  • Blacailloux : « BASTIDE DE BLACAILLOUX », « JOIO », « VIN DE PROVENCE »
+  • Châteauneuf : « DOMAINE », « LE PRIEURÉ DES PAPES », « Châteauneuf-du-Pape »
+  • Gragnos : « CHÂTEAU DE GRAGNOS », « DEPUIS 1710 », « LOU DARO »
+  • Frézier : « CHAMPAGNE », « Denis FRÉZIER », « Cuvée des Trois Crus », « PREMIER BRUT », « ESTATE BOTTLED »
+  • Lutgarde : « LUTGARDE », « BLONDE », « 33 cl »
+  • Trompe Souris : « BLONDE », « TROMPE SOURIS », « BIÈRE ARTISANALE »
+  • Chocolat : « MAISON GUINGUET », « CHOCOLAT NOIR »
+  • Pots : « GOÛTS DE LOIRE », « Silure de Loire », « à la Tomate séchée » ; « L'ATELIER d'Émile », « Fabriqué à la ferme », « Tartinable de », « COURGETTES », « GRILLÉES »
+  Un texte trop petit pour être lu doit rester tel quel, flou plutôt qu'inventé.
+
+RENDU
+Format paysage le plus large possible, en très haute définition, aucune marge ajoutée, aucun texte ni filigrane ajouté. Rendu photoréaliste, comme une vraie photo de studio, pas une illustration.
