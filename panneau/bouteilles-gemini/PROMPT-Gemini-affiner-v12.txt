@@ -1,0 +1,16 @@
+=== NOUVELLE CONVERSATION GEMINI (modèle « Pro » / Nano Banana Pro si disponible) ===
+Joindre UNE seule image :
+ 1. resultat_gemini_v12_final.jpg
+
+--- PROMPT À COLLER ---
+
+Voici la photo studio de mes produits pour l'affiche de ma cave à vin. La composition est validée : NE CHANGE RIEN. Même cadrage, mêmes produits, même place pour chacun, mêmes étiquettes, mêmes couleurs, même fond lie-de-vin, même lumière.
+
+Je te demande uniquement d'AFFINER l'image, comme une retouche finale de photographe :
+- plus de netteté et de détail sur le verre, les bouchons, les capsules et le papier des étiquettes ;
+- un rendu photo studio propre et homogène, sans flou ni bruit ;
+- le pot « L'Atelier d'Émile – Tartinable de Courgettes grillées » au premier plan doit avoir exactement la même lumière que les autres produits (lumière douce venant de la gauche, reflets blancs sur le verre et le couvercle noir, ombre douce et léger reflet sur la surface), pour qu'il paraisse photographié en même temps. Ne change ni sa taille, ni sa place, ni son étiquette.
+
+Ne réécris aucun texte, n'invente aucune lettre, n'ajoute ni ne retire aucun objet. Si un texte est trop petit pour être lisible, laisse-le tel quel.
+
+Rends l'image au même format (paysage, environ 2:1), dans la plus haute définition possible (4K).
