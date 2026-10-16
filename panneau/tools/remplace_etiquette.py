@@ -9,6 +9,7 @@ Usage (depuis panneau/) :
     Les rectangles C… (facultatifs, coordonnées de la photo) sont les parties de l'étiquette cachées par un
     autre produit placé devant : on n'y touche pas.
     Variable OVALE=1 : étiquette ovale (masque elliptique inscrit dans la boîte, source étirée à la boîte).
+    Variable ETIRER=1 : source étirée à la boîte (proportions proches), sans prolongement du papier.
 """
 import os
 import sys
@@ -33,7 +34,8 @@ def main():
 
     w, h = dx1 - dx0, dy1 - dy0
     ovale = os.environ.get('OVALE') == '1'
-    hs = h if ovale else int(round(src.shape[0] * w / src.shape[1]))
+    etirer = ovale or os.environ.get('ETIRER') == '1'
+    hs = h if etirer else int(round(src.shape[0] * w / src.shape[1]))
     src = cv2.resize(src, (w, hs), interpolation=cv2.INTER_CUBIC)
 
     # étiquette à la taille de la cible : papier prolongé (couleur des bords haut et bas)

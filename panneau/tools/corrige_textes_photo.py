@@ -158,7 +158,41 @@ CORRECTIONS_V12 = [
     dict(zone=(1846, 894, 1882, 909), mode='sombre', cap=4, texte='NOIR', police='serif', poids='Medium', x=1848, y=901.7, cap_texte=6.4, align='g', couleur=(52, 36, 30)),
 ]
 
-PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10), 'v12': (CORRECTIONS_V12, None)}
+# Photo à 13 produits tous visibles (resultat_gemini_v14_13produits.jpg) : les étiquettes de Gragnos,
+# Châteauneuf, Frézier, Blacailloux, Lutgarde, Trompe Souris, Syrah, Silure, courgettes et la plaquette
+# du chocolat sont recollées en entier (remplace_etiquette.py) ; restent ces textes.
+CORRECTIONS_V14 = [
+    # Rhum La Favorite
+    dict(zone=(118, 640, 146, 655), mode='sombre', texte=None, cap=5),
+    dict(zone=(180, 640, 208, 655), mode='sombre', texte=None, cap=5),
+    dict(zone=(122, 626, 204, 644), mode='sombre', texte='DISTILLERIE', police='serif', poids='Bold', arc=(163, 723.6, 89.6, 89.6, -114.4, -65.6), cap=7.6, couleur=(52, 38, 30)),
+    dict(zone=(122, 704, 174, 714), mode='sombre', texte='FONDÉE EN 1842', police='sans', poids='SemiBold', x=148, y=709, cap=3.2, align='c'),
+    dict(zone=(108, 764, 224, 780), mode='sombre', texte='Cœur de Canne', police='serif', poids='Bold', x=166, y=772, cap=8.4, align='c', couleur=(112, 58, 26), gras=2.0),
+    dict(zone=(108, 780, 226, 790), mode='sombre', texte='RHUM AGRICOLE AMBRÉ', police='sans', poids='SemiBold', x=166, y=784.5, cap=5.0, align='c'),
+    dict(zone=(156, 816, 180, 826), mode='clair', plein=True, texte='ANS', police='sans', poids='SemiBold', x=167, y=821, cap=3.6, align='c', couleur=(250, 240, 230)),
+    dict(zone=(86, 845, 248, 867), mode='clair', texte=None),
+    dict(texte="APPELLATION D'ORIGINE CONTRÔLÉE", police='sans', poids='Medium', x=166, y=850, cap=2.8, align='c', couleur=(214, 200, 175), visible=(86, 844, 248, 868)),
+    dict(texte='RÉCOLTÉ, DISTILLÉ ET MIS EN BOUTEILLE', police='sans', poids='Medium', x=166, y=856.5, cap=2.6, align='c', couleur=(214, 200, 175), visible=(86, 844, 248, 868)),
+    dict(texte='À LA DISTILLERIE LA FAVORITE PAR LA FAMILLE DORMOY', police='sans', poids='Medium', x=166, y=862.5, cap=2.6, align='c', couleur=(214, 200, 175), visible=(86, 844, 248, 868)),
+    # Whisky Tomatin Legacy (le rosé passe devant à droite)
+    dict(zone=(510, 571, 543, 584), mode='clair', texte='ESTD', police='serif', poids='SemiBold', x=526, y=577.5, cap=7.0, align='c', couleur=CREME_TOM),
+    dict(zone=(634, 571, 664, 584), mode='clair', texte='1897', police='serif', poids='SemiBold', x=648, y=577.5, cap=7.0, align='c', couleur=CREME_TOM),
+    dict(zone=(498, 629, 692, 647), mode='clair', texte='HIGHLAND SINGLE MALT', police='serif', poids='SemiBold', x=587, y=638, cap=9.6, align='c', couleur=CREME_TOM, visible=(490, 625, 692, 650)),
+    dict(zone=(500, 723, 672, 752), mode='clair', texte=None, cap=3),
+    dict(texte='TIME IN BOURBON BARRELS AND VIRGIN OAK CASKS BRINGS A LIGHT', police='sans', poids='Medium', x=586, y=729.5, cap=2.8, align='c', couleur=CREME_TOM),
+    dict(texte='SWEETNESS TO THE TOMATIN LEGACY, WHICH BOASTS AROMAS OF', police='sans', poids='Medium', x=586, y=737.5, cap=2.8, align='c', couleur=CREME_TOM),
+    dict(texte='VANILLA, WHITE CHOCOLATE AND FRESH FRUIT.', police='sans', poids='Medium', x=586, y=745.5, cap=2.8, align='c', couleur=CREME_TOM),
+    dict(zone=(506, 756, 666, 771), mode='sombre', plein=True, texte='BOURBON & VIRGIN OAK CASKS', police='serif', poids='SemiBold', x=586, y=764.5, cap=6.0, align='c', couleur=(58, 44, 30)),
+    dict(zone=(500, 770, 668, 790), mode='sombre', plein=True, texte=None, cap=3),
+    dict(texte='DISTILLED AND BOTTLED IN SCOTLAND', police='sans', poids='Medium', x=586, y=777.5, cap=2.6, align='c', couleur=(70, 56, 40)),
+    dict(texte='THE TOMATIN DISTILLERY CO LTD IV13 7YT', police='sans', poids='Medium', x=586, y=784.5, cap=2.6, align='c', couleur=(70, 56, 40)),
+    dict(texte='43%', police='sans', poids='Medium', x=664, y=781, cap=3.0, align='d', couleur=(70, 56, 40)),
+    dict(texte='70cl', police='sans', poids='Medium', x=506, y=781, cap=3.0, align='g', couleur=(70, 56, 40)),
+    # Sachet Maison Guinguet
+    dict(zone=(1782, 828, 1858, 845), mode='clair', texte='GUINGUET', police='serif', poids='Medium', x=1820, y=836.7, cap=9.0, align='c', couleur=(226, 212, 196)),
+]
+
+PHOTOS = {'v8': (CORRECTIONS_V8, TOMATE_V8), 'v10': (CORRECTIONS_V10, TOMATE_V10), 'v12': (CORRECTIONS_V12, None), 'v14': (CORRECTIONS_V14, None)}
 
 
 def lum(a):

@@ -36,7 +36,7 @@ const SANS = "'Montserrat', sans-serif";
 const PHOTO = {x: 20, y: 408, w: 1200};
 // proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
 const PHOTOS = {
-	sombre: {src: 'vitrine_sombre.jpg', ratio: 2000 / 1053, dy: 14},
+	sombre: {src: 'vitrine_sombre.jpg', ratio: 2000 / 989, dy: 33},
 	clair: {src: 'vitrine_clair.jpg', ratio: 2000 / 1116, dy: 0},
 };
 
