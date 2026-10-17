@@ -8,6 +8,9 @@ Usage (depuis panneau/) :
     python3 tools/make_pptx.py
     npx remotion still src/index.ts PanneauClairFond exports/fond-clair.png --scale=2.829
     python3 tools/make_pptx.py --clair
+Variante de couleur (nom de palette : safran, corail, anis, turquoise, framboise…) :
+    npx remotion still src/index.ts PanneauOcreFond exports/fond-safran.png --scale=2.829
+    python3 tools/make_pptx.py --palette safran
 """
 import sys
 import json
@@ -39,6 +42,59 @@ COULEURS_CLAIR = {
     'creme': (0x2A, 0x16, 0x19),
     'cremeDoux': (0x5E, 0x4E, 0x4D),
 }
+
+# Variantes de couleur : mêmes valeurs que PALETTES dans src/Panneau.tsx.
+COULEURS_VARIANTES = {
+    'grenat': {
+        'or': (0xEA, 0xC4, 0x70),
+        'orPale': (0xF6, 0xE3, 0xB0),
+        'creme': (0xFF, 0xF7, 0xEC),
+        'cremeDoux': (0xC8, 0xBD, 0xB6),
+    },
+    'vert': {
+        'or': (0xDC, 0xB7, 0x5E),
+        'orPale': (0xEF, 0xE0, 0xAA),
+        'creme': (0xF5, 0xF2, 0xE6),
+        'cremeDoux': (0xB6, 0xB7, 0xAD),
+    },
+    'bleu': {
+        'or': (0xE2, 0xBC, 0x63),
+        'orPale': (0xF1, 0xDF, 0xA9),
+        'creme': (0xF1, 0xF3, 0xEF),
+        'cremeDoux': (0xB3, 0xB6, 0xB6),
+    },
+    'safran': {
+        'or': (0x8C, 0x22, 0x13),
+        'orPale': (0x9C, 0x3A, 0x1C),
+        'creme': (0x2A, 0x11, 0x08),
+        'cremeDoux': (0x5D, 0x3C, 0x16),
+    },
+    'corail': {
+        'or': (0x73, 0x16, 0x2A),
+        'orPale': (0x8C, 0x2A, 0x36),
+        'creme': (0x3B, 0x0F, 0x10),
+        'cremeDoux': (0x6A, 0x2D, 0x27),
+    },
+    'anis': {
+        'or': (0x45, 0x61, 0x0F),
+        'orPale': (0x55, 0x73, 0x1A),
+        'creme': (0x1E, 0x2B, 0x06),
+        'cremeDoux': (0x49, 0x58, 0x19),
+    },
+    'turquoise': {
+        'or': (0x0D, 0x55, 0x5E),
+        'orPale': (0x13, 0x68, 0x72),
+        'creme': (0x07, 0x26, 0x2A),
+        'cremeDoux': (0x1E, 0x50, 0x55),
+    },
+    'framboise': {
+        'or': (0x7D, 0x17, 0x38),
+        'orPale': (0x9A, 0x24, 0x48),
+        'creme': (0x3A, 0x0A, 0x1C),
+        'cremeDoux': (0x69, 0x28, 0x3E),
+    },
+}
+
 POLICES = {'serif': 'Cormorant Garamond', 'sans': 'Montserrat'}
 ALIGN = {'left': PP_ALIGN.LEFT, 'center': PP_ALIGN.CENTER, 'right': PP_ALIGN.RIGHT}
 
@@ -48,9 +104,15 @@ def px(v):
 
 
 def main():
+    # --clair pour la version crème, --palette <nom> pour une variante de couleur
     clair = '--clair' in sys.argv
-    couleurs = COULEURS_CLAIR if clair else COULEURS
-    suffixe = '-clair' if clair else ''
+    variante = sys.argv[sys.argv.index('--palette') + 1] if '--palette' in sys.argv else None
+    if variante:
+        couleurs = COULEURS_VARIANTES[variante]
+        suffixe = f'-{variante}'
+    else:
+        couleurs = COULEURS_CLAIR if clair else COULEURS
+        suffixe = '-clair' if clair else ''
     textes = json.loads((RACINE / 'src/textes.json').read_text(encoding='utf-8'))
 
     fond_png = RACINE / f'exports/fond{suffixe}.png'
@@ -99,7 +161,11 @@ def main():
                         rpr.append(el)
                     el.set('typeface', POLICES[seg['police']])
 
-    sortie = RACINE / f'exports/panneau-cave71-A1{suffixe}-modifiable.pptx'
+    sortie = (
+        RACINE / f'exports/variantes/cave71-A1-{variante}-modifiable.pptx'
+        if variante
+        else RACINE / f'exports/panneau-cave71-A1{suffixe}-modifiable.pptx'
+    )
     prs.save(sortie)
     print(sortie)
 

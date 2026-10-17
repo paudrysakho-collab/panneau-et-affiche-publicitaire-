@@ -1,446 +1,446 @@
 {
-	"_note": "Coordonnées en px sur la toile 1240 x 1754 (A1, stop-trottoir). Tailles grandes pour une lecture à distance. Utilisé par l'affiche Remotion et par le PPTX modifiable.",
-	"blocs": [
-		{
-			"id": "surtitre",
-			"x": 0,
-			"y": 60,
-			"w": 1240,
-			"align": "center",
-			"lignes": [
-				[
-					{
-						"t": "VOTRE CAVISTE À REZÉ",
-						"police": "sans",
-						"taille": 17,
-						"graisse": 500,
-						"couleur": "or",
-						"espacement": 5
-					}
-				]
-			]
-		},
-		{
-			"id": "titre",
-			"x": 0,
-			"y": 258,
-			"w": 1240,
-			"align": "center",
-			"interligne": 1,
-			"lignes": [
-				[
-					{
-						"t": "Vins, spiritueux ",
-						"police": "serif",
-						"taille": 94,
-						"graisse": 500,
-						"italique": true,
-						"couleur": "creme"
-					},
-					{
-						"t": "&",
-						"police": "serif",
-						"taille": 94,
-						"graisse": 500,
-						"italique": true,
-						"couleur": "or"
-					},
-					{
-						"t": " épicerie fine",
-						"police": "serif",
-						"taille": 94,
-						"graisse": 500,
-						"italique": true,
-						"couleur": "creme"
-					}
-				]
-			]
-		},
-		{
-			"id": "sous-titre",
-			"x": 0,
-			"y": 368,
-			"w": 1240,
-			"align": "center",
-			"lignes": [
-				[
-					{
-						"t": "DOMAINES · DISTILLERIES · ARTISANS DU TERROIR",
-						"police": "sans",
-						"taille": 23,
-						"graisse": 500,
-						"couleur": "orPale",
-						"espacement": 6
-					}
-				]
-			]
-		},
-		{
-			"id": "services-titre",
-			"x": 370,
-			"y": 1094,
-			"w": 500,
-			"align": "center",
-			"lignes": [
-				[
-					{
-						"t": "À LA CAVE 71",
-						"police": "sans",
-						"taille": 22,
-						"graisse": 600,
-						"couleur": "or",
-						"espacement": 6
-					}
-				]
-			]
-		},
-		{
-			"id": "service-1",
-			"x": 70,
-			"y": 1218,
-			"w": 220,
-			"align": "center",
-			"interligne": 1.15,
-			"lignes": [
-				[
-					{
-						"t": "Coffrets",
-						"police": "serif",
-						"taille": 33,
-						"graisse": 600,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "& idées cadeaux",
-						"police": "serif",
-						"taille": 27,
-						"italique": true,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "service-2",
-			"x": 290,
-			"y": 1218,
-			"w": 220,
-			"align": "center",
-			"interligne": 1.15,
-			"lignes": [
-				[
-					{
-						"t": "Soirées",
-						"police": "serif",
-						"taille": 33,
-						"graisse": 600,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "œnologiques",
-						"police": "serif",
-						"taille": 27,
-						"italique": true,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "service-3",
-			"x": 510,
-			"y": 1218,
-			"w": 220,
-			"align": "center",
-			"interligne": 1.15,
-			"lignes": [
-				[
-					{
-						"t": "Achat & conseil",
-						"police": "serif",
-						"taille": 33,
-						"graisse": 600,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "en magasin",
-						"police": "serif",
-						"taille": 27,
-						"italique": true,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "service-4",
-			"x": 730,
-			"y": 1218,
-			"w": 220,
-			"align": "center",
-			"interligne": 1.15,
-			"lignes": [
-				[
-					{
-						"t": "Carte des vins",
-						"police": "serif",
-						"taille": 33,
-						"graisse": 600,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "pour les pros",
-						"police": "serif",
-						"taille": 27,
-						"italique": true,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "service-5",
-			"x": 950,
-			"y": 1218,
-			"w": 220,
-			"align": "center",
-			"interligne": 1.15,
-			"lignes": [
-				[
-					{
-						"t": "Célébrations",
-						"police": "serif",
-						"taille": 33,
-						"graisse": 600,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "& mariages",
-						"police": "serif",
-						"taille": 27,
-						"italique": true,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "adresse-titre",
-			"x": 75,
-			"y": 1370,
-			"w": 540,
-			"align": "center",
-			"interligne": 1.2,
-			"lignes": [
-				[
-					{
-						"t": "NOUS TROUVER",
-						"police": "sans",
-						"taille": 17,
-						"graisse": 600,
-						"couleur": "or",
-						"espacement": 4
-					}
-				]
-			]
-		},
-		{
-			"id": "adresse",
-			"x": 75,
-			"y": 1400,
-			"w": 540,
-			"align": "center",
-			"interligne": 1.3,
-			"lignes": [
-				[
-					{
-						"t": "71 avenue de la Libération",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "44400 Rezé",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "creme"
-					}
-				]
-			]
-		},
-		{
-			"id": "adresse-precision",
-			"x": 75,
-			"y": 1474,
-			"w": 540,
-			"align": "center",
-			"interligne": 1.2,
-			"lignes": [
-				[
-					{
-						"t": "En face du parking et du tram du 8 Mai",
-						"police": "sans",
-						"taille": 19,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "horaires-titre",
-			"x": 660,
-			"y": 1392,
-			"w": 500,
-			"align": "center",
-			"interligne": 1.2,
-			"lignes": [
-				[
-					{
-						"t": "DU MARDI AU SAMEDI",
-						"police": "sans",
-						"taille": 17,
-						"graisse": 600,
-						"couleur": "or",
-						"espacement": 4
-					}
-				]
-			]
-		},
-		{
-			"id": "telephone",
-			"x": 660,
-			"y": 1420,
-			"w": 500,
-			"align": "center",
-			"interligne": 1.2,
-			"lignes": [
-				[
-					{
-						"t": "02 49 62 66 45",
-						"police": "sans",
-						"taille": 34,
-						"graisse": 600,
-						"couleur": "creme",
-						"espacement": 1.5
-					}
-				]
-			]
-		},
-		{
-			"id": "en-ligne-titre",
-			"x": 75,
-			"y": 1534,
-			"w": 540,
-			"align": "center",
-			"interligne": 1.2,
-			"lignes": [
-				[
-					{
-						"t": "EN LIGNE",
-						"police": "sans",
-						"taille": 17,
-						"graisse": 600,
-						"couleur": "or",
-						"espacement": 4
-					}
-				]
-			]
-		},
-		{
-			"id": "en-ligne",
-			"x": 75,
-			"y": 1564,
-			"w": 540,
-			"align": "center",
-			"interligne": 1.35,
-			"lignes": [
-				[
-					{
-						"t": "cave71.com",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "creme"
-					}
-				],
-				[
-					{
-						"t": "contact.cave71@gmail.com",
-						"police": "sans",
-						"taille": 19,
-						"couleur": "orPale"
-					}
-				],
-				[
-					{
-						"t": "Facebook : Cave 71",
-						"police": "sans",
-						"taille": 19,
-						"couleur": "orPale"
-					}
-				]
-			]
-		},
-		{
-			"id": "qr-texte",
-			"x": 852,
-			"y": 1560,
-			"w": 320,
-			"align": "left",
-			"interligne": 1.45,
-			"lignes": [
-				[
-					{
-						"t": "SCANNEZ-MOI",
-						"police": "sans",
-						"taille": 17,
-						"graisse": 600,
-						"couleur": "or",
-						"espacement": 4
-					}
-				],
-				[
-					{
-						"t": "Découvrez nos vins",
-						"police": "sans",
-						"taille": 27,
-						"graisse": 500,
-						"couleur": "creme"
-					}
-				]
-			]
-		},
-		{
-			"id": "mention-legale",
-			"x": 0,
-			"y": 1690,
-			"w": 1240,
-			"align": "center",
-			"lignes": [
-				[
-					{
-						"t": "L’abus d’alcool est dangereux pour la santé, à consommer avec modération.",
-						"police": "sans",
-						"taille": 15,
-						"couleur": "cremeDoux",
-						"espacement": 0.4
-					}
-				]
-			]
-		}
-	]
+  "_note": "Coordonnées en px sur la toile 1240 x 1754 (A1, stop-trottoir). Tailles grandes pour une lecture à distance. Utilisé par l'affiche Remotion et par le PPTX modifiable.",
+  "blocs": [
+    {
+      "id": "surtitre",
+      "x": 0,
+      "y": 60,
+      "w": 1240,
+      "align": "center",
+      "lignes": [
+        [
+          {
+            "t": "VOTRE CAVISTE À REZÉ",
+            "police": "sans",
+            "taille": 17,
+            "graisse": 500,
+            "couleur": "or",
+            "espacement": 5
+          }
+        ]
+      ]
+    },
+    {
+      "id": "titre",
+      "x": 0,
+      "y": 264,
+      "w": 1240,
+      "align": "center",
+      "interligne": 1,
+      "lignes": [
+        [
+          {
+            "t": "Vins, bières, spiritueux ",
+            "police": "serif",
+            "taille": 82,
+            "graisse": 500,
+            "italique": true,
+            "couleur": "creme"
+          },
+          {
+            "t": "&",
+            "police": "serif",
+            "taille": 82,
+            "graisse": 500,
+            "italique": true,
+            "couleur": "or"
+          },
+          {
+            "t": " épicerie fine",
+            "police": "serif",
+            "taille": 82,
+            "graisse": 500,
+            "italique": true,
+            "couleur": "creme"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "sous-titre",
+      "x": 0,
+      "y": 368,
+      "w": 1240,
+      "align": "center",
+      "lignes": [
+        [
+          {
+            "t": "DOMAINES · DISTILLERIES · ARTISANS DU TERROIR",
+            "police": "sans",
+            "taille": 23,
+            "graisse": 500,
+            "couleur": "orPale",
+            "espacement": 6
+          }
+        ]
+      ]
+    },
+    {
+      "id": "services-titre",
+      "x": 370,
+      "y": 1094,
+      "w": 500,
+      "align": "center",
+      "lignes": [
+        [
+          {
+            "t": "À LA CAVE 71",
+            "police": "sans",
+            "taille": 22,
+            "graisse": 600,
+            "couleur": "or",
+            "espacement": 6
+          }
+        ]
+      ]
+    },
+    {
+      "id": "service-1",
+      "x": 70,
+      "y": 1218,
+      "w": 220,
+      "align": "center",
+      "interligne": 1.15,
+      "lignes": [
+        [
+          {
+            "t": "Coffrets",
+            "police": "serif",
+            "taille": 33,
+            "graisse": 600,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "& idées cadeaux",
+            "police": "serif",
+            "taille": 27,
+            "italique": true,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "service-2",
+      "x": 290,
+      "y": 1218,
+      "w": 220,
+      "align": "center",
+      "interligne": 1.15,
+      "lignes": [
+        [
+          {
+            "t": "Soirées",
+            "police": "serif",
+            "taille": 33,
+            "graisse": 600,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "œnologiques",
+            "police": "serif",
+            "taille": 27,
+            "italique": true,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "service-3",
+      "x": 510,
+      "y": 1218,
+      "w": 220,
+      "align": "center",
+      "interligne": 1.15,
+      "lignes": [
+        [
+          {
+            "t": "Achat & conseil",
+            "police": "serif",
+            "taille": 33,
+            "graisse": 600,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "en magasin",
+            "police": "serif",
+            "taille": 27,
+            "italique": true,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "service-4",
+      "x": 730,
+      "y": 1218,
+      "w": 220,
+      "align": "center",
+      "interligne": 1.15,
+      "lignes": [
+        [
+          {
+            "t": "Carte des vins",
+            "police": "serif",
+            "taille": 33,
+            "graisse": 600,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "pour les pros",
+            "police": "serif",
+            "taille": 27,
+            "italique": true,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "service-5",
+      "x": 950,
+      "y": 1218,
+      "w": 220,
+      "align": "center",
+      "interligne": 1.15,
+      "lignes": [
+        [
+          {
+            "t": "Célébrations",
+            "police": "serif",
+            "taille": 33,
+            "graisse": 600,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "& mariages",
+            "police": "serif",
+            "taille": 27,
+            "italique": true,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "adresse-titre",
+      "x": 75,
+      "y": 1370,
+      "w": 540,
+      "align": "center",
+      "interligne": 1.2,
+      "lignes": [
+        [
+          {
+            "t": "NOUS TROUVER",
+            "police": "sans",
+            "taille": 17,
+            "graisse": 600,
+            "couleur": "or",
+            "espacement": 4
+          }
+        ]
+      ]
+    },
+    {
+      "id": "adresse",
+      "x": 75,
+      "y": 1400,
+      "w": 540,
+      "align": "center",
+      "interligne": 1.3,
+      "lignes": [
+        [
+          {
+            "t": "71 avenue de la Libération",
+            "police": "sans",
+            "taille": 27,
+            "graisse": 500,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "44400 Rezé",
+            "police": "sans",
+            "taille": 27,
+            "graisse": 500,
+            "couleur": "creme"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "adresse-precision",
+      "x": 75,
+      "y": 1474,
+      "w": 540,
+      "align": "center",
+      "interligne": 1.2,
+      "lignes": [
+        [
+          {
+            "t": "En face du parking et du tram du 8 Mai",
+            "police": "sans",
+            "taille": 19,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "horaires-titre",
+      "x": 660,
+      "y": 1392,
+      "w": 500,
+      "align": "center",
+      "interligne": 1.2,
+      "lignes": [
+        [
+          {
+            "t": "DU MARDI AU SAMEDI",
+            "police": "sans",
+            "taille": 17,
+            "graisse": 600,
+            "couleur": "or",
+            "espacement": 4
+          }
+        ]
+      ]
+    },
+    {
+      "id": "telephone",
+      "x": 660,
+      "y": 1420,
+      "w": 500,
+      "align": "center",
+      "interligne": 1.2,
+      "lignes": [
+        [
+          {
+            "t": "02 49 62 66 45",
+            "police": "sans",
+            "taille": 34,
+            "graisse": 600,
+            "couleur": "creme",
+            "espacement": 1.5
+          }
+        ]
+      ]
+    },
+    {
+      "id": "en-ligne-titre",
+      "x": 75,
+      "y": 1534,
+      "w": 540,
+      "align": "center",
+      "interligne": 1.2,
+      "lignes": [
+        [
+          {
+            "t": "EN LIGNE",
+            "police": "sans",
+            "taille": 17,
+            "graisse": 600,
+            "couleur": "or",
+            "espacement": 4
+          }
+        ]
+      ]
+    },
+    {
+      "id": "en-ligne",
+      "x": 75,
+      "y": 1564,
+      "w": 540,
+      "align": "center",
+      "interligne": 1.35,
+      "lignes": [
+        [
+          {
+            "t": "cave71.com",
+            "police": "sans",
+            "taille": 27,
+            "graisse": 500,
+            "couleur": "creme"
+          }
+        ],
+        [
+          {
+            "t": "contact.cave71@gmail.com",
+            "police": "sans",
+            "taille": 19,
+            "couleur": "orPale"
+          }
+        ],
+        [
+          {
+            "t": "Facebook : Cave 71",
+            "police": "sans",
+            "taille": 19,
+            "couleur": "orPale"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "qr-texte",
+      "x": 852,
+      "y": 1560,
+      "w": 320,
+      "align": "left",
+      "interligne": 1.45,
+      "lignes": [
+        [
+          {
+            "t": "SCANNEZ-MOI",
+            "police": "sans",
+            "taille": 17,
+            "graisse": 600,
+            "couleur": "or",
+            "espacement": 4
+          }
+        ],
+        [
+          {
+            "t": "Découvrez nos vins",
+            "police": "sans",
+            "taille": 27,
+            "graisse": 500,
+            "couleur": "creme"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "mention-legale",
+      "x": 0,
+      "y": 1690,
+      "w": 1240,
+      "align": "center",
+      "lignes": [
+        [
+          {
+            "t": "L’abus d’alcool est dangereux pour la santé, à consommer avec modération.",
+            "police": "sans",
+            "taille": 15,
+            "couleur": "cremeDoux",
+            "espacement": 0.4
+          }
+        ]
+      ]
+    }
+  ]
 }

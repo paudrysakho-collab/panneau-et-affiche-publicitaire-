@@ -7,6 +7,23 @@ import textes from './textes.json';
 export const LARGEUR = 1240;
 export const HAUTEUR = 1754;
 
+// Palettes du stop-trottoir. Mêmes noms de couleurs, autres valeurs : les textes de src/textes.json
+// désignent « or », « creme »… et suivent la palette choisie.
+//   photo : la photo de groupe recolorée pour ce fond (tools/photo_couleur.py, tools/photo_claire_finale.py)
+//   halo  : les trois arrêts du dégradé radial derrière les produits, et sa taille
+export type Palette = {
+	encre: string;
+	vin: string;
+	bordeaux: string;
+	or: string;
+	orPale: string;
+	creme: string;
+	cremeDoux: string;
+	photo: Cle;
+	halo: [string, string, string];
+	haloTaille: string;
+};
+
 // Version sombre : le lie-de-vin de la photo studio, prolongé sur toute l'affiche.
 export const C: Record<string, string> = {
 	encre: '#0f0405',
@@ -18,7 +35,7 @@ export const C: Record<string, string> = {
 	cremeDoux: 'rgba(244,236,224,0.72)',
 };
 
-// Version claire : le blanc chaud de la photo studio. Mêmes noms de couleurs, autres valeurs.
+// Version claire : le blanc chaud de la photo studio.
 export const CLAIR: Record<string, string> = {
 	encre: '#f3ebe1',
 	vin: '#fbf7f1',
@@ -29,6 +46,117 @@ export const CLAIR: Record<string, string> = {
 	cremeDoux: 'rgba(42,22,25,0.68)',
 };
 
+export const PALETTES: Record<string, Palette> = {
+	// 1. lie-de-vin : la version validée, sobre et chic
+	sombre: {...C, photo: 'sombre', halo: ['#4a1a20', '#2a0c10', 'rgba(15,4,5,0)'], haloTaille: '820px 760px'} as Palette,
+	// 2. crème : la plus lisible en plein jour, sur un trottoir gris
+	clair: {...CLAIR, photo: 'clair', halo: ['#fbf7f1', '#f5eee5', 'rgba(234,221,204,0.9)'], haloTaille: '900px 900px'} as Palette,
+	// 3. grenat : le même monde du vin, mais un rouge vif qui se voit de loin
+	grenat: {
+		encre: '#1a0509',
+		vin: '#8a1a2c',
+		bordeaux: '#7d1530',
+		or: '#eac470',
+		orPale: '#f6e3b0',
+		creme: '#fff7ec',
+		cremeDoux: 'rgba(255,247,236,0.76)',
+		photo: 'grenat',
+		halo: ['#8a1a2c', '#4a0d18', 'rgba(26,5,9,0)'],
+		haloTaille: '860px 790px',
+	},
+	// 4. vert bouteille : très « cave », et le verre ambré des bouteilles y ressort
+	vert: {
+		encre: '#04100a',
+		vin: '#12452c',
+		bordeaux: '#7d1530',
+		or: '#dcb75e',
+		orPale: '#efe0aa',
+		creme: '#f5f2e6',
+		cremeDoux: 'rgba(245,242,230,0.74)',
+		photo: 'vert',
+		halo: ['#12452c', '#0a2418', 'rgba(4,16,10,0)'],
+		haloTaille: '840px 770px',
+	},
+	// 5. bleu nuit : le fond froid qui fait le plus ressortir l'or et l'ambre
+	bleu: {
+		encre: '#030a12',
+		vin: '#143353',
+		bordeaux: '#7d1530',
+		or: '#e2bc63',
+		orPale: '#f1dfa9',
+		creme: '#f1f3ef',
+		cremeDoux: 'rgba(241,243,239,0.74)',
+		photo: 'bleu',
+		halo: ['#143353', '#0a1c2f', 'rgba(3,10,18,0)'],
+		haloTaille: '840px 770px',
+	},
+	// 6. safran : fond clair et chaud, texte bordeaux — chaleureux et très visible
+	safran: {
+		encre: '#eeb63f',
+		vin: '#fbdf99',
+		bordeaux: '#7d1530',
+		or: '#8c2213',
+		orPale: '#9c3a1c',
+		creme: '#2a1108',
+		cremeDoux: 'rgba(42,17,8,0.74)',
+		photo: 'safran',
+		halo: ['#fbdf99', '#f2c45c', 'rgba(226,163,42,0.95)'],
+		haloTaille: '900px 900px',
+	},
+	// 7. corail : le plus chaud, impossible à rater sur un trottoir gris
+	corail: {
+		encre: '#f0836a',
+		vin: '#fbb59f',
+		bordeaux: '#7d1530',
+		or: '#73162a',
+		orPale: '#8c2a36',
+		creme: '#3b0f10',
+		cremeDoux: 'rgba(59,15,16,0.74)',
+		photo: 'corail',
+		halo: ['#fbb59f', '#f29070', 'rgba(224,106,74,0.95)'],
+		haloTaille: '900px 900px',
+	},
+	// 8. anis : vert tendre et frais, côté épicerie fine et produits du terroir
+	anis: {
+		encre: '#c3d94f',
+		vin: '#e4f09c',
+		bordeaux: '#7d1530',
+		or: '#45610f',
+		orPale: '#55731a',
+		creme: '#1e2b06',
+		cremeDoux: 'rgba(30,43,6,0.74)',
+		photo: 'anis',
+		halo: ['#e4f09c', '#cbe063', 'rgba(176,200,58,0.95)'],
+		haloTaille: '900px 900px',
+	},
+	// 9. turquoise : la couleur la plus opposée à l'ambre des bouteilles, donc celle qui les fait ressortir
+	turquoise: {
+		encre: '#5fc6cf',
+		vin: '#aee6ea',
+		bordeaux: '#7d1530',
+		or: '#0d555e',
+		orPale: '#136872',
+		creme: '#07262a',
+		cremeDoux: 'rgba(7,38,42,0.74)',
+		photo: 'turquoise',
+		halo: ['#aee6ea', '#74ccd4', 'rgba(62,174,186,0.95)'],
+		haloTaille: '900px 900px',
+	},
+	// 10. framboise : clair et gai, du côté des rosés
+	framboise: {
+		encre: '#ef7f9e',
+		vin: '#fbb3c5',
+		bordeaux: '#7d1530',
+		or: '#7d1738',
+		orPale: '#9a2448',
+		creme: '#3a0a1c',
+		cremeDoux: 'rgba(58,10,28,0.74)',
+		photo: 'framboise',
+		halo: ['#fbb3c5', '#f293ab', 'rgba(226,99,133,0.95)'],
+		haloTaille: '900px 900px',
+	},
+};
+
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
@@ -37,11 +165,33 @@ const PHOTO = {x: 20, y: 408, w: 1200};
 // proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
 // w : largeur affichée (sinon PHOTO.w), h : hauteur imposée (photo plus haute que large : centrée, moins large),
 // cote : fondu à gauche et à droite (%), bas : début du fondu du bas (%)
-type Cle = 'sombre' | 'clair' | 'vitrine' | 'rangee' | 'gradins';
+type Cle =
+	| 'sombre'
+	| 'clair'
+	| 'grenat'
+	| 'vert'
+	| 'bleu'
+	| 'safran'
+	| 'corail'
+	| 'anis'
+	| 'turquoise'
+	| 'framboise'
+	| 'vitrine'
+	| 'rangee'
+	| 'gradins';
 const PHOTOS: Record<Cle, {src: string; ratio: number; dy: number; haut: number; cote?: number; h?: number; bas?: number}> = {
 	// photo de groupe validée par le client (13 produits sur la marche noire, sol brillant)
 	sombre: {src: 'photo_finale_sombre.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	clair: {src: 'photo_finale_claire.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	// la même photo, son décor repeint pour les autres fonds (même cadrage, mêmes réglages)
+	grenat: {src: 'photo_finale_grenat.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	vert: {src: 'photo_finale_vert.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	bleu: {src: 'photo_finale_bleu.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	safran: {src: 'photo_finale_safran.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	corail: {src: 'photo_finale_corail.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	anis: {src: 'photo_finale_anis.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	turquoise: {src: 'photo_finale_turquoise.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	framboise: {src: 'photo_finale_framboise.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	// ancienne photo (ChatGPT v15 aux étiquettes recollées), gardée pour comparaison
 	vitrine: {src: 'vitrine_sombre.jpg', ratio: 1693 / 929, dy: 8, haut: 6},
 	// photos composées à partir des vrais produits détourés (tools/compose_produits.py)
@@ -121,7 +271,7 @@ const Polices: React.FC = () => {
 type Segment = {t: string; police: string; taille: number; graisse?: number; italique?: boolean; couleur: string; espacement?: number};
 type Bloc = {id: string; x: number; y: number; w: number; align: string; interligne?: number; lignes: Segment[][]};
 
-const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K}) => (
+const BlocTexte: React.FC<{bloc: Bloc; K: Palette}> = ({bloc, K}) => (
 	<div
 		style={{
 			position: 'absolute',
@@ -143,7 +293,7 @@ const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K})
 							fontSize: s.taille,
 							fontWeight: s.graisse ?? 400,
 							fontStyle: s.italique ? 'italic' : 'normal',
-							color: K[s.couleur] ?? s.couleur,
+							color: (K as unknown as Record<string, string>)[s.couleur] ?? s.couleur,
 							letterSpacing: s.espacement ?? 0,
 						}}
 					>
@@ -167,9 +317,15 @@ const Photo: React.FC<{cle: Cle}> = ({cle}) => {
 	);
 };
 
-export const Panneau: React.FC<{texte?: boolean; clair?: boolean; photo?: Cle}> = ({texte = true, clair = false, photo}) => {
-	const K = clair ? CLAIR : C;
-	const cle: Cle = photo ?? (clair ? 'clair' : 'sombre');
+export const Panneau: React.FC<{texte?: boolean; clair?: boolean; photo?: Cle; palette?: string}> = ({
+	texte = true,
+	clair = false,
+	photo,
+	palette,
+}) => {
+	const P = PALETTES[palette ?? (clair ? 'clair' : 'sombre')];
+	const K = P;
+	const cle: Cle = photo ?? P.photo;
 	const tp = taillePhoto(cle);
 	const centreY = ((tp.y + tp.h / 2) / HAUTEUR) * 100;
 	return (
@@ -179,9 +335,9 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean; photo?: Cle}> 
 			{/* Fond : halo assorti à celui de la photo, centré sur les produits */}
 			<AbsoluteFill
 				style={{
-					background: clair
-						? `radial-gradient(ellipse 900px 900px at 50% ${centreY}%, #fbf7f1 0%, #f5eee5 45%, rgba(234,221,204,0.9) 100%)`
-						: `radial-gradient(ellipse 820px 760px at 50% ${centreY}%, ${C.vin} 0%, #2a0c10 40%, rgba(15,4,5,0) 85%)`,
+					background: `radial-gradient(ellipse ${P.haloTaille} at 50% ${centreY}%, ${P.halo[0]} 0%, ${P.halo[1]} ${
+						P.haloTaille === '900px 900px' ? 45 : 40
+					}%, ${P.halo[2]} ${P.haloTaille === '900px 900px' ? 100 : 85}%)`,
 				}}
 			/>
 

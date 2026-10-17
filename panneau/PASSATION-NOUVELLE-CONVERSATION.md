@@ -193,3 +193,50 @@ Défauts relevés à la loupe sur la photo du client (à corriger avec `tools/re
 Les **grands noms sont tous justes** (La Favorite, Suntory Toki, TOMATIN, Bastide de Blacailloux, Domaine Le Prieuré
 des Papes, Châteauneuf-du-Pape, Château de Gragnos, Lou Daro, Champagne Denis Frézier, Lutgarde, Maison Guinguet,
 Silure de Loire, Courgettes grillées).
+
+---
+
+## 10. Mise à jour (17/10/2026, suite) : bières dans le titre, et palettes claires et vives
+
+### Titre
+- Le grand titre devient **« Vins, bières, spiritueux & épicerie fine »** (`src/textes.json`, bloc `titre`).
+- Il passe de 94 à **82 px** pour tenir sur une ligne (mesuré avec la vraie police : 1118 px de large à 84 px,
+  1092 px à 82 px, pour 1160 px utiles entre les filets dorés), et `y` passe de 258 à 264 pour rester centré
+  entre le logo et le sous-titre.
+- **Deux lignes ne passent pas** sans rapetisser la photo : le logo descend à y≈250 et la photo commence à y≈410.
+  Si le client veut le titre plus gros, il faut choisir entre titre sur deux lignes et photo pleine largeur.
+
+### Palettes
+`src/Panneau.tsx` : les couleurs ne sont plus deux constantes mais **`PALETTES`**, une entrée par version
+(mêmes noms de couleurs — `or`, `creme`, `orPale`, `cremeDoux` — donc `src/textes.json` ne change pas).
+Chaque palette porte aussi sa photo, ses trois arrêts de halo et la taille du halo.
+`src/Root.tsx` fabrique pour chaque variante `Panneau<Nom>` et `Panneau<Nom>Fond` (fond sans texte, pour le PPTX).
+
+| Clé | Fond | Famille |
+|---|---|---|
+| `sombre` | lie-de-vin (version validée) | sombre |
+| `clair` | crème | claire |
+| `grenat`, `vert`, `bleu` | grenat vif, vert bouteille, bleu nuit | sombres, faites avant que le client demande du clair |
+| `safran` | safran | **claire et vive** |
+| `corail` | corail | **claire et vive** |
+| `anis` | vert anis | **claire et vive** |
+| `turquoise` | turquoise | **claire et vive** |
+| `framboise` | framboise | **claire et vive** |
+
+### Photos assorties
+La photo doit suivre le fond, sinon le lie-de-vin de l'image jure avec l'affiche. Deux outils :
+- **`tools/photo_couleur.py`** (fonds sombres) : repeint le décor, la marche et le sol par leur luminance,
+  passée dans une rampe de trois couleurs ; les reflets vifs du sol gardent leur ambre d'origine ;
+  les produits ne sont pas touchés.
+- **`tools/photo_claire_finale.py`** (fonds clairs) : détourage, marche et sol reconstruits en clair, puis
+  **teintés à 33 % vers la couleur du fond** (`TEINTES` + `FORCE`), sans quoi la marche fait une bande blanche
+  collée sur un fond coloré.
+Les deux acceptent un détourage fait sur une image plus petite (`CACHE_ALPHA`) et le remettent à l'échelle :
+le détourage BiRefNet prend ~1 min, la photo HD est le même cadrage agrandi.
+
+### Livrables
+- Versions principales (lie-de-vin, crème) : jeu complet dans `exports/` (PNG, PDF, PPTX, aperçu).
+- Cinq variantes claires et vives : **`exports/variantes/cave71-A1-<nom>.pdf`** et `apercu-<nom>.jpg`.
+  Le PNG pleine résolution et le PPTX ne sont pas générés pour elles (poids du dépôt) :
+  dès que le client choisit sa couleur, `npx remotion still src/index.ts Panneau<Nom> … --scale=2.829`
+  et `Panneau<Nom>Fond` donnent le jeu complet.
