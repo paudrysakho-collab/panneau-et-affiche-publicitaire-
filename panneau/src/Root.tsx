@@ -4,7 +4,7 @@ import {Panneau, LARGEUR, HAUTEUR} from './Panneau';
 
 // Variantes de couleur du stop-trottoir : même affiche, autre fond et photo assortie.
 // Chacune donne « Panneau<Nom> » (affiche complète) et « Panneau<Nom>Fond » (sans texte, pour le PPTX).
-const VARIANTES = ['grenat', 'vert', 'bleu', 'safran', 'corail', 'anis', 'turquoise', 'framboise'];
+const VARIANTES = ['grenat', 'vert', 'bleu', 'pourpre', 'violet', 'parme', 'safran', 'corail', 'anis', 'turquoise', 'framboise'];
 const maj = (n: string) => n[0].toUpperCase() + n.slice(1);
 
 // A1 portrait (594 x 841 mm). Export x2.829 = 3508 x 4962 px, 150 dpi.

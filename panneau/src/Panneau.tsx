@@ -103,7 +103,46 @@ export const PALETTES: Record<string, Palette> = {
 		halo: ['#fbdf99', '#f2c45c', 'rgba(226,163,42,0.95)'],
 		haloTaille: '900px 900px',
 	},
-	// 7. corail : le plus chaud, impossible à rater sur un trottoir gris
+	// 7. pourpre 71 : la couleur du « 71 » du logo (#701028) tenue sur toute l'affiche, en profond
+	pourpre: {
+		encre: '#1b0611',
+		vin: '#731a44',
+		bordeaux: '#7d1530',
+		or: '#e3bd6e',
+		orPale: '#f2e0b2',
+		creme: '#fdf4ec',
+		cremeDoux: 'rgba(253,244,236,0.76)',
+		photo: 'pourpre',
+		halo: ['#731a44', '#3d0c24', 'rgba(27,6,17,0)'],
+		haloTaille: '860px 790px',
+	},
+	// 8. violet : le même pourpre tiré vers le violet franc, clair et vif
+	violet: {
+		encre: '#ae63c2',
+		vin: '#d9a7e6',
+		bordeaux: '#7d1530',
+		or: '#4a1054',
+		orPale: '#5d1a69',
+		creme: '#2b0b31',
+		cremeDoux: 'rgba(43,11,49,0.74)',
+		photo: 'violet',
+		halo: ['#d9a7e6', '#be78cf', 'rgba(158,78,180,0.95)'],
+		haloTaille: '900px 900px',
+	},
+	// 9. parme : le violet du 71 en lilas clair, le plus lumineux des trois
+	parme: {
+		encre: '#d7b6e6',
+		vin: '#eddcf5',
+		bordeaux: '#7d1530',
+		or: '#6b2070',
+		orPale: '#7e3184',
+		creme: '#33103a',
+		cremeDoux: 'rgba(51,16,58,0.74)',
+		photo: 'parme',
+		halo: ['#eddcf5', '#ddc0ea', 'rgba(198,160,219,0.95)'],
+		haloTaille: '900px 900px',
+	},
+	// 10. corail : le plus chaud, impossible à rater sur un trottoir gris
 	corail: {
 		encre: '#f0836a',
 		vin: '#fbb59f',
@@ -116,7 +155,7 @@ export const PALETTES: Record<string, Palette> = {
 		halo: ['#fbb59f', '#f29070', 'rgba(224,106,74,0.95)'],
 		haloTaille: '900px 900px',
 	},
-	// 8. anis : vert tendre et frais, côté épicerie fine et produits du terroir
+	// 11. anis : vert tendre et frais, côté épicerie fine et produits du terroir
 	anis: {
 		encre: '#c3d94f',
 		vin: '#e4f09c',
@@ -129,7 +168,7 @@ export const PALETTES: Record<string, Palette> = {
 		halo: ['#e4f09c', '#cbe063', 'rgba(176,200,58,0.95)'],
 		haloTaille: '900px 900px',
 	},
-	// 9. turquoise : la couleur la plus opposée à l'ambre des bouteilles, donc celle qui les fait ressortir
+	// 12. turquoise : la couleur la plus opposée à l'ambre des bouteilles, donc celle qui les fait ressortir
 	turquoise: {
 		encre: '#5fc6cf',
 		vin: '#aee6ea',
@@ -142,7 +181,7 @@ export const PALETTES: Record<string, Palette> = {
 		halo: ['#aee6ea', '#74ccd4', 'rgba(62,174,186,0.95)'],
 		haloTaille: '900px 900px',
 	},
-	// 10. framboise : clair et gai, du côté des rosés
+	// 13. framboise : clair et gai, du côté des rosés
 	framboise: {
 		encre: '#ef7f9e',
 		vin: '#fbb3c5',
@@ -172,6 +211,9 @@ type Cle =
 	| 'vert'
 	| 'bleu'
 	| 'safran'
+	| 'pourpre'
+	| 'violet'
+	| 'parme'
 	| 'corail'
 	| 'anis'
 	| 'turquoise'
@@ -188,6 +230,9 @@ const PHOTOS: Record<Cle, {src: string; ratio: number; dy: number; haut: number;
 	vert: {src: 'photo_finale_vert.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	bleu: {src: 'photo_finale_bleu.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	safran: {src: 'photo_finale_safran.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	pourpre: {src: 'photo_finale_pourpre.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	violet: {src: 'photo_finale_violet.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	parme: {src: 'photo_finale_parme.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	corail: {src: 'photo_finale_corail.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	anis: {src: 'photo_finale_anis.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
 	turquoise: {src: 'photo_finale_turquoise.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},

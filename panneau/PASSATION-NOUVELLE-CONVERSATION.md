@@ -217,6 +217,9 @@ Chaque palette porte aussi sa photo, ses trois arrêts de halo et la taille du h
 | `sombre` | lie-de-vin (version validée) | sombre |
 | `clair` | crème | claire |
 | `grenat`, `vert`, `bleu` | grenat vif, vert bouteille, bleu nuit | sombres, faites avant que le client demande du clair |
+| `pourpre` | pourpre du « 71 », profond | **couleur du logo** |
+| `violet` | violet franc | **couleur du logo, claire** |
+| `parme` | lilas clair | **couleur du logo, claire** |
 | `safran` | safran | **claire et vive** |
 | `corail` | corail | **claire et vive** |
 | `anis` | vert anis | **claire et vive** |
@@ -240,3 +243,18 @@ le détourage BiRefNet prend ~1 min, la photo HD est le même cadrage agrandi.
   Le PNG pleine résolution et le PPTX ne sont pas générés pour elles (poids du dépôt) :
   dès que le client choisit sa couleur, `npx remotion still src/index.ts Panneau<Nom> … --scale=2.829`
   et `Panneau<Nom>Fond` donnent le jeu complet.
+
+---
+
+## 11. Mise à jour (17/10/2026, suite) : les trois violets du « 71 »
+
+- Le « 71 » du logo est un **pourpre bordeaux `#701028`** (relevé sur `public/logo_cave71_bloc.png`,
+  couleur dominante hors noir et blanc ; l'or du sous-titre du logo est `#c89808`).
+- Trois palettes en sont tirées, du profond au clair : **`pourpre`** (la couleur du logo tenue en fond,
+  famille sombre, texte crème et or), **`violet`** (`#ae63c2`, franc et vif) et **`parme`** (`#d7b6e6`, lilas clair).
+  Les deux dernières sont de la famille claire (texte violet très sombre, filets violets).
+- **Neuf modèles à choisir** : pourpre 71, violet, parme, safran, corail, framboise, anis, turquoise, crème.
+  Planche de comparaison faite à la main dans le scratchpad ; chaque version a son
+  `exports/variantes/cave71-A1-<nom>.pdf` et son `apercu-<nom>.jpg`.
+- Les versions lie-de-vin, grenat, vert bouteille et bleu nuit restent dans le code mais ne sont plus proposées :
+  le client veut du clair et du vif.
