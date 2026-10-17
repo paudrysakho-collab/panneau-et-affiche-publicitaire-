@@ -1,0 +1,29 @@
+{
+ "usageMetadata": {
+  "promptTokenCount": 877,
+  "candidatesTokenCount": 1475,
+  "totalTokenCount": 2635,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 619
+   },
+   {
+    "modality": "IMAGE",
+    "tokenCount": 258
+   }
+  ],
+  "candidatesTokensDetails": [
+   {
+    "modality": "IMAGE",
+    "tokenCount": 1120
+   }
+  ],
+  "thoughtsTokenCount": 283,
+  "serviceTier": "standard"
+ },
+ "modelVersion": "gemini-3-pro-image",
+ "responseId": "_4bTatSjHMCPytMP_MG-iQ8",
+ "finishReason": "STOP",
+ "textes": []
+}
