@@ -1,0 +1,79 @@
+=== DERNIÈRE TENTATIVE : CHATGPT (génération d'images) ===
+
+AVANT D'ENVOYER
+1. Ouvre une NOUVELLE conversation sur chatgpt.com (site web, pas l'appli téléphone).
+   Si tu as un abonnement, choisis le modèle « Thinking » : il gère mieux les images complexes.
+2. Joins les 14 images, DANS L'ORDRE et en un seul message :
+   01_rhum... 02_jus... 03_whisky... jusqu'à 14_composition_actuelle_modele.jpg
+   (ChatGPT web accepte jusqu'à 20 fichiers par message.)
+   N'envoie PAS 15_planche_13_produits.jpg ici : elle sert seulement pour la variante en bas.
+3. Colle le texte entre les deux lignes « ------ » ci-dessous, puis envoie.
+4. Envoie-moi l'image obtenue : je vérifie chaque étiquette à la loupe et je recolle les vraies
+   là où il faut, comme pour la version actuelle.
+
+------------------------------------------------------------------------------------------------
+Photo publicitaire photoréaliste (une vraie photo de studio, pas une illustration) pour l'affiche A1 de ma cave à vins : les 13 produits joints réunis sur une seule photo de groupe.
+
+LES IMAGES JOINTES
+- Images 1 à 13 : un produit par image, dans l'ordre de gauche à droite. Ce sont les VRAIS produits. Leur forme, leurs couleurs et leurs étiquettes doivent être recopiées fidèlement d'après ces images, sans rien redessiner ni inventer. Seul le produit compte : ignore le fond de ces photos (table en bois, étagère, main).
+- Image 14 : la composition actuelle. Elle sert UNIQUEMENT de modèle pour le placement, la taille relative des produits, la lumière et le décor. Si un détail d'un produit diffère entre l'image 14 et son image 1 à 13, c'est l'image 1 à 13 qui a raison.
+
+DÉCOR ET LUMIÈRE (comme l'image 14)
+Fond lie-de-vin très sombre avec un halo chaud au centre, derrière les bouteilles. Les produits sont posés sur une surface sombre et brillante qui reflète doucement leur base. Lumière de studio douce venant de la gauche, reflets blancs nets sur le verre, liquides lumineux (rhum, whiskies, rosé), noirs profonds mais détaillés.
+
+COMPOSITION (de gauche à droite, comme l'image 14)
+- Rangée du fond : 1 rhum La Favorite, 3 whisky Suntory Toki, 4 whisky Tomatin Legacy, 5 rosé Bastide de Blacailloux, 6 Châteauneuf-du-Pape, 7 Château de Gragnos, 8 champagne Denis Frézier, 9 bière Lutgarde, 10 bière Trompe Souris, 11 sachet de chocolats Maison Guinguet.
+- Devant : 2 jus de raisin Syrah (petite bouteille entre le rhum et le Toki, un peu en avant) ; 12 terrine Silure de Loire et 13 pot de courgettes en bas au centre, devant le Châteauneuf et le Gragnos ; deux ou trois morceaux de chocolat posés devant la bière Lutgarde.
+- Exactement 13 produits, chacun une seule fois.
+- Tailles réelles : vins et champagne ≈ 30 cm, rhum ≈ 27 cm, Tomatin ≈ 26 cm, Toki ≈ 25 cm, Trompe Souris ≈ 23 cm, sachet de chocolats ≈ 23 cm, Lutgarde ≈ 19 cm (bouteille trapue), jus Syrah ≈ 17 cm, les deux pots ≈ 8 cm.
+- Écarte un peu les produits pour que le NOM principal de chaque étiquette soit entièrement visible : aucun produit ne cache le nom d'un autre.
+- Rien de coupé : de la marge tout autour, le bas des pots et leurs reflets compris.
+
+LES 13 PRODUITS
+Recopie ces textes EXACTEMENT (orthographe, accents, majuscules), une seule fois chacun. Les autres petits textes de chaque étiquette restent tels qu'ils sont sur l'image du produit : flous plutôt qu'inventés.
+
+1. Rhum La Favorite (image 1). Bouteille trapue en verre transparent, rhum ambré doré, bouchon à tête en bois clair (pas de capsule). Étiquette crème bordée de cannes à sucre dorées, gravure d'une distillerie au centre. Textes : « DISTILLERIE » (en arc), « La Favorite » (grande écriture script brun-noir), « Cœur de Canne » (doré, avec la lettre œ), « RHUM AGRICOLE AMBRÉ », pastille rouge « 2 ans » (en blanc), bandeau brun foncé « MARTINIQUE ».
+
+2. Jus de raisin Syrah (image 2). Petite bouteille ronde type bouteille de lait, capsule en métal argenté, jus presque noir aux reflets prune. Étiquette rose en haut, blanche en bas. Textes : « 04 » (petite case blanche en haut), « CÉPAGE », « SYRAH » (grand, en blanc), « PUR JUS DE RAISINS », « SANS SUCRE AJOUTÉ* », sceau rond « ƎXE » (le premier E est à l'envers), logo bio vert « AB ».
+
+3. Whisky Suntory Toki (image 3). Bouteille carrée en verre épais, gros bouchon noir mat, whisky or pâle. Étiquette blanc cassé. À gauche : « SUNTORY », « WHISKY » (noir), « TOKI™ » (rouge), « FROM THE HOUSE OF », « SUNTORY WHISKY », « JAPANESE WHISKY ». À droite : le grand idéogramme japonais « 季 » tracé au pinceau noir, avec un petit sceau carré rouge, exactement comme sur l'image 3.
+
+4. Whisky Tomatin Legacy (image 4). Bouteille ronde à larges épaules et pied évasé, whisky ambre doré, capsule bleu nuit avec « Highlands » en écriture script dorée. Étiquette bleu marine : « ESTD » et « 1897 » de part et d'autre d'un petit blason, « TOMATIN » (grand, crème), « HIGHLAND SINGLE MALT », « SCOTCH WHISKY », « LEGACY » (doré, entre deux ornements), et en bas un bandeau crème « BOURBON & VIRGIN OAK CASKS » (lettres bleu marine).
+
+5. Rosé Bastide de Blacailloux (image 5). Bouteille élancée en verre extra-blanc, rosé très pâle couleur pêche, capsule crème à liseré doré. Étiquette blanche avec un petit médaillon gravé en haut : « BASTIDE DE », « BLACAILLOUX », « JOIO » (lettres très fines or pâle), « VIN DE PROVENCE ».
+
+6. Châteauneuf-du-Pape (image 6). Bouteille bourguignonne en verre noir, capsule bordeaux brillante. Étiquette crème placée bas, gravure du domaine à gauche : « DOMAINE », « LE PRIEURÉ », « DES PAPES » (serif brun-rouge), « Châteauneuf-du-Pape » (lettres gothiques), « VIEILLES VIGNES ».
+
+7. Château de Gragnos (image 7). Bouteille bourguignonne en verre noir, capsule noire. Étiquette ivoire avec un arbre dessiné en bas à gauche : « CHÂTEAU », « DE GRAGNOS », « DEPUIS 1710 » ; à droite « LOU », « DARO », « SAINT-CHINIAN », « 2022 ».
+
+8. Champagne Denis Frézier (image 8). Bouteille de champagne en verre vert olive foncé, coiffe noire avec « CHAMPAGNE » écrit verticalement en argent, collerette cuivrée. Étiquette blanc cassé avec un petit écusson en haut : « CHAMPAGNE », « Denis FRÉZIER », « Cuvée des Trois Crus » (écriture manuscrite, comme sur l'image 8), « PREMIER BRUT ».
+
+9. Bière Lutgarde Blonde (image 9). Petite bouteille trapue en verre brun très foncé, capsule rouge. Étiquette ovale : anneau rouge et centre crème avec une religieuse au voile bleu marine. Textes : « BELGIAN ABBEY BEER » (en arc en haut), « LUTGARDE » (grand, rouge), « BLONDE » (dans un cartouche rouge), « 33 cl », « Alc vol 6% », « Abbaye d'Aywiers » (en arc en bas).
+
+10. Bière Trompe Souris Blonde (image 10). Bouteille de bière élancée (long neck) en verre brun ambré, bière blonde, capsule jaune. Étiquette entièrement illustrée, sans cadre, recopiée exactement d'après l'image 10 : deux souris sur une mobylette bleue, toutes deux avec un casque rose et des lunettes, le mot « BLONDE » en jaune, et en bas le nom de la bière en grandes lettres noires fines, tel qu'il apparaît sur l'image.
+
+11. Chocolats Maison Guinguet (image 11). Sachet en cellophane transparent fermé par une rose en papier beige, rempli d'éclats de chocolat et de billes chocolatées, posé dans un étui en carton brun chocolat au bord festonné doré. Textes : « MAISON », « GUINGUET » (crème, sous un médaillon rond), bandeau crème « CHOCOLAT NOIR ».
+
+12. Terrine Goûts de Loire (image 12). Verrine basse, couvercle en métal argenté, chair de poisson beige visible sous l'étiquette. Étiquette noire : « GOÛTS », « DE », « LOIRE » (serif rouge, « DE » dans le médaillon blanc), médaillon blanc avec une barque bleue dessinée, « Silure de Loire » (blanc, très gras), bande rouge « à la Tomate séchée » (écriture script brun-noir), languette rouge « BIO ».
+
+13. Pot L'Atelier d'Emile (image 13). Pot en verre, capsule noire brillante, tartinade vert-gris. Étiquette blanche : monogramme « E » noir géométrique (un rond vert à la place de la barre du milieu, deux feuilles vertes à gauche), « L'ATELIER », « d'Emile » (écriture script, « Emile » en vert, sans accent), petit encadré « Fabriqué à la ferme », « Tartinable de », « COURGETTES » (gras), « GRILLÉES », bande vert clair en bas avec un petit drapeau français.
+
+INTERDIT
+Aucun texte ajouté, aucun filigrane, aucun logo inventé, aucun produit en plus ou en double, aucune étiquette redessinée « dans le style ». Ne change ni les couleurs des étiquettes ni la forme des bouteilles.
+
+FORMAT
+Paysage 16:9, la plus haute définition possible, mise au point nette sur toutes les étiquettes.
+------------------------------------------------------------------------------------------------
+
+
+=== VARIANTE : SI CHATGPT REFUSE 14 IMAGES, OU POUR GEMINI (10 IMAGES MAX) ===
+Joindre seulement 2 images, dans cet ordre :
+  1. 15_planche_13_produits.jpg   (les 13 produits numérotés sur une seule planche)
+  2. 14_composition_actuelle_modele.jpg
+Coller le même texte, en remplaçant le paragraphe « LES IMAGES JOINTES » par celui-ci :
+
+LES IMAGES JOINTES
+- Image 1 : une planche avec les 13 VRAIS produits, numérotés de 1 à 13. Les numéros dans les ronds gris ne sont que des repères : ne les reproduis pas. Forme, couleurs et étiquettes de chaque produit doivent être recopiées fidèlement d'après cette planche, sans rien redessiner ni inventer. Dans la suite, « image N » veut dire « le produit numéro N de la planche ».
+- Image 2 : la composition actuelle. Elle sert UNIQUEMENT de modèle pour le placement, la taille relative des produits, la lumière et le décor. Si un détail d'un produit diffère entre cette image et la planche, c'est la planche qui a raison.
+
+Dans Gemini : prends le modèle « Pro » ou « Thinking » (pas « Rapide »), puis, si le résultat est bon, « Refaire avec Pro » s'il te le propose.

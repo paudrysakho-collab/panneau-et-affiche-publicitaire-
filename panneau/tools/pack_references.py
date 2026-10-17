@@ -155,5 +155,37 @@ def main():
     print('14_composition_actuelle_modele', comp.size)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__' and '--planche' not in sys.argv:
     main()
+
+
+def planche(dossier):
+    """Planche unique des 13 produits, numérotés (pour les outils limités à 10 images, ex. Gemini)."""
+    from PIL import ImageDraw, ImageFont
+    fs = sorted(Path(dossier).glob('[01][0-9]_*.jpg'))[:13]
+    cw, ch, marge = 600, 1000, 40
+    W, H = 7 * cw + 2 * marge, 2 * ch + 3 * marge
+    o = Image.new('RGB', (W, H), (255, 255, 255))
+    d = ImageDraw.Draw(o)
+    try:
+        f = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 34)
+    except OSError:
+        f = ImageFont.load_default()
+    for i, p in enumerate(fs):
+        r, c = (0, i) if i < 7 else (1, i - 7 + 0.5)
+        x0, y0 = marge + c * cw, marge + r * (ch + marge)
+        im = Image.open(p).convert('RGB')
+        k = min((cw - 30) / im.width, (ch - 70) / im.height)
+        im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+        o.paste(im, (round(x0 + (cw - im.width) / 2), round(y0 + 60 + (ch - 70 - im.height))))
+        cx = x0 + cw / 2                                  # numéro centré au-dessus du produit
+        d.ellipse((cx - 26, y0, cx + 26, y0 + 52), fill=(60, 60, 60))
+        n = str(i + 1)
+        tw = d.textlength(n, font=f)
+        d.text((cx - tw / 2, y0 + 7), n, fill=(255, 255, 255), font=f)
+    o.save(Path(dossier) / '15_planche_13_produits.jpg', quality=93)
+    print('15_planche_13_produits', o.size)
+
+
+if __name__ == '__main__' and len(sys.argv) > 2 and sys.argv[2] == '--planche':
+    planche(sys.argv[1])
