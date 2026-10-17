@@ -155,3 +155,41 @@ Une **vraie image générée** qui ressemble à une photo de studio haut de gamm
 - `packshot_controle.py` : contrôle des lettres. Corrélation par tuile du détail fin, seuil 0,90 (une étiquette identique ré-éclairée donne 0,99 ; des lettres redessinées par l'IA 0,72 à 0,84) ; plus un OCR tesseract fiable (mots stables sur 4 lectures).
 - `packshot_ia.py`, `studio_packshot.py`, `studio/config.json` : pipeline produit par produit (fond fixe, reflets, ombres). **Rejeté par le client pour le rendu**, mais `studio/config.json` contient des données réutilisables : zones d'étiquettes par produit, inclinaisons, corrections de couleur.
 - Dépendances installées dans cette session, à réinstaller si besoin : `pip install opencv-python-headless google-genai scikit-image "rembg[cpu]" pytesseract` et `apt-get install tesseract-ocr tesseract-ocr-fra`.
+
+---
+
+## 9. Mise à jour (17/10/2026, soir) : la photo du client est intégrée
+
+### Fait
+- Le client a envoyé sa photo validée **dans le chat, et cette fois elle est bien arrivée en fichier** : copiée dans `bouteilles-gemini/photo-finale.png` (1672 × 941).
+- **Elle est intégrée dans l'affiche**, versions sombre et claire, et tous les livrables sont régénérés :
+  `exports/panneau-cave71-A1*.png` (3508 × 4962), `*.pdf` (150 dpi), `*-modifiable.pptx`, `apercu*.jpg`.
+- `src/Panneau.tsx` : `PHOTOS.sombre` et `PHOTOS.clair` pointent sur la nouvelle photo
+  (`photo_finale_sombre.jpg`, `photo_finale_claire.png`). L'ancienne photo reste accessible sous la clé `vitrine`.
+  Nouveau réglage `bas` : début du fondu du bas (72 % ici), pour que le reflet du sol se dissolve au lieu d'être coupé net.
+- **`tools/photo_claire_finale.py`** (nouveau) : tire la version claire de cette photo.
+  Détourage BiRefNet, marche crème à la place de la marche noire, ombres de contact, reflets doux,
+  raccords de plans adoucis verticalement. Repères de la photo : plateau 631–667, façade 667–788, sol à partir de 788.
+  `CACHE_ALPHA=chemin.npy` garde le détourage entre deux essais.
+
+### Limite connue
+- La photo reçue fait **1672 × 941**, alors que la zone photo de l'affiche fait ~3395 px de large : elle est
+  agrandie en **Lanczos + accentuation** (pas de Real-ESRGAN : le conteneur n'a ni GPU ni pilote Vulkan,
+  `mesa-vulkan-drivers` n'est pas installable). Ça tient pour un chevalet de trottoir, vu à 1–2 m.
+  **Si le client a l'original en plus grand, le reprendre** : on gagnerait en netteté.
+
+### Reste à faire : les étiquettes
+Défauts relevés à la loupe sur la photo du client (à corriger avec `tools/recolle_scene.py`, en repérant d'abord
+à la main la position de chaque étiquette — cette image ne vient d'aucune de nos maquettes) :
+| Produit | Défaut | Vrai texte |
+|---|---|---|
+| Terrine Goûts de Loire | « à la **Tamate** séchée » — le plus visible, en gros et en rouge | « à la **Tomate** séchée » |
+| Trompe Souris | nom du bas illisible (« PUMPSTAIRS ») | « Trompe Souris » + « BLONDE » |
+| Château de Gragnos | « DEPUIS **ITIO** », millésime illisible, « SAINT-CHINIAN » déformé | « DEPUIS 1710 », « 2022 », « SAINT-CHINIAN » |
+| Tomatin | « ESTᴰ 18?7 », « BOUR**D**ON » | « ESTᴰ 1897 », « BOURBON & VIRGIN OAK CASKS » |
+| L'Atelier d'Emile | « Fabriq**até** à la ferme » | « Fabriqué à la ferme » |
+| Denis Frézier | « PRODUCED IN THE HEART OF **CHAMSAOHE** » | « … OF CHAMPAGNE » |
+| La Favorite, Suntory Toki, Blacailloux, Lutgarde | petits textes brouillés (lisibles de loin, faux de près) | voir `pack-derniere-tentative/` |
+Les **grands noms sont tous justes** (La Favorite, Suntory Toki, TOMATIN, Bastide de Blacailloux, Domaine Le Prieuré
+des Papes, Châteauneuf-du-Pape, Château de Gragnos, Lou Daro, Champagne Denis Frézier, Lutgarde, Maison Guinguet,
+Silure de Loire, Courgettes grillées).
