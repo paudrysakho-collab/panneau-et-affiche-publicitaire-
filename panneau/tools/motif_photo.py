@@ -7,7 +7,9 @@ motif inventé par l'IA, sans emporter le fond de la photo source.
 
 Usage (depuis panneau/) :
     python3 tools/motif_photo.py entree.jpg sortie.jpg source.jpg SX0 SY0 SX1 SY1 DX0 DY0 DX1 DY1 R G B [SEUIL]
+    Variable MIROIR=1 : motif retourné horizontalement (ornement symétrique de l'autre côté).
 """
+import os
 import sys
 
 import cv2
@@ -22,6 +24,8 @@ def main():
     seuil = float(sys.argv[15]) if len(sys.argv) > 15 else 0.25
     img = np.array(Image.open(entree).convert('RGB')).astype(np.float32)
     src = np.array(Image.open(source).convert('RGB')).astype(np.float32)[sy0:sy1, sx0:sx1]
+    if os.environ.get('MIROIR') == '1':   # motif symétrique : on reprend l'autre côté en miroir
+        src = src[:, ::-1]
 
     # 1. effacement du motif de l'IA (pixels clairs) dans la cible
     m = 3

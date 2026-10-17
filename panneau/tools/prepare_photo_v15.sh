@@ -48,8 +48,9 @@ $M $T/10v.jpg $T/10x.jpg $N/whisky_Tomatin_Legacy_photo.jpg 247 480 291 507 524 
 # bandeau bleu LEGACY et bande crème reconstruits proprement (texte et ornements remis ensuite)
 python3 tools/reconstruit_bande.py $T/10x.jpg $T/10t.jpg 418 570 563 616 571 576 sombre uni
 python3 tools/reconstruit_bande.py $T/10t.jpg $T/10u.jpg 418 616 564 649 617 648 clair uni
-$M $T/10u.jpg $T/10y.jpg $N/whisky_Tomatin_Legacy_photo.jpg 66 646 115 664 420 579 448 589 214 200 160
-$M $T/10y.jpg $T/10s.jpg $N/whisky_Tomatin_Legacy_photo.jpg 233 641 286 659 538 576 563 588 214 200 160
+# ornements de « LEGACY » : celui de droite de la photo officielle (net et droit), en miroir à gauche
+MIROIR=1 $M $T/10u.jpg $T/10y.jpg $N/whisky_Tomatin_Legacy_officiel.jpg 290 511 336 529 421 578 446 588 214 206 186
+$M $T/10y.jpg $T/10s.jpg $N/whisky_Tomatin_Legacy_officiel.jpg 290 511 336 529 538 578 563 588 214 206 186
 # « I » de TOMATIN dessiné creux par l'IA : rempli
 $C $T/10s.jpg $T/10a.jpg aplat 214 200 178 543,485 547,485 547,509 543,509
 # capsule du Tomatin (« The Softer Side of the Highlands », « Since 1897 », « Product of Scotland »)

@@ -19,7 +19,7 @@ ETIQUETTES = [
     (229, 574, 346, 756),    # jus de Syrah
     (248, 373, 398, 493),    # Suntory Toki
     (455, 200, 526, 318),    # capsule Tomatin
-    (418, 588, 566, 652),    # Tomatin : texte du bandeau bleu et bande crème
+    (418, 568, 566, 652),    # Tomatin : bandeau bleu LEGACY (ornements, texte) et bande crème
     (559, 349, 678, 557),    # Bastide de Blacailloux
     (671, 502, 851, 694),    # Châteauneuf-du-Pape
     (872, 370, 1031, 566),   # Château de Gragnos

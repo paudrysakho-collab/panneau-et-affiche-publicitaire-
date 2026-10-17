@@ -37,7 +37,7 @@ const PHOTO = {x: 20, y: 408, w: 1200};
 // proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
 const PHOTOS = {
 	sombre: {src: 'vitrine_sombre.jpg', ratio: 1693 / 929, dy: 8, haut: 6},
-	clair: {src: 'vitrine_clair.jpg', ratio: 2000 / 1116, dy: 0, haut: 10},
+	clair: {src: 'vitrine_claire_13.png', ratio: 4000 / 2195, dy: 8, haut: 6},
 };
 
 // Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
