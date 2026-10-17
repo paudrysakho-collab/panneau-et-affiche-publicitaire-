@@ -258,3 +258,45 @@ le détourage BiRefNet prend ~1 min, la photo HD est le même cadrage agrandi.
   `exports/variantes/cave71-A1-<nom>.pdf` et son `apercu-<nom>.jpg`.
 - Les versions lie-de-vin, grenat, vert bouteille et bleu nuit restent dans le code mais ne sont plus proposées :
   le client veut du clair et du vif.
+
+---
+
+## 12. Mise à jour (17/10/2026, suite) : maquette refaite pour la lecture à distance
+
+### La règle appliquée
+Les fabricants d'enseignes donnent tous la même règle empirique : **environ 2,5 cm de hauteur de capitale
+pour 3 m de recul** (1 pouce pour 10 pieds). Sur cette toile, 1 px = 0,479 mm, donc une capitale de N px
+se lit à environ **N × 0,057 m**. Les rapports hauteur de capitale / corps : Montserrat 0,70, Cormorant 0,63.
+
+| Élément | Avant | Après | Capitale | Lisible à |
+|---|---|---|---|---|
+| logo CAVE 71 (largeur) | 760 px | **1000 px** | 61 mm | **7,3 m** |
+| grand titre | 82 px, 1 ligne | **112 px, 2 lignes** | 34 mm | **4,1 m** |
+| surtitre | 17 px | 30 px | 10 mm | 1,2 m |
+| sous-titre | 23 px | 30 px | 10 mm | 1,2 m |
+| services | 33 / 27 px | 36 / 28 px | 11 mm | 1,3 m |
+| téléphone | 34 px | **54 px** | 18 mm | 2,2 m |
+| adresse | 27 px | 38 px | 13 mm | 1,5 m |
+| QR code | 120 px | 148 px | — | — |
+
+### Comment la place a été trouvée
+- **La photo est recadrée** (`recadre` dans `PHOTOS`, `src/Panneau.tsx`) : les produits occupent y 85 à 858
+  sur 941, donc le ciel vide au-dessus et le bas du sol sont coupés. La photo garde sa pleine largeur et
+  ses bouteilles leur taille, mais prend 591 px de haut au lieu de 675.
+- **Le bas est passé de deux rangées à une** : adresse | horaires + téléphone + cave71.com | QR code.
+- **L'email et la ligne Facebook ont été retirés** : illisibles à plus d'un mètre, et le QR code y mène.
+  À remettre en deux lignes dans `src/textes.json` si le client y tient.
+- Les colonnes de services ont des **largeurs inégales** (`COLONNES` dans `src/Panneau.tsx`, mêmes valeurs
+  dans `src/textes.json`), calées sur la longueur des libellés : « Achat & conseil » a besoin de 276 px.
+
+### Limite à connaître
+Les cinq services à 36 px sont au maximum que cinq colonnes permettent. **Pour les passer à 46 px
+(lisibles à 1,7 m), il faut descendre à quatre colonnes**, donc retirer un service — « Carte des vins,
+pour les pros » étant le moins utile sur un trottoir.
+
+### Pourpre éclairci
+Le `pourpre` passe de `#ad5590` à **`#c586b3`** : le client le voulait plus clair, et le contraste avec le
+texte sombre passe de 3,6:1 à environ 5,8:1, ce qui compte pour une lecture de loin. Il rejoint la famille
+claire (photo par `tools/photo_claire_finale.py`, teinte `pourpre`).
+Pour mémoire, les contrastes des autres fonds clairs avec leur texte : anis 11:1, parme 9:1, safran 9:1,
+turquoise 8,6:1, corail et framboise 6,4:1, **violet 4,2:1** (le plus faible : à éclaircir si le client le choisit).

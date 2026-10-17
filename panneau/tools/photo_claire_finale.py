@@ -34,6 +34,7 @@ SOL_CLAIR = (242, 234, 222)
 TEINTES = {
     'creme': None,
     'safran': '#eeb63f',
+    'pourpre': '#c586b3',
     'violet': '#ae63c2',
     'parme': '#d7b6e6',
     'corail': '#f0836a',

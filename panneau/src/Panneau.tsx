@@ -103,18 +103,18 @@ export const PALETTES: Record<string, Palette> = {
 		halo: ['#fbdf99', '#f2c45c', 'rgba(226,163,42,0.95)'],
 		haloTaille: '900px 900px',
 	},
-	// 7. pourpre 71 : la couleur du « 71 » du logo (#701028) tenue sur toute l'affiche, en profond
+	// 7. pourpre 71 : le pourpre du « 71 » du logo, éclairci en aplat lumineux
 	pourpre: {
-		encre: '#1b0611',
-		vin: '#731a44',
+		encre: '#c586b3',
+		vin: '#eccce0',
 		bordeaux: '#7d1530',
-		or: '#e3bd6e',
-		orPale: '#f2e0b2',
-		creme: '#fdf4ec',
-		cremeDoux: 'rgba(253,244,236,0.76)',
+		or: '#5c1746',
+		orPale: '#6f2155',
+		creme: '#2e0c23',
+		cremeDoux: 'rgba(46,12,35,0.74)',
 		photo: 'pourpre',
-		halo: ['#731a44', '#3d0c24', 'rgba(27,6,17,0)'],
-		haloTaille: '860px 790px',
+		halo: ['#eccce0', '#d9a3c7', 'rgba(185,110,160,0.95)'],
+		haloTaille: '900px 900px',
 	},
 	// 8. violet : le même pourpre tiré vers le violet franc, clair et vif
 	violet: {
@@ -200,10 +200,12 @@ const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Montserrat', sans-serif";
 
 // Photo studio Gemini (bouteilles, jus, terrines, chocolat), fondue dans le fond par des bords en dégradé.
-const PHOTO = {x: 20, y: 408, w: 1200};
+const PHOTO = {x: 20, y: 604, w: 1200};
 // proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
 // w : largeur affichée (sinon PHOTO.w), h : hauteur imposée (photo plus haute que large : centrée, moins large),
 // cote : fondu à gauche et à droite (%), bas : début du fondu du bas (%)
+// recadre : part de la hauteur gardée (haut, bas). Les produits occupent y 85 à 858 sur 941 : le ciel vide
+// au-dessus et le bas du sol sont coupés, ce qui rend de la hauteur au texte sans rapetisser les bouteilles.
 type Cle =
 	| 'sombre'
 	| 'clair'
@@ -221,22 +223,22 @@ type Cle =
 	| 'vitrine'
 	| 'rangee'
 	| 'gradins';
-const PHOTOS: Record<Cle, {src: string; ratio: number; dy: number; haut: number; cote?: number; h?: number; bas?: number}> = {
+const PHOTOS: Record<Cle, {src: string; ratio: number; dy: number; haut: number; cote?: number; h?: number; bas?: number; recadre?: [number, number]}> = {
 	// photo de groupe validée par le client (13 produits sur la marche noire, sol brillant)
-	sombre: {src: 'photo_finale_sombre.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	clair: {src: 'photo_finale_claire.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	sombre: {src: 'photo_finale_sombre.jpg', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	clair: {src: 'photo_finale_claire.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
 	// la même photo, son décor repeint pour les autres fonds (même cadrage, mêmes réglages)
-	grenat: {src: 'photo_finale_grenat.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	vert: {src: 'photo_finale_vert.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	bleu: {src: 'photo_finale_bleu.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	safran: {src: 'photo_finale_safran.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	pourpre: {src: 'photo_finale_pourpre.jpg', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	violet: {src: 'photo_finale_violet.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	parme: {src: 'photo_finale_parme.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	corail: {src: 'photo_finale_corail.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	anis: {src: 'photo_finale_anis.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	turquoise: {src: 'photo_finale_turquoise.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
-	framboise: {src: 'photo_finale_framboise.png', ratio: 1672 / 941, dy: 2, haut: 5, cote: 4, bas: 72},
+	grenat: {src: 'photo_finale_grenat.jpg', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	vert: {src: 'photo_finale_vert.jpg', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	bleu: {src: 'photo_finale_bleu.jpg', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	safran: {src: 'photo_finale_safran.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	pourpre: {src: 'photo_finale_pourpre.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	violet: {src: 'photo_finale_violet.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	parme: {src: 'photo_finale_parme.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	corail: {src: 'photo_finale_corail.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	anis: {src: 'photo_finale_anis.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	turquoise: {src: 'photo_finale_turquoise.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
+	framboise: {src: 'photo_finale_framboise.png', ratio: 1672 / 941, dy: 0, haut: 5, cote: 4, bas: 72, recadre: [68 / 941, 892 / 941]},
 	// ancienne photo (ChatGPT v15 aux étiquettes recollées), gardée pour comparaison
 	vitrine: {src: 'vitrine_sombre.jpg', ratio: 1693 / 929, dy: 8, haut: 6},
 	// photos composées à partir des vrais produits détourés (tools/compose_produits.py)
@@ -246,16 +248,24 @@ const PHOTOS: Record<Cle, {src: string; ratio: number; dy: number; haut: number;
 const taillePhoto = (c: Cle) => {
 	const p = PHOTOS[c];
 	const w = p.h ? p.h * p.ratio : PHOTO.w;
-	return {w, h: w / p.ratio, x: (LARGEUR - w) / 2, y: PHOTO.y + p.dy};
+	const part = p.recadre ? p.recadre[1] - p.recadre[0] : 1;
+	return {w, h: (w / p.ratio) * part, x: (LARGEUR - w) / 2, y: PHOTO.y + p.dy};
 };
 
 // Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
-const ICONES = ['cadeau', 'verres', 'bouteille', 'carte', 'alliances'].map((nom, i) => ({nom, x: 180 + 220 * i - 31, y: 1140}));
+const TAILLE_ICONE = 46;
+// colonnes des services : largeurs inégales, calées sur la longueur des libellés (voir src/textes.json)
+const COLONNES = [[40, 196], [236, 196], [432, 276], [708, 256], [964, 236]];
+const ICONES = ['cadeau', 'verres', 'bouteille', 'carte', 'alliances'].map((nom, i) => ({
+	nom,
+	x: COLONNES[i][0] + COLONNES[i][1] / 2 - TAILLE_ICONE / 2,
+	y: 1266,
+}));
 
 const Icone: React.FC<{nom: string; couleur: string}> = ({nom, couleur}) => {
 	const trait = {fill: 'none', stroke: couleur, strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const};
 	return (
-		<svg width={38} height={38} viewBox="0 0 32 32">
+		<svg width={TAILLE_ICONE} height={TAILLE_ICONE} viewBox="0 0 32 32">
 			{nom === 'cadeau' && (
 				<g {...trait}>
 					<rect x={5} y={13} width={22} height={14} />
@@ -351,14 +361,20 @@ const BlocTexte: React.FC<{bloc: Bloc; K: Palette}> = ({bloc, K}) => (
 );
 
 const Photo: React.FC<{cle: Cle}> = ({cle}) => {
-	const {src, haut, cote = 5, bas = 92} = PHOTOS[cle];
+	const p = PHOTOS[cle];
+	const {src, haut, cote = 5, bas = 92, recadre} = p;
 	const {x, y, w, h} = taillePhoto(cle);
 	const fondu = `linear-gradient(to right, transparent, black ${cote}%, black ${100 - cote}%, transparent), linear-gradient(to bottom, transparent, black ${haut}%, black ${bas}%, transparent)`;
+	const hImage = w / p.ratio;
 	return (
-		<Img
-			src={staticFile(`produits/${src}`)}
-			style={{position: 'absolute', left: x, top: y, width: w, height: h, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
-		/>
+		<div
+			style={{position: 'absolute', left: x, top: y, width: w, height: h, overflow: 'hidden', WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
+		>
+			<Img
+				src={staticFile(`produits/${src}`)}
+				style={{position: 'absolute', left: 0, top: recadre ? -hImage * recadre[0] : 0, width: w, height: hImage}}
+			/>
+		</div>
 	);
 };
 
@@ -401,11 +417,11 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean; photo?: Cle; p
 			<div style={{position: 'absolute', inset: 34, border: `0.75px solid ${K.or}`, opacity: 0.45}} />
 
 			{/* Logo officiel, couleurs jamais modifiées : CAVE blanc, 71 bordeaux, sur son bloc noir. */}
-			{texte && <Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 98, left: (LARGEUR - 760) / 2, width: 760}} />}
+			{texte && <Img src={staticFile('logo_cave71_bloc.png')} style={{position: 'absolute', top: 92, left: (LARGEUR - 1000) / 2, width: 1000}} />}
 
 			{/* Filets autour du titre des services */}
-			<div style={{position: 'absolute', top: 1106, left: 250, width: 230, height: 1, background: K.or, opacity: 0.6}} />
-			<div style={{position: 'absolute', top: 1106, left: 760, width: 230, height: 1, background: K.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1235, left: 240, width: 215, height: 1, background: K.or, opacity: 0.6}} />
+			<div style={{position: 'absolute', top: 1235, left: 785, width: 215, height: 1, background: K.or, opacity: 0.6}} />
 
 			{ICONES.map((i) => (
 				<div
@@ -428,11 +444,10 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean; photo?: Cle; p
 			))}
 
 			{/* Pied : grille 2 x 2 (adresse | horaires / en ligne | QR code) séparée par des filets dorés */}
-			<div style={{position: 'absolute', top: 1336, left: 60, right: 60, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
-			<div style={{position: 'absolute', top: 1508, left: 70, right: 70, height: 1, background: K.or, opacity: 0.35}} />
-			<div style={{position: 'absolute', top: 1356, bottom: 1754 - 1660, left: 635, width: 1, background: K.or, opacity: 0.35}} />
-			<div style={{position: 'absolute', top: 1522, left: 698, background: '#fff', padding: 8, borderRadius: 4}}>
-				<Img src={staticFile('qr_cave71.svg')} style={{width: 120, height: 120, display: 'block'}} />
+			<div style={{position: 'absolute', top: 1442, left: 60, right: 60, height: 1, background: `linear-gradient(to right, transparent, ${K.or}, transparent)`}} />
+			<div style={{position: 'absolute', top: 1468, bottom: 1754 - 1650, left: 555, width: 1, background: K.or, opacity: 0.35}} />
+			<div style={{position: 'absolute', top: 1462, left: 1021, background: '#fff', padding: 9, borderRadius: 5}}>
+				<Img src={staticFile('qr_cave71.svg')} style={{width: 148, height: 148, display: 'block'}} />
 			</div>
 
 			{texte && (textes.blocs as Bloc[]).map((b) => <BlocTexte key={b.id} bloc={b} K={K} />)}
