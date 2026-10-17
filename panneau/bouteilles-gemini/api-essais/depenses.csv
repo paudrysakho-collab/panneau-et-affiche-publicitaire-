@@ -1,0 +1,16 @@
+id,date,modele,taille,sortie,statut,tokens_entree,tokens_image,tokens_texte,cout_usd
+fb30f897,2026-10-17 13:59:10,gemini-nano-banana-2.1,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/C_nb21_fiches.png,reserve,,,,0.1984
+8a39ab53,2026-10-17 13:59:10,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/A_pro_pack.png,reserve,,,,0.2196
+4db0e2e2,2026-10-17 13:59:10,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/B_pro_fiches.png,reserve,,,,0.2197
+8a39ab53,2026-10-17 13:59:12,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/A_pro_pack.png,annule,,,,0
+4db0e2e2,2026-10-17 13:59:12,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/B_pro_fiches.png,annule,,,,0
+a728a342,2026-10-17 14:00:05,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/B_pro_fiches.png,reserve,,,,0.2197
+cbbb7df3,2026-10-17 14:00:05,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/A_pro_pack.png,reserve,,,,0.2196
+47daf64f,2026-10-17 14:00:05,gemini-nano-banana-2.1,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/C_nb21_fiches.png,reserve,,,,0.1984
+a728a342,2026-10-17 14:00:33,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/B_pro_fiches.png,facture,6267,1120,1143,0.1606
+cbbb7df3,2026-10-17 14:00:35,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/A_pro_pack.png,annule,,,,0
+47daf64f,2026-10-17 14:00:35,gemini-nano-banana-2.1,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/C_nb21_fiches.png,annule,,,,0
+23678377,2026-10-17 14:01:15,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/A_pro_fiches_sans14.png,reserve,,,,0.2172
+23678377,2026-10-17 14:01:46,gemini-3-pro-image,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/A_pro_fiches_sans14.png,annule,,,,0
+e4892503,2026-10-17 14:01:46,gemini-nano-banana-2.1,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/C_nb21_fiches.png,reserve,,,,0.1984
+e4892503,2026-10-17 14:02:17,gemini-nano-banana-2.1,2K,/tmp/claude-0/-home-user-panneau-et-affiche-publicitaire-/4342f123-ec99-55df-b676-9daaf1bff30d/scratchpad/api/tour1/C_nb21_fiches.png,annule,,,,0
