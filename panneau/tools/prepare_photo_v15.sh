@@ -18,15 +18,16 @@ ANCIENNE_BORDS="85:922:982,210:922:981,230:922:980,250:919:983,270:911:991,290:8
   python3 tools/reforme_bouteille.py $B/resultat_chatgpt_v15.png $T/0a.jpg $B/3_rouge_Chateau_de_Gragnos_Lou_Daro.jpg blanc 860 60 1045 400 375 469 375 210 0.706
 #    Lutgarde : bouteille trapue à col court ; l'ancienne étiquette (trop grande, trop haute) est d'abord
 #    remplacée par du verre, puis le mur laissé à nu à droite reprend sa couleur
-$C $T/0a.jpg $T/0a2.jpg vertical 0 1226,539 1351,539 1351,719 1226,719
+$C $T/0a.jpg $T/0a2.jpg vertical 0 1228,539 1349,539 1349,719 1228,719
 ANCIENNE_BORDS="300:1257:1321,316:1259:1320,350:1263:1315,400:1259:1320,450:1253:1326,480:1243:1338,500:1234:1343,520:1229:1348,540:1227:1350,590:1227:1350" \
   python3 tools/reforme_bouteille.py $T/0a2.jpg $T/0b1.jpg $N/biere_Lutgarde_bouteille_detouree.png detour 1205 285 1365 600 570 565 744 316
-$C $T/0b1.jpg $T/0b2.jpg aplat 40 16 17 1316,466 1312,478 1314,488 1320,498 1324,508 1327,518 1328,528 1330,538 1337,548 1343,558 1347,568 1350,576 1346,576 1346,466
+$C $T/0b1.jpg $T/0b1v.jpg vertical 0 1228,566 1349,566 1349,722 1228,722
+$C $T/0b1v.jpg $T/0b2.jpg aplat 40 16 17 1316,466 1312,478 1314,488 1320,498 1324,508 1327,518 1328,528 1330,538 1337,548 1343,558 1347,568 1350,576 1346,576 1346,466
 #    pot de courgettes : couvercle aussi haut que le vrai (le col raccourcit d'autant)
 python3 tools/etire_zone.py $T/0b2.jpg $T/0b.jpg 866 1076 557:557 605:617 645:645
 
 # 2. vraies étiquettes : photo source x0 y0 x1 y1  ->  cible x0 y0 x1 y1  [parties cachées par un produit devant]
-$R $T/0b.jpg $T/1.jpg $B/3_rouge_Chateau_de_Gragnos_Lou_Daro.jpg 30 478 205 692 872 375 1031 569 860 557 1050 600
+$R $T/0b.jpg $T/1.jpg $B/3_rouge_Chateau_de_Gragnos_Lou_Daro.jpg 30 478 205 692 872 370 1031 566 860 557 1050 600
 ETIRER=1 $R $T/1.jpg $T/2.jpg $B/6_champagne_Denis_Frezier_Trois_Crus.jpg 52 542 193 723 1049 512 1214 690 1040 556 1075 640 1040 640 1079 720
 # Blacailloux : l'épaule du Tomatin passe devant (bord courbe)
 CACHE_POLY="540,370 545,375 555,387 565,397 572,407 576,417 579,430 582,445 583,560 540,560" ETIRER=1 \
@@ -46,7 +47,7 @@ $M $T/10w.jpg $T/10v.jpg $N/whisky_Tomatin_Legacy_photo.jpg 79 482 132 509 433 4
 $M $T/10v.jpg $T/10x.jpg $N/whisky_Tomatin_Legacy_photo.jpg 247 480 291 507 524 462 548 477 226 214 190
 # bandeau bleu LEGACY et bande crème reconstruits proprement (texte et ornements remis ensuite)
 python3 tools/reconstruit_bande.py $T/10x.jpg $T/10t.jpg 418 570 563 616 571 576 sombre uni
-python3 tools/reconstruit_bande.py $T/10t.jpg $T/10u.jpg 418 616 564 649 617 648 clair
+python3 tools/reconstruit_bande.py $T/10t.jpg $T/10u.jpg 418 616 564 649 617 648 clair uni
 $M $T/10u.jpg $T/10y.jpg $N/whisky_Tomatin_Legacy_photo.jpg 66 646 115 664 420 579 448 589 214 200 160
 $M $T/10y.jpg $T/10s.jpg $N/whisky_Tomatin_Legacy_photo.jpg 233 641 286 659 538 576 563 588 214 200 160
 # « I » de TOMATIN dessiné creux par l'IA : rempli
@@ -60,7 +61,7 @@ ETIRER=1 $R $T/11c.jpg $T/11d.jpg $N/jus_Syrah_etiquette_complete.png 0 0 255 38
 # sachet de chocolats : vrai médaillon (photo noir et blanc, fin liseré), vraie plaque « CHOCOLAT NOIR »,
 # vraie rose en papier marbré
 GAIN=1.0,0.95,0.92 OVALE=1 $R $T/11d.jpg $T/11e.jpg $REF 1482 643 1602 763 1499 612 1555 668
-ETIRER=1 $R $T/11e.jpg $T/11f.jpg $N/chocolat_plaque_noir.png 0 0 232 38 1484 733 1578 749
+python3 tools/dessine_plaque.py $T/11e.jpg $T/11f.jpg 1482 731 1580 751 "CHOCOLAT NOIR" 55,25,18 200,190,165 98,96,80 165,135,85
 GAIN=0.95,0.80,0.71 python3 tools/colle_detoure.py $T/11f.jpg $T/11g.jpg $N/chocolat_rose_detouree.png 1491 400 0.5
 
 # 3. couleurs : rhum doré (pas rosé), purée de courgettes vert foncé, bague de la capsule du Frézier lisse
