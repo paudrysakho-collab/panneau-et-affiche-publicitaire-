@@ -127,6 +127,53 @@ def tomatin():
     return Image.fromarray(a.clip(0, 255).astype(np.uint8)).crop((40, 0, 420, 876))
 
 
+def tomatin_magasin():
+    """La vraie bouteille Tomatin du magasin (haut de l'étiquette imprimé sur le verre, panneau bleu à partir de
+    LEGACY), détourée (BiRefNet). L'étui bleu derrière, à droite, est retiré : bord droit relevé à la main sur la
+    photo (la bouteille penche un peu, pas de symétrie simple) ; au niveau du col, symétrie du bord gauche."""
+    import os
+    import cv2
+    im = Image.open(N / 'whisky_Tomatin_Legacy_photo.jpg').convert('RGB')
+    cache = os.environ.get('CACHE_TOMATIN')
+    if cache and os.path.exists(cache):
+        al = np.load(cache).astype(np.float32) / 255
+    else:
+        from rembg import new_session, remove
+        al = np.array(remove(im, session=new_session('birefnet-general')))[..., 3].astype(np.float32) / 255
+    H, W = al.shape
+    bord_d = np.interp(np.arange(H), [400, 550, 600, 700, 750], [324, 312, 308, 300, 296])
+    x = np.arange(W)
+    for y in range(H):
+        if y < 400:
+            # col et épaules : segment qui contient l'axe, bord droit = symétrique du gauche (axe x ≈ 166,5)
+            if al[y, 166] <= 0.5:
+                continue
+            g = 166
+            while g > 0 and al[y, g - 1] > 0.5:
+                g -= 1
+            al[y, :g] = 0                      # trait vertical isolé du décor à gauche
+            d = 2 * (166.5 + max(0, y - 330) * 0.02) - g
+        elif y <= 750:
+            d = bord_d[y]                      # bord droit relevé à la main (étui bleu derrière)
+        else:
+            continue
+        al[y] *= np.clip(d + 1 - x, 0, 1)
+    # étui bleu vu à travers / derrière le bord droit du verre (x > 292, à droite de l'étiquette) :
+    # remplacé par le verre doré de la même ligne, assombri vers le bord
+    a = np.array(im).astype(np.float32)
+    for y in range(330, 760):
+        x0 = 292
+        ref = a[y, x0 - 6:x0].mean(axis=0)
+        for x in range(x0, W):
+            r, g_, b = a[y, x]
+            if b > r + 15 or (b > 90 and b > g_):
+                t = min(1.0, (x - x0) / 30)
+                a[y, x] = ref * (1 - 0.35 * t)
+    al = cv2.GaussianBlur(al, (0, 0), 0.6)[..., None]
+    out = a * al + 255 * (1 - al)
+    return Image.fromarray(out.clip(0, 255).astype(np.uint8))
+
+
 def main():
     sortie = Path(sys.argv[1])
     sortie.mkdir(parents=True, exist_ok=True)
@@ -134,7 +181,7 @@ def main():
         ('01_rhum_La_Favorite_Coeur_de_Canne', Image.open(B / '8_rhum_La_Favorite_Coeur_de_Canne.jpg')),
         ('02_jus_de_raisin_Syrah', syrah()),
         ('03_whisky_Suntory_Toki', Image.open(B / '1_whisky_Suntory_Toki.jpg')),
-        ('04_whisky_Tomatin_Legacy', tomatin()),
+        ('04_whisky_Tomatin_Legacy', tomatin_magasin()),
         ('05_rose_Bastide_de_Blacailloux_JOIO', Image.open(B / '2_rose_Bastide_de_Blacailloux.jpg')),
         ('06_rouge_Chateauneuf-du-Pape_Prieure_des_Papes', Image.open(B / '4_rouge_Chateauneuf-du-Pape_Prieure_des_Papes.jpg')),
         ('07_rouge_Chateau_de_Gragnos_Lou_Daro', Image.open(B / '3_rouge_Chateau_de_Gragnos_Lou_Daro.jpg')),
