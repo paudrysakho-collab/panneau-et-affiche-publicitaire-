@@ -101,3 +101,57 @@ Une **vraie image générée** qui ressemble à une photo de studio haut de gamm
   `Claude-Session: https://claude.ai/code/session_01MhDWXdDg6yxkfVQXWRp9UB`
 - Toujours vérifier à la loupe chaque étiquette avant de livrer, comparée aux vraies photos du pack.
 - Répondre au client en français, court et clair. Lui envoyer les images (aperçu, puis PDF).
+
+---
+
+## 8. Mise à jour (session suivante, 17/10/2026) : à lire en priorité
+
+### Où on en est
+- **Le client a obtenu lui-même une image qu'il valide** (rangée de 11 bouteilles sur une marche noire, terrine et pot de courgettes devant, morceaux de chocolat à droite, fond lie-de-vin, sol brillant).
+  - **Prochaine étape : l'intégrer dans l'affiche** (version sombre + claire, PNG/PDF/PPTX, voir section 6.3).
+  - Le fichier doit être déposé par le client dans `panneau/bouteilles-gemini/` (par ex. `photo-finale.png`). S'il n'y est pas, le lui demander : une image collée dans le chat n'arrive pas en fichier.
+- **Défauts déjà repérés sur son image**, à corriger en recollant la vraie étiquette avec `tools/recolle_scene.py` ou `tools/remplace_etiquette.py` :
+  - Trompe Souris : le nom en bas de l'étiquette est déformé ;
+  - Gragnos : le millésime doit être « 2022 ».
+  - Vérifier à la loupe toutes les autres étiquettes.
+- **Attention aux noms :** le vrai nom est « Domaine **Le Prieuré des Papes** ». « Le Frieclé des Pates » est une invention de l'IA que le client a recopiée par erreur.
+
+### Ce que le client veut / ne veut pas
+- **Il veut :** une vraie photo de groupe générée par l'API, qui fasse studio (référence de ton : `bouteilles-gemini/resultat_gemini_v8_sombre_corrige.jpg`), puis seulement les lettres corrigées.
+- **Il ne veut PAS :**
+  - les montages de produits détourés alignés un par un par code : ça fait « découpé » ;
+  - la retouche IA produit par produit recomposée par code.
+- **Budget :** dépensé au total ≈ 0,72 $ réels sur les 5 $. Le journal `bouteilles-gemini/api-essais/depenses.csv` compte aussi une ancienne réservation fantôme de 0,20 $. Toujours un appel à la fois, et montrer avant de continuer.
+
+### Essais de cette session
+| Fichier | Contenu | Verdict |
+|---|---|---|
+| `bouteilles-gemini/api-essais/tour2/essai1_pro_relumiere.png` | montage refait en photo, rangée | fond bien, rendu un peu plat |
+| `bouteilles-gemini/api-essais/tour2/essai2_pro_studio_fort.png` | idem, lumière poussée | bien plus photo ; textes inventés |
+| `studio/groupe/groupe_essai1.png` | maquette en quinconce façon v8 (`studio/groupe/base.jpg`) refaite par Pro 2K | très photo ; projecteur ajouté en haut à gauche (effacé dans `_propre.png`) ; textes inventés |
+| `studio/groupe/groupe_essai1_etiquettes.png` | même image avec les vraies étiquettes recollées | **dernière version, à vérifier** |
+
+### Découvertes techniques importantes
+- **Résolution des images envoyées :** l'API réduit chaque image envoyée à 258 tokens, en très basse définition.
+  - `media_resolution` est refusé par les modèles d'image (testé gratuitement avec countTokens).
+  - Conséquence : aucun modèle ne peut recopier les petits textes. Il faut **toujours recoller les vraies étiquettes après coup**.
+- **Recette qui marche pour la génération :**
+  - donner au modèle une maquette avec les vrais produits détourés aux bonnes places ;
+  - lui demander de la « re-photographier » en studio (prompts dans `api-essais/tour2/prompt_2_studio_fort.txt` et `studio/groupe/prompt_groupe_1.txt`).
+  - Il garde les places et les formes, et refait lumière, verre et reflets.
+  - Il peut ajouter du matériel de studio : écrire « no studio equipment visible » dans le prompt.
+- **Modèles :** vérifiés via la liste des modèles et la doc officielle. `gemini-3-pro-image` est le meilleur ; `gemini-nano-banana-2.1` est moins cher (0,034 $ en 1K).
+- **SDK google-genai :** il fonctionne via le proxy avec `genai.Client(api_key='cle-injectee-par-le-proxy')` (voir `tools/packshot_ia.py`).
+
+### Outils ajoutés (dans `tools/`)
+- `recolle_scene.py` **(le plus utile)** : recolle les vraies étiquettes (détourages HD) sur une photo générée.
+  - Recalage par points SIFT et RANSAC, puis ECC ; garde-fou si le recalage s'écarte de plus de 5 % de la place connue.
+  - Transfère la lumière de la scène (médiane et flou) et contrôle les lettres tuile par tuile.
+  - Option `--placement` (positions exactes et parties visibles venant de `base_groupe.py`).
+  - Sans `--placement`, il repère les produits dans `base_montage_16x9.jpg`.
+  - Pour une image qui ne vient d'aucune maquette (comme celle du client), il faudra un repérage initial : la position approximative de chaque étiquette à la main, puis SIFT.
+- `base_groupe.py` + `studio/groupe.json` : maquette de groupe en quinconce, avec les vrais produits ; elle signale les étiquettes cachées.
+- `nettoie_fond.py` : efface un élément parasite du fond (projecteur…) en recalculant le dégradé, sans toucher aux produits.
+- `packshot_controle.py` : contrôle des lettres. Corrélation par tuile du détail fin, seuil 0,90 (une étiquette identique ré-éclairée donne 0,99 ; des lettres redessinées par l'IA 0,72 à 0,84) ; plus un OCR tesseract fiable (mots stables sur 4 lectures).
+- `packshot_ia.py`, `studio_packshot.py`, `studio/config.json` : pipeline produit par produit (fond fixe, reflets, ombres). **Rejeté par le client pour le rendu**, mais `studio/config.json` contient des données réutilisables : zones d'étiquettes par produit, inclinaisons, corrections de couleur.
+- Dépendances installées dans cette session, à réinstaller si besoin : `pip install opencv-python-headless google-genai scikit-image "rembg[cpu]" pytesseract` et `apt-get install tesseract-ocr tesseract-ocr-fra`.
