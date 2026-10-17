@@ -25,13 +25,14 @@ def main():
     ap.add_argument('--modele', default='gemini-3-pro-image')
     ap.add_argument('--format', default='16:9')
     ap.add_argument('--taille', default='4K')
+    ap.add_argument('--numeros', action='store_true', help='nommer les images « Image 1 », « Image 2 »… (ordre du prompt)')
     ap.add_argument('images', nargs='*')
     a = ap.parse_args()
 
     parts = [{'text': Path(a.prompt).read_text(encoding='utf-8')}]
-    for img in a.images:
+    for i, img in enumerate(a.images):
         mime = mimetypes.guess_type(img)[0] or 'image/jpeg'
-        parts.append({'text': f'Image : {Path(img).stem}'})
+        parts.append({'text': f'Image {i + 1}' if a.numeros else f'Image : {Path(img).stem}'})
         parts.append({'inline_data': {'mime_type': mime, 'data': base64.b64encode(Path(img).read_bytes()).decode()}})
 
     corps = {
