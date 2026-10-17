@@ -202,7 +202,7 @@ def main():
     print('14_composition_actuelle_modele', comp.size)
 
 
-if __name__ == '__main__' and '--planche' not in sys.argv:
+if __name__ == '__main__' and '--planche' not in sys.argv and '--fiches' not in sys.argv:
     main()
 
 
@@ -234,5 +234,45 @@ def planche(dossier):
     print('15_planche_13_produits', o.size)
 
 
+# zone de l'étiquette dans chaque image du pack (fractions x0, y0, x1, y1) ; None = étiquette déjà assez grande
+ETIQUETTES = {
+    1: (0.05, 0.53, 0.95, 0.93), 2: (0.15, 0.44, 0.85, 0.86), 3: (0.06, 0.37, 0.96, 0.62),
+    4: (0.05, 0.50, 0.95, 0.81), 5: (0.13, 0.40, 0.87, 0.82), 6: (0.04, 0.66, 0.96, 0.96),
+    7: (0.04, 0.58, 0.96, 0.92), 8: (0.08, 0.67, 0.92, 0.95), 9: (0.08, 0.40, 0.95, 0.92),
+    10: (0.0, 0.50, 1.0, 0.95), 11: (0.0, 0.55, 1.0, 1.0), 12: None, 13: (0.20, 0.45, 0.80, 0.86),
+}
+
+
+def fiches(dossier):
+    """Une fiche par produit : le produit entier à gauche, un gros plan de son étiquette à droite (même image
+    source, simple recadrage agrandi). Google réduit fortement chaque image de référence : sur la fiche,
+    l'étiquette occupe bien plus de place, donc ses textes restent lisibles pour le modèle."""
+    from PIL import ImageDraw
+    sortie = Path(dossier) / 'fiches'
+    sortie.mkdir(exist_ok=True)
+    fs = sorted(Path(dossier).glob('[01][0-9]_*.jpg'))[:13]
+    H = 1400
+    for i, p in enumerate(fs, 1):
+        im = Image.open(p).convert('RGB')
+        g = im.resize((round(im.width * H / im.height), H), Image.LANCZOS)
+        if ETIQUETTES[i] is None:
+            o = g
+        else:
+            x0, y0, x1, y1 = ETIQUETTES[i]
+            z = im.crop((round(x0 * im.width), round(y0 * im.height), round(x1 * im.width), round(y1 * im.height)))
+            k = min(H / z.height, 1.6 * H / z.width)
+            z = z.resize((round(z.width * k), round(z.height * k)), Image.LANCZOS)
+            if k > 1.05:
+                z = z.filter(ImageFilter.UnsharpMask(radius=1.4, percent=45, threshold=2))
+            o = Image.new('RGB', (g.width + 40 + z.width, H), (255, 255, 255))
+            o.paste(g, (0, 0))
+            o.paste(z, (g.width + 40, (H - z.height) // 2))
+            ImageDraw.Draw(o).line([(g.width + 20, 60), (g.width + 20, H - 60)], fill=(205, 205, 205), width=3)
+        o.save(sortie / f'fiche_{p.name}', quality=93)
+        print('fiche', i, o.size)
+
+
 if __name__ == '__main__' and len(sys.argv) > 2 and sys.argv[2] == '--planche':
     planche(sys.argv[1])
+if __name__ == '__main__' and len(sys.argv) > 2 and sys.argv[2] == '--fiches':
+    fiches(sys.argv[1])

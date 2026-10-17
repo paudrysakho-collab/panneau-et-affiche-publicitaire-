@@ -85,7 +85,36 @@ et colle tout le texte de la VERSION B. Dans Gemini, choisis le modèle « Pro �
 """
 
 
+IMAGES_14_FICHES = IMAGES_14.replace(
+    "un par image.",
+    "un par image. Chaque image montre le produit entier à gauche et, à droite, un gros plan de son étiquette "
+    "(sauf le n° 12, montré seul) : c'est le même objet, à ne placer qu'une seule fois.")
+
+
+def prompts_api(dossier):
+    """Textes envoyés à l'API : version A, et version A pour les fiches (produit + gros plan d'étiquette)."""
+    import re
+    from pathlib import Path
+    a = CORPS.format(images=IMAGES_14)
+    f = CORPS.format(images=IMAGES_14_FICHES)
+    cites = lambda t: re.findall('« (.*?) »', t)
+    assert cites(a) == cites(f), 'les textes entre « » diffèrent entre les deux versions'
+    # sans photo modèle : seulement les 13 fiches, la mise en scène vient du texte (marche, rien de caché)
+    debut = f.index('- Image 14')
+    fin = f.index('DÉCOR ET LUMIÈRE')
+    s13 = f[:debut] + ("La mise en scène est entièrement décrite ci-dessous : suis-la exactement.\n\n") + f[fin:]
+    s13 = s13.replace('Images 1 à 13 : les produits', 'Les 13 images jointes : les produits')
+    assert cites(s13) == cites(a) and 'photo modèle' not in s13 and 'Image 14' not in s13
+    Path(dossier, 'prompt_A_fiches_sans14.txt').write_text(s13, encoding='utf-8')
+    Path(dossier).mkdir(parents=True, exist_ok=True)
+    Path(dossier, 'prompt_A.txt').write_text(a, encoding='utf-8')
+    Path(dossier, 'prompt_A_fiches.txt').write_text(f, encoding='utf-8')
+    print(len(cites(a)), 'textes entre « », identiques dans les deux versions')
+
+
 def main():
+    if sys.argv[1] == '--api':
+        return prompts_api(sys.argv[2])
     a = CORPS.format(images=IMAGES_14)
     b = CORPS.format(images=IMAGES_2).replace("d'après l'image", "d'après la planche").replace(
         "entre la photo modèle et l'image du produit, c'est l'image du produit qui a raison",

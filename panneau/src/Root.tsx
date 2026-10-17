@@ -9,6 +9,9 @@ export const RemotionRoot: React.FC = () => (
 		<Still id="Panneau" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, clair: false}} />
 		{/* Version claire (blanc chaud) */}
 		<Still id="PanneauClair" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, clair: true}} />
+		{/* Modèles à partir des vrais produits détourés, un par un (sans IA) */}
+		<Still id="PanneauModele1" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, clair: false, photo: 'rangee'}} />
+		<Still id="PanneauModele2" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: true, clair: false, photo: 'gradins'}} />
 		{/* Fonds sans texte ni logo, pour les PPTX modifiables */}
 		<Still id="PanneauFond" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: false, clair: false}} />
 		<Still id="PanneauClairFond" component={Panneau} width={LARGEUR} height={HAUTEUR} defaultProps={{texte: false, clair: true}} />

@@ -35,9 +35,20 @@ const SANS = "'Montserrat', sans-serif";
 // Photo studio Gemini (bouteilles, jus, terrines, chocolat), fondue dans le fond par des bords en dégradé.
 const PHOTO = {x: 20, y: 408, w: 1200};
 // proportions de chaque photo (largeur / hauteur), et décalage vertical pour centrer la plus basse
-const PHOTOS = {
+// w : largeur affichée (sinon PHOTO.w), h : hauteur imposée (photo plus haute que large : centrée, moins large),
+// cote : fondu à gauche et à droite (%)
+type Cle = 'sombre' | 'clair' | 'rangee' | 'gradins';
+const PHOTOS: Record<Cle, {src: string; ratio: number; dy: number; haut: number; cote?: number; h?: number}> = {
 	sombre: {src: 'vitrine_sombre.jpg', ratio: 1693 / 929, dy: 8, haut: 6},
 	clair: {src: 'vitrine_claire_13.png', ratio: 4000 / 2195, dy: 8, haut: 6},
+	// photos composées à partir des vrais produits détourés (tools/compose_produits.py)
+	rangee: {src: 'compo_rangee_sombre.png', ratio: 4142 / 2139, dy: 22, haut: 1, cote: 2.5},
+	gradins: {src: 'compo_gradins_sombre.png', ratio: 3562 / 2568, dy: 4, haut: 1, cote: 2.5, h: 664},
+};
+const taillePhoto = (c: Cle) => {
+	const p = PHOTOS[c];
+	const w = p.h ? p.h * p.ratio : PHOTO.w;
+	return {w, h: w / p.ratio, x: (LARGEUR - w) / 2, y: PHOTO.y + p.dy};
 };
 
 // Icônes des services : une par colonne, au-dessus des blocs service-1..5 de textes.json.
@@ -141,21 +152,23 @@ const BlocTexte: React.FC<{bloc: Bloc; K: Record<string, string>}> = ({bloc, K})
 	</div>
 );
 
-const Photo: React.FC<{clair: boolean}> = ({clair}) => {
-	const {x, y, w} = PHOTO;
-	const {src, ratio, dy, haut} = PHOTOS[clair ? 'clair' : 'sombre'];
-	const fondu = `linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black ${haut}%, black 92%, transparent)`;
+const Photo: React.FC<{cle: Cle}> = ({cle}) => {
+	const {src, haut, cote = 5} = PHOTOS[cle];
+	const {x, y, w, h} = taillePhoto(cle);
+	const fondu = `linear-gradient(to right, transparent, black ${cote}%, black ${100 - cote}%, transparent), linear-gradient(to bottom, transparent, black ${haut}%, black 92%, transparent)`;
 	return (
 		<Img
 			src={staticFile(`produits/${src}`)}
-			style={{position: 'absolute', left: x, top: y + dy, width: w, height: w / ratio, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
+			style={{position: 'absolute', left: x, top: y, width: w, height: h, WebkitMaskImage: fondu, maskImage: fondu, WebkitMaskComposite: 'source-in', maskComposite: 'intersect'}}
 		/>
 	);
 };
 
-export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = true, clair = false}) => {
+export const Panneau: React.FC<{texte?: boolean; clair?: boolean; photo?: Cle}> = ({texte = true, clair = false, photo}) => {
 	const K = clair ? CLAIR : C;
-	const centreY = ((PHOTO.y + PHOTO.w / PHOTOS[clair ? 'clair' : 'sombre'].ratio / 2) / HAUTEUR) * 100;
+	const cle: Cle = photo ?? (clair ? 'clair' : 'sombre');
+	const tp = taillePhoto(cle);
+	const centreY = ((tp.y + tp.h / 2) / HAUTEUR) * 100;
 	return (
 		<AbsoluteFill style={{background: K.encre, color: K.creme, fontFamily: SANS, overflow: 'hidden', fontVariantNumeric: 'lining-nums'}}>
 			<Polices />
@@ -177,7 +190,7 @@ export const Panneau: React.FC<{texte?: boolean; clair?: boolean}> = ({texte = t
 				<rect width="100%" height="100%" filter="url(#grain)" />
 			</svg>
 
-			<Photo clair={clair} />
+			<Photo cle={cle} />
 
 			{/* Double filet doré */}
 			<div style={{position: 'absolute', inset: 26, border: `1.5px solid ${K.or}`, opacity: 0.85}} />
