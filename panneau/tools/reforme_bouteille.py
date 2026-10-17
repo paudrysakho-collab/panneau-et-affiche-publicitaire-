@@ -188,10 +188,16 @@ def main():
     m[:LIM][nouvelle[:LIM]] = 1
     m = cv2.GaussianBlur(m, (0, 0), 0.6)
     m[LIM:] = 0
+    for i in range(1, 7):             # raccord fondu avec la partie inchangée
+        m[LIM - i] *= i / 7
     out = fond * (1 - m[..., None]) + warp * m[..., None]
     out[LIM:] = img[LIM:]
     Image.fromarray(out.clip(0, 255).astype(np.uint8)).save(sortie, quality=95)
     print('corps ref', corps_ref, 'corps scene', corps_sc)
+    if os.environ.get('BORDS_SORTIE'):   # bords de la nouvelle bouteille, pour les retouches suivantes
+        with open(os.environ['BORDS_SORTIE'], 'w') as fh:
+            for y in sorted(spans_new):
+                fh.write('%d %.1f %.1f\n' % (y, spans_new[y][0], spans_new[y][1]))
     print(sortie, 'haut', haut_old, '->', haut_new, 'capsule', cap_sc, '->', round(cap_new), 'échelle', round(k, 3))
 
 

@@ -5,8 +5,9 @@ l'ancien, le recouvre entièrement.
 
 Usage (depuis panneau/) :
     python3 tools/colle_detoure.py entree.jpg sortie.jpg produit.png X0 Y0 ECHELLE
-    (X0, Y0 : coin haut gauche du PNG une fois mis à l'échelle)
+    (X0, Y0 : coin haut gauche du PNG une fois mis à l'échelle) ; variable GAIN=r,g,b : gain par canal
 """
+import os
 import sys
 
 import numpy as np
@@ -21,6 +22,8 @@ def main():
     p = p.resize((round(p.width * k), round(p.height * k)), Image.LANCZOS)
     a = np.array(p).astype(np.float32)
     rgb, alpha = a[..., :3], a[..., 3:] / 255
+    if os.environ.get('GAIN'):   # accord des couleurs à la lumière de la scène
+        rgb = rgb * np.array(list(map(float, os.environ['GAIN'].split(','))), np.float32)
     out = np.array(img).astype(np.float32)
     h, w = rgb.shape[:2]
     zone = out[y0:y0 + h, x0:x0 + w]

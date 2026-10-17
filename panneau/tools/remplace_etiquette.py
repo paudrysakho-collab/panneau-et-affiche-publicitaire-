@@ -9,6 +9,8 @@ Usage (depuis panneau/) :
     Les rectangles C… (facultatifs, coordonnées de la photo) sont les parties de l'étiquette cachées par un
     autre produit placé devant : on n'y touche pas.
     Variable OVALE=1 : étiquette ovale (masque elliptique inscrit dans la boîte, source étirée à la boîte).
+    Variable CACHE_POLY="x,y x,y ...;..." : parties cachées données en polygones (bords lisses).
+    Variable GAIN=r,g,b : étiquette posée sur du verre nu (pas de transfert d'éclairage, gain par canal).
     Variable FONDU=n : bords fondus sur n px (3 par défaut).
     Variable ETIRER=1 : source étirée à la boîte (proportions proches), sans prolongement du papier.
 """
@@ -56,12 +58,30 @@ def main():
     for i in range(0, len(caches), 4):
         cx0, cy0, cx1, cy1 = caches[i:i + 4]
         visible[max(cy0 - dy0, 0):max(cy1 - dy0, 0), max(cx0 - dx0, 0):max(cx1 - dx0, 0)] = False
+    visible_rect = visible.copy()
+    if os.environ.get('CACHE_POLY'):   # parties cachées en polygone (bord courbe d'une bouteille devant)
+        m = np.zeros(img.shape[:2], np.uint8)
+        for poly in os.environ['CACHE_POLY'].split(';'):
+            pts = np.array([list(map(int, p.split(','))) for p in poly.split()], np.int32)
+            cv2.fillPoly(m, [pts], 255)
+        m = cv2.GaussianBlur(m.astype(np.float32) / 255, (0, 0), 0.8)[dy0:dy1, dx0:dx1]
+        visible = visible & (m < 0.5)
+        douceur = 1 - m
+    else:
+        douceur = None
     # éclairage mesuré seulement sur la partie visible (les produits devant ne doivent pas l'assombrir)
     remplie = cible.copy()
     remplie[~visible] = np.median(cible[visible], axis=0)
-    lf_c = basse_frequence(remplie, 18)
-    lf_e = basse_frequence(etiq, 18)
-    etiq = etiq * (lf_c / np.maximum(lf_e, 1))
+    if os.environ.get('GAIN'):
+        # étiquette posée sur du verre (pas sur une ancienne étiquette) : pas de transfert d'éclairage,
+        # seulement un gain par canal pour l'accorder à l'exposition de la scène, et un léger ombrage
+        # latéral (lumière venant de la gauche)
+        g = np.array(list(map(float, os.environ['GAIN'].split(','))), np.float32)
+        etiq = etiq * g * np.linspace(1.04, 0.86, w, dtype=np.float32)[None, :, None]
+    else:
+        lf_c = basse_frequence(remplie, 18)
+        lf_e = basse_frequence(etiq, 18)
+        etiq = etiq * (lf_c / np.maximum(lf_e, 1))
 
     # bords fondus sur 3 px (FONDU=n pour plus, ex. étiquette imprimée sur le verre)
     f = int(os.environ.get('FONDU', '3'))
@@ -75,7 +95,10 @@ def main():
         a = np.zeros((h, w), np.float32)
         cv2.ellipse(a, (w // 2, h // 2), (w // 2 - 1, h // 2 - 1), 0, 0, 360, 1.0, -1)
         a = cv2.GaussianBlur(a, (0, 0), 1.0)
-    a = (a * visible)[..., None]
+    a = a * visible_rect
+    if douceur is not None:
+        a = a * douceur
+    a = a[..., None]
     img[dy0:dy1, dx0:dx1] = cible * (1 - a) + etiq * a
 
     Image.fromarray(img.clip(0, 255).astype(np.uint8)).save(sortie, quality=95)
