@@ -1,0 +1,80 @@
+{
+  "_doc": "Maquette de la photo de groupe (tools/base_groupe.py), esprit v8 : une rangée en quinconce sur trois profondeurs (fond / milieu / devant), le produit vedette au centre, un peu en avant ; les deux pots devant. Les x sont calculés : chevauchement léger entre voisins de profondeurs différentes. Canevas 2752 x 1536 (16:9).",
+  "canevas": [
+    2752,
+    1536
+  ],
+  "plans": {
+    "fond": {
+      "base": 1160,
+      "px_cm": 29.0
+    },
+    "milieu": {
+      "base": 1235,
+      "px_cm": 30.5
+    },
+    "devant": {
+      "base": 1450,
+      "px_cm": 32.5
+    }
+  },
+  "rangee": [
+    [
+      "02",
+      "devant"
+    ],
+    [
+      "03",
+      "milieu"
+    ],
+    [
+      "09",
+      "devant"
+    ],
+    [
+      "05",
+      "milieu"
+    ],
+    [
+      "07",
+      "fond"
+    ],
+    [
+      "06",
+      "milieu"
+    ],
+    [
+      "08",
+      "fond"
+    ],
+    [
+      "04",
+      "milieu"
+    ],
+    [
+      "10",
+      "fond"
+    ],
+    [
+      "01",
+      "milieu"
+    ],
+    [
+      "11",
+      "devant"
+    ]
+  ],
+  "chevauchement": 6,
+  "espace_meme_plan": 14,
+  "vedette": "06",
+  "pots": [
+    [
+      "12",
+      "07"
+    ],
+    [
+      "13",
+      "08"
+    ]
+  ]
+}
